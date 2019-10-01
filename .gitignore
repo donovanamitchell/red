@@ -1,0 +1,8 @@
+/docs/
+/lib/
+/bin/
+/.shards/
+*.dwarf
+/asset_source/
+/tmp/
+.editorconfig

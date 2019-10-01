@@ -1,0 +1,13 @@
+name: at_the_gate
+version: 0.1.0
+
+authors:
+  - Donovan Mitchell <donovan.alan.mitchell@gmail.com>
+
+targets:
+  at_the_gate:
+    main: src/at_the_gate.cr
+
+crystal: 0.30.0
+
+license: MIT
