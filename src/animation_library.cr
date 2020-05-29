@@ -1,70 +1,13 @@
-require "json"
+require "./animation"
+require "./animation_frame"
+require "./texture_atlas_json_mapping"
 
+# TODO rename to atlas?
 class AnimationLibrary
-  class TextureAtlasSourceSize
-    JSON.mapping(
-      w: Int32,
-      h: Int32
-    )
-  end
-
-  class TextureAtlasFrame
-    JSON.mapping(
-      x: Int32,
-      y: Int32,
-      w: Int32,
-      h: Int32
-    )
-  end
-
-  class TextureAtlasSprite
-    JSON.mapping(
-      filename: String,
-      frame: TextureAtlasFrame,
-      rotated: Bool,
-      trimmed: Bool,
-      spriteSourceSize: TextureAtlasFrame,
-      sourceSize: TextureAtlasSourceSize,
-      duration: Int32
-    )
-  end
-
-  class TextureAtlas
-    JSON.mapping(
-      frames: Array(TextureAtlasSprite)
-    )
-  end
-
-  class AnimationFrame
-    property order : Int32
-    property x : Int32
-    property y : Int32
-    property w : Int32
-    property h : Int32
-
-    def initialize(@order : Int32, sprite : TextureAtlasSprite)
-      @x = sprite.frame.x
-      @y = sprite.frame.y
-      @w = sprite.frame.w
-      @h = sprite.frame.h
-    end
-  end
-
-  class Animation
-    def initialize()
-      @frames = [] of AnimationFrame
-    end
-
-    def new_frame(order : Int32, sprite : TextureAtlasSprite)
-      # TODO: put it in the right order
-      # no guarantees around order except uniqueness
-      raise "Unimplemented" if !@frames.empty? && @frames.last.order > order
-
-      @frames.push(AnimationFrame.new(order, sprite))
-    end
-  end
-
+  # TODO: move all these to appropriate places
   class Asset
+    getter animations : Hash(String, Animation)
+
     def initialize
       @animations = Hash(String, Animation).new
     end
@@ -77,6 +20,8 @@ class AnimationLibrary
       @animations[animation_name].new_frame(order, sprite)
     end
   end
+
+  getter assets : Hash(String, Asset)
 
   def initialize(atlas_filename : String)
     @assets = Hash(String, Asset).new
@@ -96,8 +41,6 @@ class AnimationLibrary
 
       @assets[name].new_frame(animation_name, animation_frame, frame)
     end
-
-    pp @assets
   end
 
   private def texture_mapping(atlas_filename : String)

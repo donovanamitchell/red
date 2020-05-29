@@ -1,40 +1,69 @@
 require "crsfml"
 require "json"
+require "./game_object"
 require "./renderable"
-require "./texture_location"
 
 class Renderables < SF::Transformable
   include SF::Drawable
 
-  property characters : Array(Renderable)
-  @texture_locations : Array(TextureLocation)
-
-  class TextureMapping
-    JSON.mapping(
-      name: String,
-      cells: Array(TextureLocation)
-    )
-  end
+  property renderable_game_objs : Array(GameObject)
 
   def initialize(texture_filename)
     super()
 
+    # TODO turn AnimationLibrary into singleton?
+    @animation_library = AnimationLibrary.new("#{texture_filename}.json")
+
     @verticies = SF::VertexArray.new(SF::Quads)
     @tileset = SF::Texture.from_file("#{texture_filename}.png")
-    texture_mapping = File.open("#{texture_filename}.json") do |file|
-      TextureMapping.from_json(file)
-    end
-    @texture_locations = texture_mapping.cells
 
+    # render order
+    # background
+    # characters
+    # frame
+    # card art
+    # card frame
+    @background = GameObject.new(
+      SF.vector2i(4, 4),
+      Renderable.new(
+        "background",
+        find_texture_location("background"),
+      ),
+      0.0
+    )
+    @background_frame = GameObject.new(
+      SF.vector2i(0, 0),
+      Renderable.new(
+        "frame",
+        find_texture_location("frame"),
+      ),
+      3.0
+    )
     @card_arts = [
-      Renderable.new(SF.vector2i(6, 170), "card_art", find_texture_location("card_art"))
+      GameObject.new(
+        SF.vector2i(6, 170),
+        Renderable.new(
+          "card_art",
+          find_texture_location("card_art"),
+        ),
+        4.0
+      )
     ]
     @card_frames = [
-      Renderable.new(SF.vector2i(4, 168), "card_frame", find_texture_location("card_frame"))
+      GameObject.new(
+        SF.vector2i(4, 168),
+        Renderable.new(
+          "card_frame",
+          find_texture_location("card_frame"),
+        ),
+        5.0
+      )
     ]
-    @characters = [] of Renderable
-    @background = Renderable.new(SF.vector2i(4,4), "background", find_texture_location("background"))
-    @background_frame = Renderable.new(SF.vector2i(0,0), "frame", find_texture_location("frame"))
+    @renderable_game_objs = [] of GameObject
+    @renderable_game_objs << @background
+    @renderable_game_objs << @background_frame
+    @renderable_game_objs.concat(@card_arts)
+    @renderable_game_objs.concat(@card_frames)
 
     update
   end
@@ -45,46 +74,34 @@ class Renderables < SF::Transformable
     target.draw(@verticies, states)
   end
 
-  def intersecting_renderables(target : SF::Vector2f)
-    renderables.select { |renderable| renderable.hitbox_contains?(target) }
-  end
-
-
   def find_texture_location(texture_name : String)
-    location = @texture_locations.find do |loc|
-      loc.name == texture_name
+    asset = @animation_library.assets[texture_name]
+
+    raise "Please use a real texture" unless asset
+
+    # TODO ugh
+    asset.animations.first_value.frames.first
+  end
+
+  def insert_game_obj(game_object : GameObject)
+    index = @renderable_game_objs.index do |obj|
+      obj.render_order > game_object.render_order
     end
-
-    raise "Please use a real texture" unless location
-
-    location
+    index ||= -1
+    @renderable_game_objs.insert(index, game_object)
   end
 
-  # render order
-  # background
-  # characters
-  # frame
-  # card art
-  # card frame
-  def renderables
-    objects = [] of Renderable
-    objects << @background
-    objects.concat(@characters)
-    objects << @background_frame
-    objects.concat(@card_arts)
-    objects.concat(@card_frames)
+  def intersecting_game_objs(target : SF::Vector2f)
+    @renderable_game_objs.select { |game_object| game_object.hitbox_contains?(target) }
   end
 
+  # TODO: private?
+  def update
+    # TODO: there is a possiblitity we don't want to render all of these
+    @verticies.resize(4 * @renderable_game_objs.size)
 
-  def update(*, characters = nil)
-    @characters = characters unless characters.nil?
-
-    render_objects = renderables
-
-    @verticies.resize(4 * render_objects.size)
-
-    render_objects.each do |renderable|
-      renderable.new_quad.each { |vertex| @verticies.append(vertex) }
+    @renderable_game_objs.each do |game_object|
+      game_object.new_quad.each { |vertex| @verticies.append(vertex) }
     end
   end
 end

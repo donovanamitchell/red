@@ -1,29 +1,37 @@
 require "crsfml"
-require "./texture_location"
+require "./animation_frame"
 
+# TODO: Add a subclass for unanimated things?
+# Also rename to Animations?
 class Renderable
-  property position : SF::Vector2(Int32)
-  property texture_name : String
-  property rectangle : SF::IntRect
+  property texture_name : String # TODO: REMOVE
 
-  def initialize(@position : SF::Vector2, @texture_name : String, @texture_location : TextureLocation)
+  def initialize(@texture_name : String,
+                 @animation_frame : AnimationFrame)
     @verticies = [] of SF::Vertex
-    @rectangle = SF::IntRect.new(
-      @position, SF.vector2i(@texture_location.w, @texture_location.h)
-    )
+  end
+
+  # TODO: should know about all the related animations
+  def next_frame
+  end
+
+  # TODO: should know about all the related animations
+  def start_animation(animation_key : String)
   end
 
   # Assumes hitbox is whole texture
-  def hitbox_contains?(point : SF::Vector2)
-    @rectangle.contains?(point)
+  def hitbox_contains?(position : SF::Vector2, point : SF::Vector2)
+    SF::IntRect.new(
+      position, SF.vector2i(@animation_frame.w, @animation_frame.h)
+    ).contains?(point)
   end
 
-  def new_quad
+  def new_quad(position)
     @verticies.clear
 
     [[0, 0], [1, 0], [1, 1], [0, 1]].each do |corner|
       @verticies.push(
-        new_vertex(corner, @position)
+        new_vertex(corner, position)
       )
     end
 
@@ -33,12 +41,12 @@ class Renderable
   def new_vertex(corner, offset)
     SF::Vertex.new(
       SF.vector2(
-        (corner[0] * @texture_location.w) + offset.x,
-        corner[1] * @texture_location.h + offset.y
+        (corner[0] * @animation_frame.w) + offset.x,
+        corner[1] * @animation_frame.h + offset.y
       ),
       tex_coords: SF.vector2(
-        @texture_location.x + (corner[0] * @texture_location.w),
-        @texture_location.y + (corner[1] * @texture_location.h)
+        @animation_frame.x + (corner[0] * @animation_frame.w),
+        @animation_frame.y + (corner[1] * @animation_frame.h)
       )
     )
   end

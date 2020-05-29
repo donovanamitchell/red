@@ -9,7 +9,6 @@ module AtTheGate
 
   view_multiplier = 2
 
-  AnimationLibrary.new("./assets/atlas.json")
   controller = WindowController.new(window_width, window_height, view_multiplier)
   controller.open()
 end
