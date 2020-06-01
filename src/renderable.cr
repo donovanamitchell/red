@@ -12,6 +12,7 @@ class Renderable
   end
 
   # TODO: should know about all the related animations
+  # TODO: subclass for static renderables
   def next_frame
   end
 

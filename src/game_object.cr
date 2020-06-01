@@ -13,7 +13,12 @@ class GameObject
     @renderable.hitbox_contains?(position, point)
   end
 
-  def new_quad
+  # TODO: only get a new one when there's been a change
+  def quad
     @renderable.new_quad(position)
+  end
+
+  def update
+    renderable.next_frame
   end
 end

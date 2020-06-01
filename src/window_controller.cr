@@ -1,6 +1,11 @@
 require "./renderables"
 require "./renderable"
 require "./game_object"
+require "log"
+
+# 1 second = 1_000_000_000 nanoseconds
+UPDATES_PER_SECOND = 120
+TIME_PER_UPDATE = Time::Span.new(nanoseconds: 1_000_000_000 // UPDATES_PER_SECOND)
 
 class WindowController
   def initialize(@window_width : Int32, @window_height : Int32, @view_multiplier : Int32)
@@ -36,7 +41,16 @@ class WindowController
     end
     renderables.update
 
+    # https://gameprogrammingpatterns.com/game-loop.html
+    previous = Time.utc
+    lag = Time::Span.zero
     while @render_window.open?
+      current = Time.utc
+      elapsed = current - previous
+      previous = current
+      lag += elapsed
+
+      # process input
       while event = @render_window.poll_event
         case event
         when SF::Event::Closed
@@ -44,17 +58,25 @@ class WindowController
         when SF::Event::MouseButtonReleased
           pixel_pos = SF::Mouse.get_position(@render_window)
           world_pos = @render_window.map_pixel_to_coords(pixel_pos, @render_window.view)
-          pp world_pos
-          pp renderables.intersecting_game_objs(world_pos)
+          Log.debug { world_pos.pretty_inspect }
+          Log.debug { renderables.intersecting_game_objs(world_pos).pretty_inspect }
         else
           nil
         end
       end
 
+      # variable time step
+      # probably way overkill, but hey, this is for fun
+      while lag >= TIME_PER_UPDATE
+        renderables.update
+        Log.debug { "tick #{lag} #{TIME_PER_UPDATE}" }
+        lag -= TIME_PER_UPDATE
+      end
+
+
+      # render
       @render_window.clear(SF::Color::Black)
-
       @render_window.draw(renderables)
-
       @render_window.display
     end
   end

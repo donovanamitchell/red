@@ -1,5 +1,3 @@
-require "crsfml"
-require "json"
 require "./game_object"
 require "./renderable"
 
@@ -101,7 +99,7 @@ class Renderables < SF::Transformable
     @verticies.resize(4 * @renderable_game_objs.size)
 
     @renderable_game_objs.each do |game_object|
-      game_object.new_quad.each { |vertex| @verticies.append(vertex) }
+      game_object.quad.each { |vertex| @verticies.append(vertex) }
     end
   end
 end
