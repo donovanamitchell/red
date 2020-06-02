@@ -4,20 +4,42 @@ require "./animation_frame"
 # TODO: Add a subclass for unanimated things?
 # Also rename to Animations?
 class Renderable
-  property texture_name : String # TODO: REMOVE
+  property texture_name : String
+  property animation_frame : AnimationFrame
 
   def initialize(@texture_name : String,
-                 @animation_frame : AnimationFrame)
+                 @default_animation_key : String)
     @verticies = [] of SF::Vertex
+    @duration = 0
+    @animation_key = @default_animation_key
+    @frame_index = 0
+    @animation_frame = AnimationLibrary.assets[@texture_name].animations[@animation_key].frames.first
   end
 
   # TODO: should know about all the related animations
   # TODO: subclass for static renderables
   def next_frame
+    # 120 updates / second
+    # 15 frames / second
+    # 8 updates / frame
+    return @duration += 1 unless @duration >= (UPDATES_PER_SECOND / ANIMATION_FRAMERATE)
+    animation = AnimationLibrary.assets[@texture_name].animations[@animation_key]
+    @frame_index = @frame_index + 1
+
+    if animation.frames.size <= @frame_index
+      start_animation(@default_animation_key)
+    else
+      @animation_frame = animation.frames[@frame_index]
+      @duration = 0
+    end
   end
 
   # TODO: should know about all the related animations
   def start_animation(animation_key : String)
+    @duration = 0
+    @frame_index = 0
+    @animation_key = animation_key
+    @animation_frame = AnimationLibrary.assets[@texture_name].animations[@animation_key].frames.first
   end
 
   # Assumes hitbox is whole texture

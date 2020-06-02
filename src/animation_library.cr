@@ -4,6 +4,8 @@ require "./texture_atlas_json_mapping"
 
 # TODO rename to atlas?
 class AnimationLibrary
+  @@assets = Hash(String, Asset).new
+
   # TODO: move all these to appropriate places
   class Asset
     getter animations : Hash(String, Animation)
@@ -21,11 +23,11 @@ class AnimationLibrary
     end
   end
 
-  getter assets : Hash(String, Asset)
+  def self.assets
+    @@assets
+  end
 
-  def initialize(atlas_filename : String)
-    @assets = Hash(String, Asset).new
-
+  def self.load_assets(atlas_filename : String)
     texture_mapping(atlas_filename).frames.each do |frame|
       filename_parts = frame.filename.split("/")
       # TODO: raise a better exception
@@ -35,16 +37,16 @@ class AnimationLibrary
       animation_name = filename_parts[1]
       animation_frame = filename_parts[2].to_i32
 
-      unless @assets.has_key?(name)
-        @assets[name] = Asset.new
+      unless @@assets.has_key?(name)
+        @@assets[name] = Asset.new
       end
 
-      @assets[name].new_frame(animation_name, animation_frame, frame)
+      @@assets[name].new_frame(animation_name, animation_frame, frame)
     end
   end
 
-  private def texture_mapping(atlas_filename : String)
-    File.open(atlas_filename) do |file|
+  private def self.texture_mapping(atlas_filename : String)
+    File.open("#{atlas_filename}.json") do |file|
       TextureAtlas.from_json(file)
     end
   end

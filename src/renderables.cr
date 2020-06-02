@@ -6,14 +6,13 @@ class Renderables < SF::Transformable
 
   property renderable_game_objs : Array(GameObject)
 
-  def initialize(texture_filename)
+  def initialize(texture_filename : String)
     super()
-
-    # TODO turn AnimationLibrary into singleton?
-    @animation_library = AnimationLibrary.new("#{texture_filename}.json")
+    @texture_filename = texture_filename
 
     @verticies = SF::VertexArray.new(SF::Quads)
     @tileset = SF::Texture.from_file("#{texture_filename}.png")
+    AnimationLibrary.load_assets(@texture_filename)
 
     # render order
     # background
@@ -23,37 +22,25 @@ class Renderables < SF::Transformable
     # card frame
     @background = GameObject.new(
       SF.vector2i(4, 4),
-      Renderable.new(
-        "background",
-        find_texture_location("background"),
-      ),
+      Renderable.new("background", ""),
       0.0
     )
     @background_frame = GameObject.new(
       SF.vector2i(0, 0),
-      Renderable.new(
-        "frame",
-        find_texture_location("frame"),
-      ),
+      Renderable.new("frame", ""),
       3.0
     )
     @card_arts = [
       GameObject.new(
         SF.vector2i(6, 170),
-        Renderable.new(
-          "card_art",
-          find_texture_location("card_art"),
-        ),
+        Renderable.new("card_art", ""),
         4.0
       )
     ]
     @card_frames = [
       GameObject.new(
         SF.vector2i(4, 168),
-        Renderable.new(
-          "card_frame",
-          find_texture_location("card_frame"),
-        ),
+        Renderable.new("card_frame", ""),
         5.0
       )
     ]
@@ -72,15 +59,6 @@ class Renderables < SF::Transformable
     target.draw(@verticies, states)
   end
 
-  def find_texture_location(texture_name : String)
-    asset = @animation_library.assets[texture_name]
-
-    raise "Please use a real texture" unless asset
-
-    # TODO ugh
-    asset.animations.first_value.frames.first
-  end
-
   def insert_game_obj(game_object : GameObject)
     index = @renderable_game_objs.index do |obj|
       obj.render_order > game_object.render_order
@@ -93,12 +71,13 @@ class Renderables < SF::Transformable
     @renderable_game_objs.select { |game_object| game_object.hitbox_contains?(target) }
   end
 
-  # TODO: private?
   def update
     # TODO: there is a possiblitity we don't want to render all of these
     @verticies.resize(4 * @renderable_game_objs.size)
 
     @renderable_game_objs.each do |game_object|
+      # TODO: not here
+      game_object.update
       game_object.quad.each { |vertex| @verticies.append(vertex) }
     end
   end

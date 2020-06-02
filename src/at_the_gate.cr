@@ -4,6 +4,11 @@ require "log"
 require "./animation_library"
 require "./window_controller"
 
+# 1 second = 1_000_000_000 nanoseconds
+UPDATES_PER_SECOND = 120
+TIME_PER_UPDATE = Time::Span.new(nanoseconds: 1_000_000_000 // UPDATES_PER_SECOND)
+ANIMATION_FRAMERATE = 15
+
 module AtTheGate
   VERSION = "0.0.1"
 

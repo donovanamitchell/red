@@ -1,11 +1,6 @@
 require "./renderables"
 require "./renderable"
 require "./game_object"
-require "log"
-
-# 1 second = 1_000_000_000 nanoseconds
-UPDATES_PER_SECOND = 120
-TIME_PER_UPDATE = Time::Span.new(nanoseconds: 1_000_000_000 // UPDATES_PER_SECOND)
 
 class WindowController
   def initialize(@window_width : Int32, @window_height : Int32, @view_multiplier : Int32)
@@ -26,12 +21,12 @@ class WindowController
     characters = [
       GameObject.new(
         SF.vector2i(50, 30),
-        Renderable.new( "fireman", renderables.find_texture_location("fireman")),
+        Renderable.new( "fireman", "Idle"),
         2.0
       ),
       GameObject.new(
         SF.vector2i(100, 100),
-        Renderable.new( "character", renderables.find_texture_location("character")),
+        Renderable.new( "character", ""),
         2.0
       )
     ]
@@ -69,7 +64,6 @@ class WindowController
       # probably way overkill, but hey, this is for fun
       while lag >= TIME_PER_UPDATE
         renderables.update
-        Log.debug { "tick #{lag} #{TIME_PER_UPDATE}" }
         lag -= TIME_PER_UPDATE
       end
 
