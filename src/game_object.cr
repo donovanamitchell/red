@@ -5,7 +5,7 @@ class GameObject
   property render_order : Float64
   property renderable : Renderable
 
-  def initialize(@position, @renderable, @render_order)
+  def initialize(@position, @renderable, @render_order, @selectable = false)
     
   end
 
@@ -16,6 +16,16 @@ class GameObject
   # TODO: only get a new one when there's been a change
   def quad
     @renderable.new_quad(position)
+  end
+
+  def selectable?
+    @selectable
+  end
+
+  # TODO: Private, this should be triggered by updates to the state
+  # TODO: What do when the key is not found?
+  def start_animation(animation_key)
+    @renderable.start_animation(animation_key)
   end
 
   def update

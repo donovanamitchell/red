@@ -16,18 +16,21 @@ class WindowController
   end
 
   def open
+    selected_game_obj = nil
     renderables = Renderables.new("./assets/atlas")
 
     characters = [
       GameObject.new(
         SF.vector2i(50, 30),
-        Renderable.new( "fireman", "Idle"),
-        2.0
+        Renderable.new("fireman", "Idle"),
+        2.0,
+        true
       ),
       GameObject.new(
         SF.vector2i(100, 100),
-        Renderable.new( "character", ""),
-        2.0
+        Renderable.new("character", ""),
+        2.0,
+        true
       )
     ]
 
@@ -53,8 +56,30 @@ class WindowController
         when SF::Event::MouseButtonReleased
           pixel_pos = SF::Mouse.get_position(@render_window)
           world_pos = @render_window.map_pixel_to_coords(pixel_pos, @render_window.view)
+          game_objs = renderables.intersecting_game_objs(world_pos)
           Log.debug { world_pos.pretty_inspect }
-          Log.debug { renderables.intersecting_game_objs(world_pos).pretty_inspect }
+          # Log.debug { game_objs.pretty_inspect }
+          selected_game_obj = game_objs.find { |obj| obj.selectable? }
+          Log.debug { selected_game_obj.pretty_inspect }
+        when SF::Event::KeyReleased
+          next unless selected_game_obj
+          # TODO: nOT ThIs
+          case event.code
+          when SF::Keyboard::Num0
+            selected_game_obj.start_animation("Idle")
+          when SF::Keyboard::Num1
+            selected_game_obj.start_animation("Death")
+          when SF::Keyboard::Num2
+            selected_game_obj.start_animation("Injured")
+          when SF::Keyboard::Num3
+            selected_game_obj.start_animation("Buff")
+          when SF::Keyboard::Num4
+            selected_game_obj.start_animation("Ranged")
+          when SF::Keyboard::Num5
+            selected_game_obj.start_animation("Melee")
+          else
+            nil
+          end
         else
           nil
         end
@@ -63,10 +88,11 @@ class WindowController
       # variable time step
       # probably way overkill, but hey, this is for fun
       while lag >= TIME_PER_UPDATE
+        # TODO: Renderables probably shouldn't be controlling the game update
+        # Then again, perhaps it should.
         renderables.update
         lag -= TIME_PER_UPDATE
       end
-
 
       # render
       @render_window.clear(SF::Color::Black)
