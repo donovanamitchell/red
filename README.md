@@ -1,3 +1,12 @@
+# red
+
+TODO: Write a description here
+
+### Installation
+
+TODO: Write installation instructions here
+
+### Development
 # Crystal on Windows
 
 ## Windows Subsystem for Linux
@@ -32,9 +41,12 @@ make
 sudo make install
 ```
 
-/mnt/c/Programming/crystal/at_the_gate
+/mnt/c/Programming/crystal/red
 
 ## CrSFML
+
+TODO: I hear there are better Windows instructions with crsfml 2.5.1
+
 ```bash
 git clone https://github.com/oprypin/crsfml
 cd ./crsfml
@@ -51,7 +63,8 @@ ln -s /mnt/e/Programming/crsfml ./lib/crsfml
 
 Add to bash.rc?
 ```bash
-export LIBRARY_PATH=/home/dondo/crsfml/voidcsfml
+export aseprite=/path/to/Aseprite.exe
+export LIBRARY_PATH=/path/to/crsfml/voidcsfml
 export LD_LIBRARY_PATH="$LIBRARY_PATH"
 ```
 
@@ -61,8 +74,8 @@ sudo ldconfig
 ```
 
 https://github.com/crystal-lang/crystal/wiki/Porting-to-Windows
-https://www.reddit.com/r/Windows10/comments/4ea4w4/fyi_you_can_run_gui_linux_apps_from_bash/
 
+https://www.reddit.com/r/Windows10/comments/4ea4w4/fyi_you_can_run_gui_linux_apps_from_bash/
 
 
 ## Xming (or other x server)
@@ -71,42 +84,18 @@ https://sourceforge.net/projects/xming/
 2. Run xming
 3. Launch program with environment variable DISPLAY=:0 eg: `DISPLAY=:0 ./executable`
 
-
-# at_the_gate
-
-TODO: Write a description here
-
-## Installation
-
-TODO: Write installation instructions here
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-TODO: Write development instructions here
-
-TODO list
-
-#write up for texture packer
-gamefroot-texture-packer
-
-mock up basic board
-figure out how to scale text differently from graphics
+### TODO list
+- Update to CRSFML v2.5.1
+- Read this to make sure I didn't bork anything on my own https://pryp.in/blog/28/running-crystal-natively-on-windows-building-videogame-examples.html
+- Writeup for texture packer
 
 ```bash
-/e/SteamLibrary/steamapps/common/Aseprite/Aseprite.exe -b *.png *.aseprite --sheet-pack --sheet ./atlas/atlas.png --data ./atlas/atlas.json --format json-array --trim  --filename-format '{title}/{tag}/{frame}'
-
-# /e/SteamLibrary/steamapps/common/Aseprite/Aseprite.exe -b ./fireman.aseprite --sheet ./fireman/sprites.png --data ./fireman/fireman.json --format json-array --list-tags
-
-/e/SteamLibrary/steamapps/common/Aseprite/Aseprite.exe -b ./fireman.aseprite *.png --sheet-pack --sheet ./atlas/atlas.png --data ./atlas/atlas.json --format json-array --list-tags
+ aseprite -b *.png *.aseprite --sheet-pack --sheet ./atlas/atlas.png --data ./atlas/atlas.json --format json-array --trim  --filename-format '{title}/{tag}/{frame}'
 ```
 
 ## Contributing
 
-1. Fork it (<https://github.com/your-github-user/at_the_gate/fork>)
+1. Fork it (<https://github.com/your-github-user/red/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

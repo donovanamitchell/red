@@ -1,13 +1,13 @@
-name: at_the_gate
+name: red
 version: 0.1.0
 
 authors:
   - Donovan Mitchell <donovan.alan.mitchell@gmail.com>
 
 targets:
-  at_the_gate:
-    main: src/at_the_gate.cr
+  red:
+    main: src/red.cr
 
-crystal: 0.30.0
+crystal: 0.34.0
 
 license: MIT
