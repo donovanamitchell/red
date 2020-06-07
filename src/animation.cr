@@ -9,10 +9,15 @@ class Animation
   end
 
   def new_frame(order : Int32, sprite : TextureAtlasSprite)
-    # TODO: put it in the right order
-    # no guarantees around order except uniqueness
-    raise "Unimplemented" if !@frames.empty? && @frames.last.order > order
-
-    @frames.push(AnimationFrame.new(order, sprite))
+    if !@frames.empty? && @frames.last.order > order
+      # TODO: optimize? BST?
+      index = @frames.index do |frame|
+        frame.order > order
+      end
+      index ||= -1
+      @frames.insert(index, AnimationFrame.new(order, sprite))
+    else
+      @frames.push(AnimationFrame.new(order, sprite))
+    end
   end
 end

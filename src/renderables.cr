@@ -12,7 +12,9 @@ class Renderables < SF::Transformable
 
     @verticies = SF::VertexArray.new(SF::Quads)
     @tileset = SF::Texture.from_file("#{texture_filename}.png")
-    AnimationLibrary.load_assets(@texture_filename)
+    file = File.new("#{@texture_filename}.json")
+    AnimationLibrary.load_assets(file)
+    file.close
 
     # render order
     # background
@@ -60,6 +62,7 @@ class Renderables < SF::Transformable
   end
 
   def insert_game_obj(game_object : GameObject)
+    # TODO: optimize? BST?
     index = @renderable_game_objs.index do |obj|
       obj.render_order > game_object.render_order
     end

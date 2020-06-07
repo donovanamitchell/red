@@ -1,2 +1,6 @@
 require "spec"
-require "../src/at_the_gate"
+require "crsfml"
+require "json"
+require "log"
+require "../src/animation_library"
+require "../src/window_controller"

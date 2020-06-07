@@ -42,19 +42,20 @@ class Renderable
     @animation_frame = AnimationLibrary.assets[@texture_name].animations[@animation_key].frames.first
   end
 
-  # Assumes hitbox is whole texture
   def hitbox_contains?(position : SF::Vector2, point : SF::Vector2)
     SF::IntRect.new(
-      position, SF.vector2i(@animation_frame.w, @animation_frame.h)
+      position + @animation_frame.offset,
+      SF.vector2i(@animation_frame.w, @animation_frame.h)
     ).contains?(point)
   end
 
   def new_quad(position)
+    offset = position + @animation_frame.offset
     @verticies.clear
 
     [[0, 0], [1, 0], [1, 1], [0, 1]].each do |corner|
       @verticies.push(
-        new_vertex(corner, position)
+        new_vertex(corner, offset)
       )
     end
 
@@ -65,7 +66,7 @@ class Renderable
     SF::Vertex.new(
       SF.vector2(
         (corner[0] * @animation_frame.w) + offset.x,
-        corner[1] * @animation_frame.h + offset.y
+        (corner[1] * @animation_frame.h) + offset.y
       ),
       tex_coords: SF.vector2(
         @animation_frame.x + (corner[0] * @animation_frame.w),

@@ -97,7 +97,7 @@ mock up basic board
 figure out how to scale text differently from graphics
 
 ```bash
-/e/SteamLibrary/steamapps/common/Aseprite/Aseprite.exe -b *.png *.aseprite --sheet-pack --sheet ./atlas/atlas.png --data ./atlas/atlas.json --format json-array --filename-format '{title}/{tag}/{frame}'
+/e/SteamLibrary/steamapps/common/Aseprite/Aseprite.exe -b *.png *.aseprite --sheet-pack --sheet ./atlas/atlas.png --data ./atlas/atlas.json --format json-array --trim  --filename-format '{title}/{tag}/{frame}'
 
 # /e/SteamLibrary/steamapps/common/Aseprite/Aseprite.exe -b ./fireman.aseprite --sheet ./fireman/sprites.png --data ./fireman/fireman.json --format json-array --list-tags
 

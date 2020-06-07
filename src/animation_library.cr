@@ -27,8 +27,8 @@ class AnimationLibrary
     @@assets
   end
 
-  def self.load_assets(atlas_filename : String)
-    texture_mapping(atlas_filename).frames.each do |frame|
+  def self.load_assets(atlas_file)
+    TextureAtlas.from_json(atlas_file).frames.each do |frame|
       filename_parts = frame.filename.split("/")
       # TODO: raise a better exception
       raise "Unimplemented" if filename_parts.size != 3
@@ -42,12 +42,6 @@ class AnimationLibrary
       end
 
       @@assets[name].new_frame(animation_name, animation_frame, frame)
-    end
-  end
-
-  private def self.texture_mapping(atlas_filename : String)
-    File.open("#{atlas_filename}.json") do |file|
-      TextureAtlas.from_json(file)
     end
   end
 end

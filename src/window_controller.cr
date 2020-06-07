@@ -28,7 +28,7 @@ class WindowController
       ),
       GameObject.new(
         SF.vector2i(100, 100),
-        Renderable.new("character", ""),
+        Renderable.new("test_stripes", ""),
         2.0,
         true
       )
