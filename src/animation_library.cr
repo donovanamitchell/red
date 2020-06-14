@@ -29,13 +29,9 @@ class AnimationLibrary
 
   def self.load_assets(atlas_file)
     TextureAtlas.from_json(atlas_file).frames.each do |frame|
-      filename_parts = frame.filename.split("/")
-      # TODO: raise a better exception
-      raise "Unimplemented" if filename_parts.size != 3
-
-      name = filename_parts[0]
-      animation_name = filename_parts[1]
-      animation_frame = filename_parts[2].to_i32
+      name = frame.filename
+      animation_name = frame.tag
+      animation_frame = frame.frame_order
 
       unless @@assets.has_key?(name)
         @@assets[name] = Asset.new

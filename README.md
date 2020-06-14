@@ -12,7 +12,7 @@ TODO: Write installation instructions here
 ## Windows Subsystem for Linux
 Yeah just google it bruh
 
-sudo apt install libssl-dev libxml2-dev libyaml-dev libgmp-dev libreadline-dev libz-dev
+`sudo apt install libssl-dev libxml2-dev libyaml-dev libgmp-dev libreadline-dev libz-dev`
 
 
 ## Crystal
@@ -100,7 +100,3 @@ https://sourceforge.net/projects/xming/
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
-
-## Contributors
-
-- [Donovan Mitchell](https://github.com/your-github-user) - creator and maintainer

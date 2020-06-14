@@ -1,5 +1,6 @@
 require "./spec_helper"
 
+# TODO: clean up state inbetween tests
 describe AnimationLibrary do
   describe "#load_assets" do
     it "should create an Asset with an Animation" do
@@ -8,7 +9,9 @@ describe AnimationLibrary do
         {
           "frames": [
             {
-              "filename": "thing/Action/0",
+              "filename": "thing",
+              "tag": "Action",
+              "frame_order": 0,
               "frame": { "x": 40, "y": 220, "w": 1, "h": 1 },
               "trimmed": true,
               "rotated": false,
@@ -17,7 +20,9 @@ describe AnimationLibrary do
               "sourceSize": { "w": 32, "h": 31 }
             },
             {
-              "filename": "thing/Action/1",
+              "filename": "thing",
+              "tag": "Action",
+              "frame_order": 1,
               "frame": { "x": 30, "y": 0, "w": 10, "h": 12 },
               "trimmed": true,
               "rotated": false,
@@ -67,7 +72,9 @@ describe AnimationLibrary do
         {
           "frames": [
             {
-              "filename": "background//0",
+              "filename": "background",
+              "tag": "",
+              "frame_order": 0,
               "frame": { "x": 248, "y": 0, "w": 240, "h": 160 },
               "trimmed": false,
               "rotated": false,
@@ -94,7 +101,9 @@ describe AnimationLibrary do
         {
           "frames": [
             {
-              "filename": "jack/run/0",
+              "filename": "jack",
+              "tag": "run",
+              "frame_order": 0,
               "frame": { "x": 248, "y": 0, "w": 240, "h": 160 },
               "trimmed": false,
               "rotated": false,
@@ -112,7 +121,9 @@ describe AnimationLibrary do
         {
           "frames": [
             {
-              "filename": "jack/run/1",
+              "filename": "jack",
+              "tag": "run",
+              "frame_order": 1,
               "frame": { "x": 248, "y": 0, "w": 240, "h": 160 },
               "trimmed": false,
               "rotated": false,
@@ -136,7 +147,9 @@ describe AnimationLibrary do
         {
           "frames": [
             {
-              "filename": "hands/Idle/20",
+              "filename": "hands",
+              "tag": "Idle",
+              "frame_order": 20,
               "frame": { "x": 40, "y": 220, "w": 10, "h": 12 },
               "trimmed": true,
               "rotated": false,
@@ -145,7 +158,9 @@ describe AnimationLibrary do
               "sourceSize": { "w": 32, "h": 32 }
             },
             {
-              "filename": "hands/Idle/10",
+              "filename": "hands",
+              "tag": "Idle",
+              "frame_order": 10,
               "frame": { "x": 30, "y": 220, "w": 10, "h": 12 },
               "trimmed": true,
               "rotated": false,
@@ -154,7 +169,9 @@ describe AnimationLibrary do
               "sourceSize": { "w": 32, "h": 32 }
             },
             {
-              "filename": "hands/Idle/12",
+              "filename": "hands",
+              "tag": "Idle",
+              "frame_order": 12,
               "frame": { "x": 264, "y": 218, "w": 11, "h": 12 },
               "trimmed": true,
               "rotated": false,

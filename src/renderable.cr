@@ -4,25 +4,28 @@ require "./animation_frame"
 # TODO: Add a subclass for unanimated things?
 # Also rename to Animations?
 class Renderable
+  MS_PER_UPDATE = 1000 / UPDATES_PER_SECOND
+
   property texture_name : String
   property animation_frame : AnimationFrame
+  property remaining_ms : Float64
 
   def initialize(@texture_name : String,
                  @default_animation_key : String)
     @verticies = [] of SF::Vertex
-    @duration = 0
     @animation_key = @default_animation_key
     @frame_index = 0
     @animation_frame = AnimationLibrary.assets[@texture_name].animations[@animation_key].frames.first
+    @remaining_ms = @animation_frame.duration_ms.to_f
   end
 
-  # TODO: should know about all the related animations
   # TODO: subclass for static renderables
+  # TODO: subclass for untrimmed renderables
   def next_frame
-    # 120 updates / second
-    # 15 frames / second
-    # 8 updates / frame
-    return @duration += 1 unless @duration >= (UPDATES_PER_SECOND / ANIMATION_FRAMERATE)
+    @remaining_ms -= MS_PER_UPDATE
+    # sometimes wait a cycle if updates per frame is an uneven number
+    return unless @remaining_ms <= 0
+
     animation = AnimationLibrary.assets[@texture_name].animations[@animation_key]
     @frame_index = @frame_index + 1
 
@@ -30,16 +33,16 @@ class Renderable
       start_animation(@default_animation_key)
     else
       @animation_frame = animation.frames[@frame_index]
-      @duration = 0
+      @remaining_ms += @animation_frame.duration_ms
     end
   end
 
-  # TODO: should know about all the related animations
+  # perhaps change to queue animation?
   def start_animation(animation_key : String)
-    @duration = 0
     @frame_index = 0
     @animation_key = animation_key
     @animation_frame = AnimationLibrary.assets[@texture_name].animations[@animation_key].frames.first
+    @remaining_ms += @animation_frame.duration_ms
   end
 
   def hitbox_contains?(position : SF::Vector2, point : SF::Vector2)
