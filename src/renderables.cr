@@ -1,87 +1,65 @@
-require "./game_object"
-require "./renderable"
+require "./layer"
 
 class Renderables < SF::Transformable
   include SF::Drawable
 
-  property renderable_game_objs : Array(GameObject)
+  property layers : Array(Layer)
 
   def initialize(texture_filename : String)
     super()
     @texture_filename = texture_filename
+    @layers = [] of Layer
 
-    @verticies = SF::VertexArray.new(SF::Quads)
+    # TODO: Multiple textures?
     @tileset = SF::Texture.from_file("#{texture_filename}.png")
     file = File.new("#{@texture_filename}.json")
     AnimationLibrary.load_assets(file)
     file.close
-
-    # render order
-    # background
-    # characters
-    # frame
-    # card art
-    # card frame
-    @background = GameObject.new(
-      SF.vector2i(4, 4),
-      Renderable.new("background", ""),
-      0.0
-    )
-    @background_frame = GameObject.new(
-      SF.vector2i(0, 0),
-      Renderable.new("frame", ""),
-      3.0
-    )
-    @card_arts = [
-      GameObject.new(
-        SF.vector2i(6, 170),
-        Renderable.new("card_art", ""),
-        4.0
-      )
-    ]
-    @card_frames = [
-      GameObject.new(
-        SF.vector2i(4, 168),
-        Renderable.new("card_frame", ""),
-        5.0
-      )
-    ]
-    @renderable_game_objs = [] of GameObject
-    @renderable_game_objs << @background
-    @renderable_game_objs << @background_frame
-    @renderable_game_objs.concat(@card_arts)
-    @renderable_game_objs.concat(@card_frames)
-
-    update
   end
 
+  # idea: make a separate class for "colorizeable renderables"
+  #       Colorize component?
+
+  # this would require
+  # 1: layers. Each "Z-level" would need one call to draw
+  #    I think the current functionality represents what layer would contain
+  #    Or this class gets refactored to do both
+  # 2: Possibly an "order" within the layer
+  # 3: Colorize needs z-level, order, and a color
+  # 4: Possibly throw a warning for mixed colorized and non-colorized z-level
   def draw(target : SF::RenderTarget, states : SF::RenderStates)
-    states.transform *= transform()
-    states.texture = @tileset
-    target.draw(@verticies, states)
-  end
-
-  def insert_game_obj(game_object : GameObject)
-    # TODO: optimize? BST?
-    index = @renderable_game_objs.index do |obj|
-      obj.render_order > game_object.render_order
+    @layers.each do |layer|
+      layer.draw(target, states)
     end
-    index ||= -1
-    @renderable_game_objs.insert(index, game_object)
   end
 
-  def intersecting_game_objs(target : SF::Vector2f)
-    @renderable_game_objs.select { |game_object| game_object.hitbox_contains?(target) }
+  # TODO: It's unclear at a glance what the difference between the
+  # layer.render_order and the game_object.render_order
+  # Perhaps determine the layer render order programaticly?
+  def insert_game_obj(game_object : GameObject, layer_render_order : Int32)
+    layer = @layers.bsearch { |l| l.render_order == layer_render_order }
+
+    layer ||= insert_layer(layer_render_order)
+
+    layer.insert_game_obj(game_object)
+  end
+
+  def insert_layer(layer_render_order)
+    layer = Layer.new(@tileset, layer_render_order)
+    # TODO: optimize? BST?
+    index = @layers.index do |obj|
+      obj.render_order > layer_render_order
+    end
+
+    index ||= -1
+    @layers.insert(index, layer)
+
+    layer
   end
 
   def update
-    # TODO: there is a possiblitity we don't want to render all of these
-    @verticies.resize(4 * @renderable_game_objs.size)
-
-    @renderable_game_objs.each do |game_object|
-      # TODO: not here
-      game_object.update
-      game_object.quad.each { |vertex| @verticies.append(vertex) }
+    @layers.each do |layer|
+      layer.update
     end
   end
 end

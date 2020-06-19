@@ -1,6 +1,12 @@
 require "./texture_atlas_json_mapping"
 
 class AnimationFrame
+  struct Anchor
+    property name : String
+    property x : Int32
+    property y : Int32
+    def initialize(@name, @x, @y) ; end
+  end
   property order : Int32
   property x : Int32
   property y : Int32
@@ -12,7 +18,8 @@ class AnimationFrame
   property full_w : Int32
   property full_h : Int32
   property duration_ms : Int32
-  property anchor : SF::Vector2(Int32)
+  property primary_anchor : Anchor
+  property anchors : Array(Anchor)
 
   def initialize(@order : Int32, sprite : TextureAtlasSprite)
     @x = sprite.frame.x
@@ -25,12 +32,17 @@ class AnimationFrame
     @full_w = sprite.sourceSize.w
     @full_h = sprite.sourceSize.h
     @duration_ms = sprite.duration
-    anchors = sprite.anchors
-    if !anchors.nil? && anchors.size > 0
-      json_anchor = anchors.first
-      @anchor = SF.vector2(json_anchor.x, json_anchor.y)
+    sprite_anchors = sprite.anchors
+    @anchors = if !sprite_anchors.nil?
+      sprite_anchors.map do |anchor|
+        Anchor.new(x: anchor.x, y: anchor.y, name: anchor.name)
+      end
     else
-      @anchor = SF.vector2(@x, @y)
+      [] of Anchor
     end
+    @primary_anchor = @anchors.find(Anchor.new(x: @x, y: @y, name: "primary")) do |anchor|
+      anchor.name == "primary"
+    end
+    @anchors << @primary_anchor if @anchors.empty?
   end
 end

@@ -13,11 +13,47 @@ class WindowController
 
     @view = SF::View.new(SF.float_rect(0, 0, @window_width, @window_height))
     @render_window.view = @view
+    @game_objects = [] of GameObject
+  end
+
+  def intersecting_game_objects(pos : SF::Vector2f)
+    @game_objects.select { |game_object| game_object.hitbox_contains?(pos) }
   end
 
   def open
     selected_game_obj = nil
     renderables = Renderables.new("./assets/atlas")
+
+    # render order
+    # background
+    # characters
+    # frame
+    # card art
+    # card frame
+    background = GameObject.new(
+      SF.vector2i(4, 4),
+      Renderable.new("background", ""),
+      0.0
+    )
+    background_frame = GameObject.new(
+      SF.vector2i(0, 0),
+      Renderable.new("frame", ""),
+      3.0
+    )
+    card_arts = [
+      GameObject.new(
+        SF.vector2i(6, 170),
+        Renderable.new("card_art", ""),
+        4.0
+      )
+    ]
+    card_frames = [
+      GameObject.new(
+        SF.vector2i(4, 168),
+        Renderable.new("card_frame", ""),
+        5.0
+      )
+    ]
 
     characters = [
       GameObject.new(
@@ -34,8 +70,20 @@ class WindowController
       )
     ]
 
-    characters.each do |character|
-      renderables.insert_game_obj(character)
+    @game_objects << background
+    @game_objects << background_frame
+    @game_objects.concat(card_arts)
+    @game_objects.concat(card_frames)
+    @game_objects.concat(characters)
+
+    renderables.insert_game_obj(background, 0)
+    characters.each { |character| renderables.insert_game_obj(character, 2) }
+    renderables.insert_game_obj(background_frame, 3)
+    card_arts.each { |card| renderables.insert_game_obj(card, 3) }
+    card_frames.each { |card| renderables.insert_game_obj(card, 3) }
+
+    @game_objects.each do |game_object|
+
     end
     renderables.update
 
@@ -56,10 +104,10 @@ class WindowController
         when SF::Event::MouseButtonReleased
           pixel_pos = SF::Mouse.get_position(@render_window)
           world_pos = @render_window.map_pixel_to_coords(pixel_pos, @render_window.view)
-          game_objs = renderables.intersecting_game_objs(world_pos)
-          Log.debug { world_pos.pretty_inspect }
-          # Log.debug { game_objs.pretty_inspect }
-          selected_game_obj = game_objs.find { |obj| obj.selectable? }
+          selected_game_objs = intersecting_game_objects(world_pos)
+          # Log.debug { world_pos.pretty_inspect }
+          # Log.debug { selected_game_objs.pretty_inspect }
+          selected_game_obj = selected_game_objs.find { |obj| obj.selectable? }
           Log.debug { selected_game_obj.pretty_inspect }
         when SF::Event::KeyReleased
           next unless selected_game_obj
@@ -88,8 +136,7 @@ class WindowController
       # variable time step
       # probably way overkill, but hey, this is for fun
       while lag >= TIME_PER_UPDATE
-        # TODO: Renderables probably shouldn't be controlling the game update
-        # Then again, perhaps it should.
+        @game_objects.each { |game_object| game_object.update }
         renderables.update
         lag -= TIME_PER_UPDATE
       end

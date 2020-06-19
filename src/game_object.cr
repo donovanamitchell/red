@@ -5,8 +5,8 @@ class GameObject
   property render_order : Float64
   property renderable : Renderable
 
-  def initialize(@position, @renderable, @render_order, @selectable = false)
-    
+  def initialize(@position, @renderable, @render_order = 0.0, @selectable = false)
+
   end
 
   def hitbox_contains?(point)
