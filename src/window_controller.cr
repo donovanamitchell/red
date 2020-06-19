@@ -1,5 +1,6 @@
 require "./renderables"
 require "./renderable"
+require "./colored_renderable"
 require "./game_object"
 
 class WindowController
@@ -64,7 +65,7 @@ class WindowController
       ),
       GameObject.new(
         SF.vector2i(100, 100),
-        Renderable.new("test_stripes", ""),
+        ColoredRenderable.new("test_stripes", "", SF::Color::Green),
         2.0,
         true
       )

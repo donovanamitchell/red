@@ -17,16 +17,6 @@ class Renderables < SF::Transformable
     file.close
   end
 
-  # idea: make a separate class for "colorizeable renderables"
-  #       Colorize component?
-
-  # this would require
-  # 1: layers. Each "Z-level" would need one call to draw
-  #    I think the current functionality represents what layer would contain
-  #    Or this class gets refactored to do both
-  # 2: Possibly an "order" within the layer
-  # 3: Colorize needs z-level, order, and a color
-  # 4: Possibly throw a warning for mixed colorized and non-colorized z-level
   def draw(target : SF::RenderTarget, states : SF::RenderStates)
     @layers.each do |layer|
       layer.draw(target, states)
