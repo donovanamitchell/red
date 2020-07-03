@@ -1,23 +1,23 @@
 class ColoredRenderable < Renderable
-  property color : SF::Color
+  property colors : Hash(String, SF::Color)
 
   def initialize(@texture_name : String,
                  @default_animation_key : String,
-                 @color : SF::Color)
+                 @colors : Hash(String, SF::Color) )
     super(@texture_name, @default_animation_key)
   end
 
-  def new_vertex(corner, offset)
+  def new_vertex(layer, corner, offset)
     SF::Vertex.new(
       SF.vector2(
-        (corner[0] * @animation_frame.w) + offset.x,
-        (corner[1] * @animation_frame.h) + offset.y
+        (corner[0] * layer.w) + offset.x,
+        (corner[1] * layer.h) + offset.y
       ),
       tex_coords: SF.vector2(
-        @animation_frame.x + (corner[0] * @animation_frame.w),
-        @animation_frame.y + (corner[1] * @animation_frame.h)
+        layer.x + (corner[0] * layer.w),
+        layer.y + (corner[1] * layer.h)
       ),
-      color: @color
+      color: colors[layer.name] || SF::Color::White
     )
   end
 end

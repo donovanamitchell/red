@@ -24,7 +24,7 @@ function hex_to_rgb(hex)
   )
 end
 
-local json = dofile("./json.lua")
+local json = dofile(app.params["json_impl"])
 
 local path, filename_with_extension, extension = string.match(app.params["filename"], "(.-)([^/]-([^%.]+))$")
 local name_without_extension = filename_with_extension:match("(.+)%..+")
@@ -88,6 +88,8 @@ for i,frame in ipairs(atlas_json["frames"]) do
   frame["filename"] = filename_split[1]
   -- set tag
   frame["tag"] = filename_split[2]
+  -- set layer
+  frame["layer"] = filename_split[4]
 end
 
 local output_file = io.open(output, "w")

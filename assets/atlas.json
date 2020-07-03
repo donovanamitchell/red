@@ -1,197 +1,222 @@
 {
-  "meta": {
-    "format": "RGBA8888",
-    "scale": "1",
-    "size": {
-      "w": 496,
-      "h": 232
-    },
-    "image": "atlas.png",
-    "app": "http:\/\/www.aseprite.org\/",
-    "version": "1.2.20-x64"
-  },
   "frames": [
     {
-      "sourceSize": {
-        "w": 240,
-        "h": 160
-      },
-      "frame_order": 1,
-      "trimmed": false,
-      "filename": "background",
-      "spriteSourceSize": {
-        "w": 240,
-        "x": 0,
-        "y": 0,
-        "h": 160
-      },
-      "rotated": false,
-      "tag": "",
-      "duration": 100,
       "frame": {
         "w": 240,
         "x": 248,
         "y": 0,
         "h": 160
+      },
+      "duration": 100,
+      "trimmed": false,
+      "frame_order": 1,
+      "rotated": false,
+      "layer": "Layer",
+      "spriteSourceSize": {
+        "w": 240,
+        "x": 0,
+        "y": 0,
+        "h": 160
+      },
+      "tag": "",
+      "filename": "background",
+      "sourceSize": {
+        "w": 240,
+        "h": 160
       }
     },
     {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
-      },
-      "frame_order": 1,
-      "trimmed": false,
-      "filename": "card_art",
-      "spriteSourceSize": {
-        "w": 32,
-        "x": 0,
-        "y": 0,
-        "h": 32
-      },
-      "rotated": false,
-      "tag": "",
-      "duration": 100,
       "frame": {
         "w": 32,
         "x": 371,
         "y": 160,
         "h": 32
+      },
+      "duration": 100,
+      "trimmed": false,
+      "frame_order": 1,
+      "rotated": false,
+      "layer": "Layer",
+      "spriteSourceSize": {
+        "w": 32,
+        "x": 0,
+        "y": 0,
+        "h": 32
+      },
+      "tag": "",
+      "filename": "card_art",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
       }
     },
     {
-      "sourceSize": {
-        "w": 36,
-        "h": 48
-      },
-      "frame_order": 1,
-      "trimmed": false,
-      "filename": "card_frame",
-      "spriteSourceSize": {
-        "w": 36,
-        "x": 0,
-        "y": 0,
-        "h": 48
-      },
-      "rotated": false,
-      "tag": "",
-      "duration": 100,
       "frame": {
         "w": 36,
         "x": 303,
         "y": 160,
         "h": 48
+      },
+      "duration": 100,
+      "trimmed": false,
+      "frame_order": 1,
+      "rotated": false,
+      "layer": "Layer",
+      "spriteSourceSize": {
+        "w": 36,
+        "x": 0,
+        "y": 0,
+        "h": 48
+      },
+      "tag": "",
+      "filename": "card_frame",
+      "sourceSize": {
+        "w": 36,
+        "h": 48
       }
     },
     {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
-      },
-      "frame_order": 1,
-      "trimmed": false,
-      "filename": "character",
-      "spriteSourceSize": {
-        "w": 32,
-        "x": 0,
-        "y": 0,
-        "h": 32
-      },
-      "rotated": false,
-      "tag": "",
-      "duration": 100,
       "frame": {
         "w": 32,
         "x": 403,
         "y": 160,
         "h": 32
+      },
+      "duration": 100,
+      "trimmed": false,
+      "frame_order": 1,
+      "rotated": false,
+      "layer": "Layer",
+      "spriteSourceSize": {
+        "w": 32,
+        "x": 0,
+        "y": 0,
+        "h": 32
+      },
+      "tag": "",
+      "filename": "character",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
       }
     },
     {
-      "sourceSize": {
-        "w": 248,
-        "h": 220
-      },
-      "frame_order": 1,
-      "trimmed": false,
-      "filename": "frame",
-      "spriteSourceSize": {
-        "w": 248,
-        "x": 0,
-        "y": 0,
-        "h": 220
-      },
-      "rotated": false,
-      "tag": "",
-      "duration": 100,
       "frame": {
         "w": 248,
         "x": 0,
         "y": 0,
         "h": 220
+      },
+      "duration": 100,
+      "trimmed": false,
+      "frame_order": 1,
+      "rotated": false,
+      "layer": "Layer",
+      "spriteSourceSize": {
+        "w": 248,
+        "x": 0,
+        "y": 0,
+        "h": 220
+      },
+      "tag": "",
+      "filename": "frame",
+      "sourceSize": {
+        "w": 248,
+        "h": 220
       }
     },
     {
-      "sourceSize": {
-        "w": 32,
-        "h": 33
-      },
-      "frame_order": 1,
-      "trimmed": false,
-      "filename": "squiggles",
-      "spriteSourceSize": {
-        "w": 32,
-        "x": 0,
-        "y": 0,
-        "h": 33
-      },
-      "rotated": false,
-      "tag": "",
-      "duration": 100,
       "frame": {
         "w": 32,
         "x": 339,
         "y": 160,
         "h": 33
+      },
+      "duration": 100,
+      "trimmed": false,
+      "frame_order": 1,
+      "rotated": false,
+      "layer": "Background",
+      "spriteSourceSize": {
+        "w": 32,
+        "x": 0,
+        "y": 0,
+        "h": 33
+      },
+      "tag": "",
+      "filename": "squiggles",
+      "sourceSize": {
+        "w": 32,
+        "h": 33
       }
     },
     {
-      "sourceSize": {
+      "frame": {
         "w": 55,
+        "x": 248,
+        "y": 160,
         "h": 34
       },
-      "frame_order": 1,
+      "duration": 100,
       "trimmed": false,
-      "filename": "test_stripes",
+      "frame_order": 1,
+      "rotated": false,
+      "layer": "Layer",
       "spriteSourceSize": {
         "w": 55,
         "x": 0,
         "y": 0,
         "h": 34
       },
-      "rotated": false,
       "tag": "",
-      "duration": 100,
-      "frame": {
+      "filename": "test_stripes",
+      "sourceSize": {
         "w": 55,
-        "x": 248,
-        "y": 160,
         "h": 34
       }
     },
     {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
+      "frame": {
+        "w": 10,
+        "x": 485,
+        "y": 188,
+        "h": 12
       },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 10,
+        "x": 2,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
       "frame_order": 1,
       "rotated": false,
-      "trimmed": true,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Idle",
       "filename": "fireman",
-      "spriteSourceSize": {
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
         "w": 10,
-        "x": 2,
-        "y": 20,
+        "x": 485,
+        "y": 188,
         "h": 12
       },
       "anchors": [
@@ -206,101 +231,67 @@
           "y": 31
         }
       ],
-      "tag": "Idle",
-      "duration": 100,
-      "frame": {
+      "spriteSourceSize": {
         "w": 10,
-        "x": 40,
-        "y": 220,
+        "x": 2,
+        "y": 20,
         "h": 12
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
       },
+      "trimmed": true,
       "frame_order": 2,
       "rotated": false,
-      "trimmed": true,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Idle",
       "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 10,
+        "x": 485,
+        "y": 188,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
       "spriteSourceSize": {
         "w": 10,
         "x": 2,
         "y": 20,
         "h": 12
       },
-      "anchors": [
-        {
-          "name": "head",
-          "x": 5,
-          "y": 21
-        },
-        {
-          "name": "primary",
-          "x": 5,
-          "y": 31
-        }
-      ],
-      "tag": "Idle",
-      "duration": 100,
-      "frame": {
-        "w": 10,
-        "x": 30,
-        "y": 220,
-        "h": 12
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
-      },
+      "trimmed": true,
       "frame_order": 3,
       "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 11,
-        "x": 1,
-        "y": 20,
-        "h": 12
-      },
-      "anchors": [
-        {
-          "name": "head",
-          "x": 5,
-          "y": 21
-        },
-        {
-          "name": "primary",
-          "x": 5,
-          "y": 31
-        }
-      ],
-      "tag": "Death",
+      "layer": "Suit",
       "duration": 100,
-      "frame": {
-        "w": 11,
-        "x": 264,
-        "y": 218,
-        "h": 12
-      }
-    },
-    {
+      "tag": "Death",
+      "filename": "fireman",
       "sourceSize": {
         "w": 32,
         "h": 32
-      },
-      "frame_order": 4,
-      "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 12,
-        "x": 1,
-        "y": 20,
-        "h": 12
+      }
+    },
+    {
+      "frame": {
+        "w": 10,
+        "x": 348,
+        "y": 205,
+        "h": 10
       },
       "anchors": [
         {
@@ -314,245 +305,67 @@
           "y": 23
         }
       ],
-      "tag": "Death",
+      "spriteSourceSize": {
+        "w": 10,
+        "x": 3,
+        "y": 22,
+        "h": 10
+      },
+      "trimmed": true,
+      "frame_order": 4,
+      "rotated": false,
+      "layer": "Suit",
       "duration": 100,
-      "frame": {
-        "w": 12,
-        "x": 484,
-        "y": 212,
-        "h": 12
-      }
-    },
-    {
+      "tag": "Death",
+      "filename": "fireman",
       "sourceSize": {
         "w": 32,
         "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 12,
+        "x": 430,
+        "y": 210,
+        "h": 5
       },
+      "anchors": [
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        },
+        {
+          "name": "head",
+          "x": 15,
+          "y": 30
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 12,
+        "x": 5,
+        "y": 27,
+        "h": 5
+      },
+      "trimmed": true,
       "frame_order": 5,
       "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 14,
-        "x": 3,
-        "y": 20,
-        "h": 12
-      },
-      "anchors": [
-        {
-          "name": "primary",
-          "x": 5,
-          "y": 31
-        },
-        {
-          "name": "head",
-          "x": 15,
-          "y": 30
-        }
-      ],
-      "tag": "Death",
+      "layer": "Suit",
       "duration": 100,
-      "frame": {
-        "w": 14,
-        "x": 379,
-        "y": 216,
-        "h": 12
-      }
-    },
-    {
+      "tag": "Death",
+      "filename": "fireman",
       "sourceSize": {
         "w": 32,
         "h": 32
-      },
-      "frame_order": 6,
-      "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 14,
-        "x": 4,
-        "y": 15,
-        "h": 17
-      },
-      "anchors": [
-        {
-          "name": "primary",
-          "x": 5,
-          "y": 31
-        },
-        {
-          "name": "head",
-          "x": 15,
-          "y": 30
-        }
-      ],
-      "tag": "Death",
-      "duration": 100,
-      "frame": {
-        "w": 14,
-        "x": 482,
-        "y": 160,
-        "h": 17
       }
     },
     {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
-      },
-      "frame_order": 7,
-      "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 13,
-        "x": 5,
-        "y": 18,
-        "h": 14
-      },
-      "anchors": [
-        {
-          "name": "primary",
-          "x": 5,
-          "y": 31
-        },
-        {
-          "name": "head",
-          "x": 15,
-          "y": 30
-        }
-      ],
-      "tag": "Death",
-      "duration": 100,
-      "frame": {
-        "w": 13,
-        "x": 483,
-        "y": 177,
-        "h": 14
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
-      },
-      "frame_order": 8,
-      "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 16,
-        "x": 4,
-        "y": 17,
-        "h": 15
-      },
-      "anchors": [
-        {
-          "name": "primary",
-          "x": 5,
-          "y": 31
-        },
-        {
-          "name": "head",
-          "x": 15,
-          "y": 30
-        }
-      ],
-      "tag": "Death",
-      "duration": 100,
-      "frame": {
-        "w": 16,
-        "x": 248,
-        "y": 206,
-        "h": 15
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
-      },
-      "frame_order": 9,
-      "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 14,
-        "x": 5,
-        "y": 20,
-        "h": 12
-      },
-      "anchors": [
-        {
-          "name": "primary",
-          "x": 5,
-          "y": 31
-        },
-        {
-          "name": "head",
-          "x": 15,
-          "y": 30
-        }
-      ],
-      "tag": "Death",
-      "duration": 100,
-      "frame": {
-        "w": 14,
-        "x": 482,
-        "y": 200,
-        "h": 12
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
-      },
-      "frame_order": 10,
-      "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 12,
-        "x": 5,
-        "y": 23,
-        "h": 9
-      },
-      "anchors": [
-        {
-          "name": "primary",
-          "x": 5,
-          "y": 31
-        },
-        {
-          "name": "head",
-          "x": 15,
-          "y": 30
-        }
-      ],
-      "tag": "Death",
-      "duration": 100,
       "frame": {
         "w": 12,
-        "x": 483,
-        "y": 191,
-        "h": 9
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
-      },
-      "frame_order": 11,
-      "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 12,
-        "x": 5,
-        "y": 25,
-        "h": 7
+        "x": 257,
+        "y": 211,
+        "h": 4
       },
       "anchors": [
         {
@@ -566,30 +379,31 @@
           "y": 30
         }
       ],
-      "tag": "Death",
-      "duration": 100,
-      "frame": {
-        "w": 12,
-        "x": 79,
-        "y": 220,
-        "h": 7
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
-      },
-      "frame_order": 12,
-      "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
       "spriteSourceSize": {
         "w": 12,
         "x": 5,
         "y": 28,
         "h": 4
       },
+      "trimmed": true,
+      "frame_order": 6,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Death",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 12,
+        "x": 257,
+        "y": 211,
+        "h": 4
+      },
       "anchors": [
         {
           "name": "primary",
@@ -602,28 +416,214 @@
           "y": 30
         }
       ],
-      "tag": "Death",
-      "duration": 100,
-      "frame": {
+      "spriteSourceSize": {
         "w": 12,
-        "x": 91,
-        "y": 220,
+        "x": 5,
+        "y": 28,
         "h": 4
-      }
-    },
-    {
+      },
+      "trimmed": true,
+      "frame_order": 7,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Death",
+      "filename": "fireman",
       "sourceSize": {
         "w": 32,
         "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 12,
+        "x": 257,
+        "y": 211,
+        "h": 4
       },
-      "frame_order": 13,
-      "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
+      "anchors": [
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        },
+        {
+          "name": "head",
+          "x": 15,
+          "y": 30
+        }
+      ],
       "spriteSourceSize": {
+        "w": 12,
+        "x": 5,
+        "y": 28,
+        "h": 4
+      },
+      "trimmed": true,
+      "frame_order": 8,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Death",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 12,
+        "x": 257,
+        "y": 211,
+        "h": 4
+      },
+      "anchors": [
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        },
+        {
+          "name": "head",
+          "x": 15,
+          "y": 30
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 12,
+        "x": 5,
+        "y": 28,
+        "h": 4
+      },
+      "trimmed": true,
+      "frame_order": 9,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Death",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 12,
+        "x": 257,
+        "y": 211,
+        "h": 4
+      },
+      "anchors": [
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        },
+        {
+          "name": "head",
+          "x": 15,
+          "y": 30
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 12,
+        "x": 5,
+        "y": 28,
+        "h": 4
+      },
+      "trimmed": true,
+      "frame_order": 10,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Death",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 12,
+        "x": 257,
+        "y": 211,
+        "h": 4
+      },
+      "anchors": [
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        },
+        {
+          "name": "head",
+          "x": 15,
+          "y": 30
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 12,
+        "x": 5,
+        "y": 28,
+        "h": 4
+      },
+      "trimmed": true,
+      "frame_order": 11,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Death",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 12,
+        "x": 257,
+        "y": 211,
+        "h": 4
+      },
+      "anchors": [
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        },
+        {
+          "name": "head",
+          "x": 15,
+          "y": 30
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 12,
+        "x": 5,
+        "y": 28,
+        "h": 4
+      },
+      "trimmed": true,
+      "frame_order": 12,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Death",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
         "w": 9,
-        "x": 1,
-        "y": 21,
+        "x": 300,
+        "y": 208,
         "h": 11
       },
       "anchors": [
@@ -638,28 +638,29 @@
           "y": 31
         }
       ],
-      "tag": "Injured",
-      "duration": 100,
-      "frame": {
+      "spriteSourceSize": {
         "w": 9,
-        "x": 60,
-        "y": 220,
+        "x": 1,
+        "y": 21,
         "h": 11
-      }
-    },
-    {
+      },
+      "trimmed": true,
+      "frame_order": 13,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Injured",
+      "filename": "fireman",
       "sourceSize": {
         "w": 32,
         "h": 32
-      },
-      "frame_order": 14,
-      "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
-      "spriteSourceSize": {
+      }
+    },
+    {
+      "frame": {
         "w": 10,
-        "x": 0,
-        "y": 23,
+        "x": 318,
+        "y": 208,
         "h": 9
       },
       "anchors": [
@@ -674,28 +675,29 @@
           "y": 31
         }
       ],
-      "tag": "Injured",
-      "duration": 100,
-      "frame": {
+      "spriteSourceSize": {
         "w": 10,
-        "x": 69,
-        "y": 220,
+        "x": 0,
+        "y": 23,
         "h": 9
-      }
-    },
-    {
+      },
+      "trimmed": true,
+      "frame_order": 14,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Injured",
+      "filename": "fireman",
       "sourceSize": {
         "w": 32,
         "h": 32
-      },
-      "frame_order": 15,
-      "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
-      "spriteSourceSize": {
+      }
+    },
+    {
+      "frame": {
         "w": 9,
-        "x": 1,
-        "y": 21,
+        "x": 300,
+        "y": 208,
         "h": 11
       },
       "anchors": [
@@ -710,28 +712,66 @@
           "y": 31
         }
       ],
-      "tag": "Injured",
-      "duration": 100,
-      "frame": {
+      "spriteSourceSize": {
         "w": 9,
-        "x": 358,
-        "y": 193,
+        "x": 1,
+        "y": 21,
         "h": 11
-      }
-    },
-    {
+      },
+      "trimmed": true,
+      "frame_order": 15,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Injured",
+      "filename": "fireman",
       "sourceSize": {
         "w": 32,
         "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 10,
+        "x": 371,
+        "y": 203,
+        "h": 12
       },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 10,
+        "x": 2,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
       "frame_order": 16,
       "rotated": false,
-      "trimmed": true,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Injured",
       "filename": "fireman",
-      "spriteSourceSize": {
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
         "w": 10,
-        "x": 2,
-        "y": 20,
+        "x": 371,
+        "y": 203,
         "h": 12
       },
       "anchors": [
@@ -746,28 +786,29 @@
           "y": 31
         }
       ],
-      "tag": "Injured",
-      "duration": 100,
-      "frame": {
+      "spriteSourceSize": {
         "w": 10,
-        "x": 0,
-        "y": 220,
+        "x": 2,
+        "y": 20,
         "h": 12
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
       },
+      "trimmed": true,
       "frame_order": 17,
       "rotated": false,
-      "trimmed": true,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Buff",
       "filename": "fireman",
-      "spriteSourceSize": {
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
         "w": 10,
-        "x": 2,
-        "y": 20,
+        "x": 381,
+        "y": 203,
         "h": 12
       },
       "anchors": [
@@ -782,28 +823,29 @@
           "y": 31
         }
       ],
-      "tag": "Buff",
-      "duration": 100,
-      "frame": {
+      "spriteSourceSize": {
         "w": 10,
-        "x": 275,
-        "y": 218,
+        "x": 2,
+        "y": 20,
         "h": 12
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
       },
+      "trimmed": true,
       "frame_order": 18,
       "rotated": false,
-      "trimmed": true,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Buff",
       "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 13,
-        "x": 2,
-        "y": 20,
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 10,
+        "x": 391,
+        "y": 204,
         "h": 12
       },
       "anchors": [
@@ -818,35 +860,36 @@
           "y": 31
         }
       ],
-      "tag": "Buff",
-      "duration": 100,
-      "frame": {
-        "w": 13,
-        "x": 407,
-        "y": 216,
+      "spriteSourceSize": {
+        "w": 10,
+        "x": 2,
+        "y": 20,
         "h": 12
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
       },
+      "trimmed": true,
       "frame_order": 19,
       "rotated": false,
-      "trimmed": true,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Buff",
       "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 16,
-        "x": 2,
-        "y": 20,
-        "h": 12
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 10,
+        "x": 411,
+        "y": 204,
+        "h": 11
       },
       "anchors": [
         {
           "name": "head",
           "x": 5,
-          "y": 21
+          "y": 22
         },
         {
           "name": "primary",
@@ -854,30 +897,31 @@
           "y": 31
         }
       ],
-      "tag": "Buff",
-      "duration": 100,
-      "frame": {
-        "w": 16,
-        "x": 317,
-        "y": 208,
-        "h": 12
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
-      },
-      "frame_order": 20,
-      "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
       "spriteSourceSize": {
-        "w": 17,
+        "w": 10,
         "x": 2,
         "y": 21,
         "h": 11
       },
+      "trimmed": true,
+      "frame_order": 20,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Buff",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 9,
+        "x": 358,
+        "y": 207,
+        "h": 11
+      },
       "anchors": [
         {
           "name": "head",
@@ -890,102 +934,1881 @@
           "y": 31
         }
       ],
-      "tag": "Buff",
-      "duration": 100,
-      "frame": {
-        "w": 17,
-        "x": 467,
-        "y": 212,
+      "spriteSourceSize": {
+        "w": 9,
+        "x": 2,
+        "y": 21,
         "h": 11
-      }
-    },
-    {
+      },
+      "trimmed": true,
+      "frame_order": 21,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Buff",
+      "filename": "fireman",
       "sourceSize": {
         "w": 32,
         "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 9,
+        "x": 358,
+        "y": 207,
+        "h": 11
       },
-      "frame_order": 21,
-      "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 22
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
       "spriteSourceSize": {
-        "w": 19,
+        "w": 9,
         "x": 2,
+        "y": 21,
+        "h": 11
+      },
+      "trimmed": true,
+      "frame_order": 22,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Buff",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 10,
+        "x": 401,
+        "y": 204,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 10,
+        "x": 2,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 23,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Buff",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 10,
+        "x": 485,
+        "y": 188,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 10,
+        "x": 2,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 24,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Buff",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 10,
+        "x": 485,
+        "y": 188,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 10,
+        "x": 2,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 25,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Buff",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 10,
+        "x": 485,
+        "y": 188,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 10,
+        "x": 2,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 26,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Ranged",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 9,
+        "x": 339,
+        "y": 205,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 9,
+        "x": 2,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 27,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Ranged",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 9,
+        "x": 291,
+        "y": 205,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 4,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 9,
+        "x": 1,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 28,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Ranged",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 9,
+        "x": 421,
+        "y": 204,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 4,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 9,
+        "x": 1,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 29,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Ranged",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 9,
+        "x": 421,
+        "y": 204,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 4,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 9,
+        "x": 1,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 30,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Ranged",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 9,
+        "x": 339,
+        "y": 205,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 9,
+        "x": 2,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 31,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Ranged",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 10,
+        "x": 371,
+        "y": 203,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 10,
+        "x": 2,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 32,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Ranged",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 10,
+        "x": 371,
+        "y": 203,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 10,
+        "x": 2,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 33,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Ranged",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 10,
+        "x": 485,
+        "y": 188,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 10,
+        "x": 2,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 34,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Ranged",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 10,
+        "x": 485,
+        "y": 188,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 10,
+        "x": 2,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 35,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Ranged",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 10,
+        "x": 485,
+        "y": 188,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 10,
+        "x": 2,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 36,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Ranged",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 10,
+        "x": 485,
+        "y": 188,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 10,
+        "x": 2,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 37,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Ranged",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 10,
+        "x": 485,
+        "y": 188,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 10,
+        "x": 2,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 38,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Ranged",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 10,
+        "x": 485,
+        "y": 188,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 10,
+        "x": 2,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 39,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Ranged",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 10,
+        "x": 371,
+        "y": 203,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 10,
+        "x": 2,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 40,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Melee",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 9,
+        "x": 339,
+        "y": 205,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 9,
+        "x": 2,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 41,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Melee",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 9,
+        "x": 339,
+        "y": 205,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 9,
+        "x": 2,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 42,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Melee",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 9,
+        "x": 339,
+        "y": 205,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 9,
+        "x": 2,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 43,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Melee",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 9,
+        "x": 339,
+        "y": 205,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 9,
+        "x": 2,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 44,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Melee",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 9,
+        "x": 339,
+        "y": 205,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 9,
+        "x": 2,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 45,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Melee",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 9,
+        "x": 339,
+        "y": 205,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 9,
+        "x": 2,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 46,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Melee",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 9,
+        "x": 339,
+        "y": 205,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 9,
+        "x": 2,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 47,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Melee",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 10,
+        "x": 371,
+        "y": 203,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 10,
+        "x": 2,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 48,
+      "rotated": false,
+      "layer": "Suit",
+      "duration": 100,
+      "tag": "Melee",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 1,
+        "x": 495,
+        "y": 11,
+        "h": 1
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 1,
+        "x": 11,
+        "y": 24,
+        "h": 1
+      },
+      "trimmed": true,
+      "frame_order": 1,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Idle",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 1,
+        "x": 495,
+        "y": 10,
+        "h": 1
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 1,
+        "x": 11,
+        "y": 24,
+        "h": 1
+      },
+      "trimmed": true,
+      "frame_order": 2,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Idle",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 1,
+        "x": 495,
+        "y": 11,
+        "h": 1
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 1,
+        "x": 1,
+        "y": 22,
+        "h": 1
+      },
+      "trimmed": true,
+      "frame_order": 3,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Death",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 5,
+        "x": 488,
+        "y": 62,
+        "h": 5
+      },
+      "anchors": [
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        },
+        {
+          "name": "head",
+          "x": 9,
+          "y": 23
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 5,
+        "x": 1,
+        "y": 20,
+        "h": 5
+      },
+      "trimmed": true,
+      "frame_order": 4,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Death",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 12,
+        "x": 279,
+        "y": 205,
+        "h": 9
+      },
+      "anchors": [
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        },
+        {
+          "name": "head",
+          "x": 15,
+          "y": 30
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 12,
+        "x": 3,
+        "y": 20,
+        "h": 9
+      },
+      "trimmed": true,
+      "frame_order": 5,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Death",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 14,
+        "x": 248,
+        "y": 194,
+        "h": 16
+      },
+      "anchors": [
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        },
+        {
+          "name": "head",
+          "x": 15,
+          "y": 30
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 14,
+        "x": 4,
+        "y": 15,
+        "h": 16
+      },
+      "trimmed": true,
+      "frame_order": 6,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Death",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 13,
+        "x": 358,
+        "y": 193,
+        "h": 14
+      },
+      "anchors": [
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        },
+        {
+          "name": "head",
+          "x": 15,
+          "y": 30
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 13,
+        "x": 5,
+        "y": 18,
+        "h": 14
+      },
+      "trimmed": true,
+      "frame_order": 7,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Death",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 16,
+        "x": 435,
+        "y": 185,
+        "h": 15
+      },
+      "anchors": [
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        },
+        {
+          "name": "head",
+          "x": 15,
+          "y": 30
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 16,
+        "x": 4,
+        "y": 17,
+        "h": 15
+      },
+      "trimmed": true,
+      "frame_order": 8,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Death",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 13,
+        "x": 480,
+        "y": 200,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        },
+        {
+          "name": "head",
+          "x": 15,
+          "y": 30
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 13,
+        "x": 6,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 9,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Death",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 7,
+        "x": 488,
+        "y": 9,
+        "h": 7
+      },
+      "anchors": [
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        },
+        {
+          "name": "head",
+          "x": 15,
+          "y": 30
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 7,
+        "x": 8,
+        "y": 23,
+        "h": 7
+      },
+      "trimmed": true,
+      "frame_order": 10,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Death",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 5,
+        "x": 488,
+        "y": 57,
+        "h": 5
+      },
+      "anchors": [
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        },
+        {
+          "name": "head",
+          "x": 15,
+          "y": 30
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 5,
+        "x": 10,
+        "y": 25,
+        "h": 5
+      },
+      "trimmed": true,
+      "frame_order": 11,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Death",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 1,
+        "x": 495,
+        "y": 9,
+        "h": 1
+      },
+      "anchors": [
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        },
+        {
+          "name": "head",
+          "x": 15,
+          "y": 30
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 1,
+        "x": 0,
+        "y": 0,
+        "h": 1
+      },
+      "trimmed": true,
+      "frame_order": 12,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Death",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 2,
+        "x": 494,
+        "y": 41,
+        "h": 2
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 4,
+          "y": 23
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 2,
+        "x": 8,
+        "y": 23,
+        "h": 2
+      },
+      "trimmed": true,
+      "frame_order": 13,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Injured",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 1,
+        "x": 495,
+        "y": 10,
+        "h": 1
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 3,
+          "y": 25
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 1,
+        "x": 8,
+        "y": 24,
+        "h": 1
+      },
+      "trimmed": true,
+      "frame_order": 14,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Injured",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 1,
+        "x": 495,
+        "y": 11,
+        "h": 1
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 4,
+          "y": 23
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 1,
+        "x": 9,
+        "y": 23,
+        "h": 1
+      },
+      "trimmed": true,
+      "frame_order": 15,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Injured",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 1,
+        "x": 495,
+        "y": 11,
+        "h": 1
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 1,
+        "x": 11,
+        "y": 24,
+        "h": 1
+      },
+      "trimmed": true,
+      "frame_order": 16,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Injured",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 2,
+        "x": 494,
+        "y": 35,
+        "h": 3
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 2,
+        "x": 10,
+        "y": 23,
+        "h": 3
+      },
+      "trimmed": true,
+      "frame_order": 17,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Buff",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 5,
+        "x": 488,
+        "y": 42,
+        "h": 7
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 5,
+        "x": 10,
+        "y": 24,
+        "h": 7
+      },
+      "trimmed": true,
+      "frame_order": 18,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Buff",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 9,
+        "x": 248,
+        "y": 210,
+        "h": 8
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 9,
+        "x": 9,
+        "y": 24,
+        "h": 8
+      },
+      "trimmed": true,
+      "frame_order": 19,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Buff",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 9,
+        "x": 309,
+        "y": 208,
+        "h": 10
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 22
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 9,
+        "x": 10,
+        "y": 22,
+        "h": 10
+      },
+      "trimmed": true,
+      "frame_order": 20,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Buff",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 13,
+        "x": 452,
+        "y": 178,
+        "h": 21
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 22
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 13,
+        "x": 8,
         "y": 11,
         "h": 21
       },
-      "anchors": [
-        {
-          "name": "head",
-          "x": 5,
-          "y": 22
-        },
-        {
-          "name": "primary",
-          "x": 5,
-          "y": 31
-        }
-      ],
-      "tag": "Buff",
+      "trimmed": true,
+      "frame_order": 21,
+      "rotated": false,
+      "layer": "Flames",
       "duration": 100,
-      "frame": {
-        "w": 19,
-        "x": 435,
-        "y": 188,
-        "h": 21
-      }
-    },
-    {
+      "tag": "Buff",
+      "filename": "fireman",
       "sourceSize": {
         "w": 32,
         "h": 32
-      },
-      "frame_order": 22,
-      "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 18,
-        "x": 2,
-        "y": 7,
-        "h": 25
-      },
-      "anchors": [
-        {
-          "name": "head",
-          "x": 5,
-          "y": 22
-        },
-        {
-          "name": "primary",
-          "x": 5,
-          "y": 31
-        }
-      ],
-      "tag": "Buff",
-      "duration": 100,
+      }
+    },
+    {
       "frame": {
-        "w": 18,
+        "w": 17,
         "x": 435,
         "y": 160,
         "h": 25
-      }
-    },
-    {
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 22
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 17,
+        "x": 3,
+        "y": 7,
+        "h": 25
+      },
+      "trimmed": true,
+      "frame_order": 22,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Buff",
+      "filename": "fireman",
       "sourceSize": {
         "w": 32,
         "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 19,
+        "x": 452,
+        "y": 160,
+        "h": 18
       },
-      "frame_order": 23,
-      "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
       "spriteSourceSize": {
         "w": 19,
         "x": 1,
         "y": 14,
         "h": 18
       },
+      "trimmed": true,
+      "frame_order": 23,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Buff",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 16,
+        "x": 283,
+        "y": 194,
+        "h": 11
+      },
       "anchors": [
         {
           "name": "head",
@@ -998,533 +2821,548 @@
           "y": 31
         }
       ],
-      "tag": "Buff",
+      "spriteSourceSize": {
+        "w": 16,
+        "x": 1,
+        "y": 21,
+        "h": 11
+      },
+      "trimmed": true,
+      "frame_order": 24,
+      "rotated": false,
+      "layer": "Flames",
       "duration": 100,
+      "tag": "Buff",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 17,
+        "x": 430,
+        "y": 200,
+        "h": 10
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 17,
+        "x": 0,
+        "y": 22,
+        "h": 10
+      },
+      "trimmed": true,
+      "frame_order": 25,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Buff",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 2,
+        "x": 493,
+        "y": 43,
+        "h": 2
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 2,
+        "x": 10,
+        "y": 24,
+        "h": 2
+      },
+      "trimmed": true,
+      "frame_order": 26,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Ranged",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 2,
+        "x": 494,
+        "y": 38,
+        "h": 3
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 2,
+        "x": 10,
+        "y": 24,
+        "h": 3
+      },
+      "trimmed": true,
+      "frame_order": 27,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Ranged",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 7,
+        "x": 488,
+        "y": 29,
+        "h": 6
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 4,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 7,
+        "x": 9,
+        "y": 24,
+        "h": 6
+      },
+      "trimmed": true,
+      "frame_order": 28,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Ranged",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 15,
+        "x": 447,
+        "y": 200,
+        "h": 11
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 4,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 15,
+        "x": 9,
+        "y": 21,
+        "h": 11
+      },
+      "trimmed": true,
+      "frame_order": 29,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Ranged",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 21,
+        "x": 262,
+        "y": 194,
+        "h": 9
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 4,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 21,
+        "x": 9,
+        "y": 23,
+        "h": 9
+      },
+      "trimmed": true,
+      "frame_order": 30,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Ranged",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 21,
+        "x": 371,
+        "y": 192,
+        "h": 11
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 21,
+        "x": 10,
+        "y": 21,
+        "h": 11
+      },
+      "trimmed": true,
+      "frame_order": 31,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Ranged",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 20,
+        "x": 471,
+        "y": 174,
+        "h": 14
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 20,
+        "x": 11,
+        "y": 18,
+        "h": 14
+      },
+      "trimmed": true,
+      "frame_order": 32,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Ranged",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 20,
+        "x": 471,
+        "y": 160,
+        "h": 14
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 20,
+        "x": 11,
+        "y": 18,
+        "h": 14
+      },
+      "trimmed": true,
+      "frame_order": 33,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Ranged",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 20,
+        "x": 465,
+        "y": 188,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 20,
+        "x": 11,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 34,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Ranged",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 19,
+        "x": 411,
+        "y": 192,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 19,
+        "x": 11,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 35,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Ranged",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 19,
+        "x": 392,
+        "y": 192,
+        "h": 12
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 19,
+        "x": 11,
+        "y": 20,
+        "h": 12
+      },
+      "trimmed": true,
+      "frame_order": 36,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Ranged",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 18,
+        "x": 462,
+        "y": 200,
+        "h": 9
+      },
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
+      "spriteSourceSize": {
+        "w": 18,
+        "x": 11,
+        "y": 23,
+        "h": 9
+      },
+      "trimmed": true,
+      "frame_order": 37,
+      "rotated": false,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Ranged",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
       "frame": {
         "w": 19,
         "x": 339,
         "y": 193,
-        "h": 18
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
+        "h": 12
       },
-      "frame_order": 24,
-      "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
+      "anchors": [
+        {
+          "name": "head",
+          "x": 5,
+          "y": 21
+        },
+        {
+          "name": "primary",
+          "x": 5,
+          "y": 31
+        }
+      ],
       "spriteSourceSize": {
-        "w": 16,
-        "x": 1,
+        "w": 19,
+        "x": 11,
         "y": 20,
         "h": 12
       },
-      "anchors": [
-        {
-          "name": "head",
-          "x": 5,
-          "y": 21
-        },
-        {
-          "name": "primary",
-          "x": 5,
-          "y": 31
-        }
-      ],
-      "tag": "Buff",
-      "duration": 100,
-      "frame": {
-        "w": 16,
-        "x": 333,
-        "y": 211,
-        "h": 12
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
-      },
-      "frame_order": 25,
-      "rotated": false,
       "trimmed": true,
-      "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 17,
-        "x": 0,
-        "y": 20,
-        "h": 12
-      },
-      "anchors": [
-        {
-          "name": "head",
-          "x": 5,
-          "y": 21
-        },
-        {
-          "name": "primary",
-          "x": 5,
-          "y": 31
-        }
-      ],
-      "tag": "Buff",
-      "duration": 100,
-      "frame": {
-        "w": 17,
-        "x": 300,
-        "y": 208,
-        "h": 12
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
-      },
-      "frame_order": 26,
-      "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 10,
-        "x": 2,
-        "y": 20,
-        "h": 12
-      },
-      "anchors": [
-        {
-          "name": "head",
-          "x": 5,
-          "y": 21
-        },
-        {
-          "name": "primary",
-          "x": 5,
-          "y": 31
-        }
-      ],
-      "tag": "Ranged",
-      "duration": 100,
-      "frame": {
-        "w": 10,
-        "x": 285,
-        "y": 218,
-        "h": 12
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
-      },
-      "frame_order": 27,
-      "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 10,
-        "x": 2,
-        "y": 20,
-        "h": 12
-      },
-      "anchors": [
-        {
-          "name": "head",
-          "x": 5,
-          "y": 21
-        },
-        {
-          "name": "primary",
-          "x": 5,
-          "y": 31
-        }
-      ],
-      "tag": "Ranged",
-      "duration": 100,
-      "frame": {
-        "w": 10,
-        "x": 20,
-        "y": 220,
-        "h": 12
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
-      },
-      "frame_order": 28,
-      "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 15,
-        "x": 1,
-        "y": 20,
-        "h": 12
-      },
-      "anchors": [
-        {
-          "name": "head",
-          "x": 4,
-          "y": 21
-        },
-        {
-          "name": "primary",
-          "x": 5,
-          "y": 31
-        }
-      ],
-      "tag": "Ranged",
-      "duration": 100,
-      "frame": {
-        "w": 15,
-        "x": 349,
-        "y": 216,
-        "h": 12
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
-      },
-      "frame_order": 29,
-      "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 23,
-        "x": 1,
-        "y": 20,
-        "h": 12
-      },
-      "anchors": [
-        {
-          "name": "head",
-          "x": 4,
-          "y": 21
-        },
-        {
-          "name": "primary",
-          "x": 5,
-          "y": 31
-        }
-      ],
-      "tag": "Ranged",
-      "duration": 100,
-      "frame": {
-        "w": 23,
-        "x": 412,
-        "y": 204,
-        "h": 12
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
-      },
-      "frame_order": 30,
-      "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 29,
-        "x": 1,
-        "y": 20,
-        "h": 12
-      },
-      "anchors": [
-        {
-          "name": "head",
-          "x": 4,
-          "y": 21
-        },
-        {
-          "name": "primary",
-          "x": 5,
-          "y": 31
-        }
-      ],
-      "tag": "Ranged",
-      "duration": 100,
-      "frame": {
-        "w": 29,
-        "x": 400,
-        "y": 192,
-        "h": 12
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
-      },
-      "frame_order": 31,
-      "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 29,
-        "x": 2,
-        "y": 20,
-        "h": 12
-      },
-      "anchors": [
-        {
-          "name": "head",
-          "x": 5,
-          "y": 21
-        },
-        {
-          "name": "primary",
-          "x": 5,
-          "y": 31
-        }
-      ],
-      "tag": "Ranged",
-      "duration": 100,
-      "frame": {
-        "w": 29,
-        "x": 371,
-        "y": 192,
-        "h": 12
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
-      },
-      "frame_order": 32,
-      "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 29,
-        "x": 2,
-        "y": 18,
-        "h": 14
-      },
-      "anchors": [
-        {
-          "name": "head",
-          "x": 5,
-          "y": 21
-        },
-        {
-          "name": "primary",
-          "x": 5,
-          "y": 31
-        }
-      ],
-      "tag": "Ranged",
-      "duration": 100,
-      "frame": {
-        "w": 29,
-        "x": 453,
-        "y": 174,
-        "h": 14
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
-      },
-      "frame_order": 33,
-      "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 29,
-        "x": 2,
-        "y": 18,
-        "h": 14
-      },
-      "anchors": [
-        {
-          "name": "head",
-          "x": 5,
-          "y": 21
-        },
-        {
-          "name": "primary",
-          "x": 5,
-          "y": 31
-        }
-      ],
-      "tag": "Ranged",
-      "duration": 100,
-      "frame": {
-        "w": 29,
-        "x": 453,
-        "y": 160,
-        "h": 14
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
-      },
-      "frame_order": 34,
-      "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 29,
-        "x": 2,
-        "y": 20,
-        "h": 12
-      },
-      "anchors": [
-        {
-          "name": "head",
-          "x": 5,
-          "y": 21
-        },
-        {
-          "name": "primary",
-          "x": 5,
-          "y": 31
-        }
-      ],
-      "tag": "Ranged",
-      "duration": 100,
-      "frame": {
-        "w": 29,
-        "x": 454,
-        "y": 188,
-        "h": 12
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
-      },
-      "frame_order": 35,
-      "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 28,
-        "x": 2,
-        "y": 20,
-        "h": 12
-      },
-      "anchors": [
-        {
-          "name": "head",
-          "x": 5,
-          "y": 21
-        },
-        {
-          "name": "primary",
-          "x": 5,
-          "y": 31
-        }
-      ],
-      "tag": "Ranged",
-      "duration": 100,
-      "frame": {
-        "w": 28,
-        "x": 358,
-        "y": 204,
-        "h": 12
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
-      },
-      "frame_order": 36,
-      "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 28,
-        "x": 2,
-        "y": 20,
-        "h": 12
-      },
-      "anchors": [
-        {
-          "name": "head",
-          "x": 5,
-          "y": 21
-        },
-        {
-          "name": "primary",
-          "x": 5,
-          "y": 31
-        }
-      ],
-      "tag": "Ranged",
-      "duration": 100,
-      "frame": {
-        "w": 28,
-        "x": 454,
-        "y": 200,
-        "h": 12
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
-      },
-      "frame_order": 37,
-      "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 27,
-        "x": 2,
-        "y": 20,
-        "h": 12
-      },
-      "anchors": [
-        {
-          "name": "head",
-          "x": 5,
-          "y": 21
-        },
-        {
-          "name": "primary",
-          "x": 5,
-          "y": 31
-        }
-      ],
-      "tag": "Ranged",
-      "duration": 100,
-      "frame": {
-        "w": 27,
-        "x": 276,
-        "y": 194,
-        "h": 12
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
-      },
       "frame_order": 38,
       "rotated": false,
-      "trimmed": true,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Ranged",
       "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 28,
-        "x": 2,
-        "y": 20,
-        "h": 12
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 17,
+        "x": 262,
+        "y": 203,
+        "h": 8
       },
       "anchors": [
         {
@@ -1538,29 +3376,30 @@
           "y": 31
         }
       ],
-      "tag": "Ranged",
-      "duration": 100,
-      "frame": {
-        "w": 28,
-        "x": 248,
-        "y": 194,
-        "h": 12
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
+      "spriteSourceSize": {
+        "w": 17,
+        "x": 11,
+        "y": 24,
+        "h": 8
       },
+      "trimmed": true,
       "frame_order": 39,
       "rotated": false,
-      "trimmed": true,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Ranged",
       "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 26,
-        "x": 2,
-        "y": 20,
-        "h": 12
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 2,
+        "x": 494,
+        "y": 41,
+        "h": 2
       },
       "anchors": [
         {
@@ -1574,29 +3413,30 @@
           "y": 31
         }
       ],
-      "tag": "Ranged",
-      "duration": 100,
-      "frame": {
-        "w": 26,
-        "x": 386,
-        "y": 204,
-        "h": 12
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
+      "spriteSourceSize": {
+        "w": 2,
+        "x": 10,
+        "y": 24,
+        "h": 2
       },
+      "trimmed": true,
       "frame_order": 40,
       "rotated": false,
-      "trimmed": true,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Melee",
       "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 10,
-        "x": 2,
-        "y": 20,
-        "h": 12
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 6,
+        "x": 488,
+        "y": 35,
+        "h": 7
       },
       "anchors": [
         {
@@ -1610,29 +3450,30 @@
           "y": 31
         }
       ],
-      "tag": "Melee",
-      "duration": 100,
-      "frame": {
-        "w": 10,
+      "spriteSourceSize": {
+        "w": 6,
         "x": 10,
-        "y": 220,
-        "h": 12
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
+        "y": 22,
+        "h": 7
       },
+      "trimmed": true,
       "frame_order": 41,
       "rotated": false,
-      "trimmed": true,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Melee",
       "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 14,
-        "x": 2,
-        "y": 20,
-        "h": 12
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 8,
+        "x": 488,
+        "y": 23,
+        "h": 6
       },
       "anchors": [
         {
@@ -1646,29 +3487,30 @@
           "y": 31
         }
       ],
-      "tag": "Melee",
-      "duration": 100,
-      "frame": {
-        "w": 14,
-        "x": 393,
-        "y": 216,
-        "h": 12
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
+      "spriteSourceSize": {
+        "w": 8,
+        "x": 10,
+        "y": 23,
+        "h": 6
       },
+      "trimmed": true,
       "frame_order": 42,
       "rotated": false,
-      "trimmed": true,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Melee",
       "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 16,
-        "x": 2,
-        "y": 20,
-        "h": 12
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 8,
+        "x": 488,
+        "y": 0,
+        "h": 9
       },
       "anchors": [
         {
@@ -1682,29 +3524,30 @@
           "y": 31
         }
       ],
-      "tag": "Melee",
-      "duration": 100,
-      "frame": {
-        "w": 16,
-        "x": 435,
-        "y": 209,
-        "h": 12
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
+      "spriteSourceSize": {
+        "w": 8,
+        "x": 10,
+        "y": 23,
+        "h": 9
       },
+      "trimmed": true,
       "frame_order": 43,
       "rotated": false,
-      "trimmed": true,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Melee",
       "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 16,
-        "x": 2,
-        "y": 20,
-        "h": 12
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 10,
+        "x": 462,
+        "y": 209,
+        "h": 8
       },
       "anchors": [
         {
@@ -1718,29 +3561,30 @@
           "y": 31
         }
       ],
-      "tag": "Melee",
-      "duration": 100,
-      "frame": {
-        "w": 16,
-        "x": 451,
-        "y": 212,
-        "h": 12
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
+      "spriteSourceSize": {
+        "w": 10,
+        "x": 10,
+        "y": 22,
+        "h": 8
       },
+      "trimmed": true,
       "frame_order": 44,
       "rotated": false,
-      "trimmed": true,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Melee",
       "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 18,
-        "x": 2,
-        "y": 20,
-        "h": 12
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 10,
+        "x": 328,
+        "y": 208,
+        "h": 9
       },
       "anchors": [
         {
@@ -1754,29 +3598,30 @@
           "y": 31
         }
       ],
-      "tag": "Melee",
-      "duration": 100,
-      "frame": {
-        "w": 18,
-        "x": 282,
-        "y": 206,
-        "h": 12
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
+      "spriteSourceSize": {
+        "w": 10,
+        "x": 10,
+        "y": 23,
+        "h": 9
       },
+      "trimmed": true,
       "frame_order": 45,
       "rotated": false,
-      "trimmed": true,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Melee",
       "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 18,
-        "x": 2,
-        "y": 20,
-        "h": 12
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 7,
+        "x": 488,
+        "y": 16,
+        "h": 7
       },
       "anchors": [
         {
@@ -1790,29 +3635,30 @@
           "y": 31
         }
       ],
-      "tag": "Melee",
-      "duration": 100,
-      "frame": {
-        "w": 18,
-        "x": 264,
-        "y": 206,
-        "h": 12
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
+      "spriteSourceSize": {
+        "w": 7,
+        "x": 10,
+        "y": 23,
+        "h": 7
       },
+      "trimmed": true,
       "frame_order": 46,
       "rotated": false,
-      "trimmed": true,
+      "layer": "Flames",
+      "duration": 100,
+      "tag": "Melee",
       "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 15,
-        "x": 2,
-        "y": 20,
-        "h": 12
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    {
+      "frame": {
+        "w": 4,
+        "x": 488,
+        "y": 49,
+        "h": 8
       },
       "anchors": [
         {
@@ -1826,65 +3672,30 @@
           "y": 31
         }
       ],
-      "tag": "Melee",
-      "duration": 100,
-      "frame": {
-        "w": 15,
-        "x": 364,
-        "y": 216,
-        "h": 12
-      }
-    },
-    {
-      "sourceSize": {
-        "w": 32,
-        "h": 32
+      "spriteSourceSize": {
+        "w": 4,
+        "x": 10,
+        "y": 24,
+        "h": 8
       },
+      "trimmed": true,
       "frame_order": 47,
       "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 12,
-        "x": 2,
-        "y": 20,
-        "h": 12
-      },
-      "anchors": [
-        {
-          "name": "head",
-          "x": 5,
-          "y": 21
-        },
-        {
-          "name": "primary",
-          "x": 5,
-          "y": 31
-        }
-      ],
-      "tag": "Melee",
+      "layer": "Flames",
       "duration": 100,
-      "frame": {
-        "w": 12,
-        "x": 420,
-        "y": 216,
-        "h": 12
-      }
-    },
-    {
+      "tag": "Melee",
+      "filename": "fireman",
       "sourceSize": {
         "w": 32,
         "h": 32
-      },
-      "frame_order": 48,
-      "rotated": false,
-      "trimmed": true,
-      "filename": "fireman",
-      "spriteSourceSize": {
-        "w": 10,
-        "x": 2,
-        "y": 20,
-        "h": 12
+      }
+    },
+    {
+      "frame": {
+        "w": 1,
+        "x": 495,
+        "y": 10,
+        "h": 1
       },
       "anchors": [
         {
@@ -1898,14 +3709,34 @@
           "y": 31
         }
       ],
-      "tag": "Melee",
+      "spriteSourceSize": {
+        "w": 1,
+        "x": 11,
+        "y": 24,
+        "h": 1
+      },
+      "trimmed": true,
+      "frame_order": 48,
+      "rotated": false,
+      "layer": "Flames",
       "duration": 100,
-      "frame": {
-        "w": 10,
-        "x": 50,
-        "y": 220,
-        "h": 12
+      "tag": "Melee",
+      "filename": "fireman",
+      "sourceSize": {
+        "w": 32,
+        "h": 32
       }
     }
-  ]
+  ],
+  "meta": {
+    "app": "http:\/\/www.aseprite.org\/",
+    "version": "1.2.21-x64",
+    "image": "atlas.png",
+    "scale": "1",
+    "format": "RGBA8888",
+    "size": {
+      "w": 496,
+      "h": 220
+    }
+  }
 }

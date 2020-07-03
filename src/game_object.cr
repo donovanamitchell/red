@@ -14,8 +14,8 @@ class GameObject
   end
 
   # TODO: only get a new one when there's been a change
-  def quad
-    @renderable.new_quad(position)
+  def quads
+    @renderable.new_verticies(position)
   end
 
   def selectable?

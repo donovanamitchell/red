@@ -46,34 +46,34 @@ class Renderable
   end
 
   def hitbox_contains?(position : SF::Vector2, point : SF::Vector2)
-    SF::IntRect.new(
-      position + @animation_frame.offset,
-      SF.vector2i(@animation_frame.w, @animation_frame.h)
-    ).contains?(point)
+    # TODO : move to animation frame, make property calculated from layers
+    @animation_frame.contains?(position, point)
   end
 
-  def new_quad(position)
-    offset = position + @animation_frame.offset
+  def new_verticies(position)
     @verticies.clear
 
-    [[0, 0], [1, 0], [1, 1], [0, 1]].each do |corner|
-      @verticies.push(
-        new_vertex(corner, offset)
-      )
+    @animation_frame.layers.each do |layer|
+      offset = position + layer.offset
+      [[0, 0], [1, 0], [1, 1], [0, 1]].each do |corner|
+        @verticies.push(
+          new_vertex(layer, corner, offset)
+        )
+      end
     end
 
     @verticies
   end
 
-  def new_vertex(corner, offset)
+  def new_vertex(layer, corner, offset)
     SF::Vertex.new(
       SF.vector2(
-        (corner[0] * @animation_frame.w) + offset.x,
-        (corner[1] * @animation_frame.h) + offset.y
+        (corner[0] * layer.w) + offset.x,
+        (corner[1] * layer.h) + offset.y
       ),
       tex_coords: SF.vector2(
-        @animation_frame.x + (corner[0] * @animation_frame.w),
-        @animation_frame.y + (corner[1] * @animation_frame.h)
+        layer.x + (corner[0] * layer.w),
+        layer.y + (corner[1] * layer.h)
       )
     )
   end

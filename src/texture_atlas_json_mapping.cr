@@ -27,16 +27,17 @@ end
 
 class TextureAtlasSprite
   JSON.mapping(
-    filename: String,
-    frame: TextureAtlasFrame,
-    tag: String,
-    frame_order: Int32,
-    rotated: Bool,
-    trimmed: Bool,
-    spriteSourceSize: TextureAtlasFrame,
-    sourceSize: TextureAtlasSourceSize,
+    anchors: { type: Array(TextureAtlasAnchor), nilable: true },
     duration: Int32,
-    anchors: { type: Array(TextureAtlasAnchor), nilable: true }
+    filename: String,
+    frame_order: Int32,
+    frame: TextureAtlasFrame,
+    layer: String,
+    rotated: Bool,
+    sourceSize: TextureAtlasSourceSize,
+    spriteSourceSize: TextureAtlasFrame,
+    tag: String,
+    trimmed: Bool
   )
 end
 

@@ -31,12 +31,13 @@ class Layer < SF::Transformable
     @renderable_game_objs.insert(index, game_object)
   end
 
+  # TODO: there is a possiblitity we don't want to render all of these
   def update
-    # TODO: there is a possiblitity we don't want to render all of these
+    # TODO: this is an underestimate, not the exact size
     @verticies.resize(4 * @renderable_game_objs.size)
 
     @renderable_game_objs.each do |game_object|
-      game_object.quad.each { |vertex| @verticies.append(vertex) }
+      game_object.quads.each { |vertex| @verticies.append(vertex) }
     end
   end
 end

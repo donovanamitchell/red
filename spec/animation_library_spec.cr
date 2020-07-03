@@ -10,6 +10,7 @@ describe AnimationLibrary do
           "frames": [
             {
               "filename": "thing",
+              "layer": "layer",
               "tag": "Action",
               "frame_order": 0,
               "frame": { "x": 40, "y": 220, "w": 1, "h": 1 },
@@ -21,6 +22,7 @@ describe AnimationLibrary do
             },
             {
               "filename": "thing",
+              "layer": "layer",
               "tag": "Action",
               "frame_order": 1,
               "frame": { "x": 30, "y": 0, "w": 10, "h": 12 },
@@ -46,22 +48,26 @@ describe AnimationLibrary do
       second_frame = asset.animations["Action"].frames[1]
 
       first_frame.order.should eq 0
-      first_frame.x.should eq 40
-      first_frame.y.should eq 220
-      first_frame.w.should eq 1
-      first_frame.h.should eq 1
-      first_frame.x_offset.should eq 4
-      first_frame.y_offset.should eq 5
+      first_frame.layers.size.should eq 1
+      first_frame.layers.first.name.should eq "layer"
+      first_frame.layers.first.x.should eq 40
+      first_frame.layers.first.y.should eq 220
+      first_frame.layers.first.w.should eq 1
+      first_frame.layers.first.h.should eq 1
+      first_frame.layers.first.x_offset.should eq 4
+      first_frame.layers.first.y_offset.should eq 5
       first_frame.full_w.should eq 32
       first_frame.full_h.should eq 31
 
       second_frame.order.should eq 1
-      second_frame.x.should eq 30
-      second_frame.y.should eq 0
-      second_frame.w.should eq 10
-      second_frame.h.should eq 12
-      second_frame.x_offset.should eq 2
-      second_frame.y_offset.should eq 20
+      first_frame.layers.size.should eq 1
+      first_frame.layers.first.name.should eq "layer"
+      second_frame.layers.first.x.should eq 30
+      second_frame.layers.first.y.should eq 0
+      second_frame.layers.first.w.should eq 10
+      second_frame.layers.first.h.should eq 12
+      second_frame.layers.first.x_offset.should eq 2
+      second_frame.layers.first.y_offset.should eq 20
       second_frame.full_w.should eq 32
       second_frame.full_h.should eq 32
     end
@@ -73,6 +79,7 @@ describe AnimationLibrary do
           "frames": [
             {
               "filename": "background",
+              "layer": "layer",
               "tag": "",
               "frame_order": 0,
               "frame": { "x": 248, "y": 0, "w": 240, "h": 160 },
@@ -102,6 +109,7 @@ describe AnimationLibrary do
           "frames": [
             {
               "filename": "jack",
+              "layer": "layer",
               "tag": "run",
               "frame_order": 0,
               "frame": { "x": 248, "y": 0, "w": 240, "h": 160 },
@@ -122,6 +130,7 @@ describe AnimationLibrary do
           "frames": [
             {
               "filename": "jack",
+              "layer": "layer",
               "tag": "run",
               "frame_order": 1,
               "frame": { "x": 248, "y": 0, "w": 240, "h": 160 },
@@ -148,6 +157,7 @@ describe AnimationLibrary do
           "frames": [
             {
               "filename": "hands",
+              "layer": "layer",
               "tag": "Idle",
               "frame_order": 20,
               "frame": { "x": 40, "y": 220, "w": 10, "h": 12 },
@@ -159,6 +169,7 @@ describe AnimationLibrary do
             },
             {
               "filename": "hands",
+              "layer": "layer",
               "tag": "Idle",
               "frame_order": 10,
               "frame": { "x": 30, "y": 220, "w": 10, "h": 12 },
@@ -170,6 +181,7 @@ describe AnimationLibrary do
             },
             {
               "filename": "hands",
+              "layer": "layer",
               "tag": "Idle",
               "frame_order": 12,
               "frame": { "x": 264, "y": 218, "w": 11, "h": 12 },
@@ -192,6 +204,10 @@ describe AnimationLibrary do
       frame_order[0].should eq(10)
       frame_order[1].should eq(12)
       frame_order[2].should eq(20)
+    end
+
+    it "can support multiple layers" do
+
     end
   end
 end

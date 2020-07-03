@@ -59,13 +59,20 @@ class WindowController
     characters = [
       GameObject.new(
         SF.vector2i(50, 30),
-        Renderable.new("fireman", "Idle"),
+        ColoredRenderable.new(
+          "fireman",
+          "Idle",
+          {
+            "Flames" => SF::Color.new(70,255,255),
+            "Suit" => SF::Color.new(255,200,145)
+          }
+        ),
         2.0,
         true
       ),
       GameObject.new(
         SF.vector2i(100, 100),
-        ColoredRenderable.new("test_stripes", "", SF::Color::Green),
+        ColoredRenderable.new("test_stripes", "", { "Layer" => SF::Color::Cyan }),
         2.0,
         true
       )
@@ -77,15 +84,12 @@ class WindowController
     @game_objects.concat(card_frames)
     @game_objects.concat(characters)
 
-    renderables.insert_game_obj(background, 0)
-    characters.each { |character| renderables.insert_game_obj(character, 2) }
-    renderables.insert_game_obj(background_frame, 3)
-    card_arts.each { |card| renderables.insert_game_obj(card, 3) }
-    card_frames.each { |card| renderables.insert_game_obj(card, 3) }
+    # renderables.insert_game_obj(background, 0)
+    characters.each { |character| renderables.insert_game_obj(character, 0) }
+    renderables.insert_game_obj(background_frame, 0)
+    card_arts.each { |card| renderables.insert_game_obj(card, 0) }
+    card_frames.each { |card| renderables.insert_game_obj(card, 0) }
 
-    @game_objects.each do |game_object|
-
-    end
     renderables.update
 
     # https://gameprogrammingpatterns.com/game-loop.html
@@ -143,7 +147,8 @@ class WindowController
       end
 
       # render
-      @render_window.clear(SF::Color::Black)
+      # @render_window.clear(SF::Color::Black)
+      @render_window.clear(SF::Color.new(222,222,222))
       @render_window.draw(renderables)
       @render_window.display
     end
