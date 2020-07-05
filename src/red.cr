@@ -23,6 +23,9 @@ module Red
 
   view_multiplier = 2
 
+  # TODO: Better error messages and not here
+  raise "Shaders not supported" unless SF::Shader.available?
+
   controller = WindowController.new(window_width, window_height, view_multiplier)
   controller.open()
 end

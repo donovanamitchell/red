@@ -12,6 +12,10 @@ class WindowController
       "Test Window"
     )
 
+    @atlas_filename = "./assets/atlas"
+    @tileset = SF::Texture.from_file("#{@atlas_filename}.png")
+    @palette_shader_texture = SF::Texture.from_file("./assets/long_color.png")
+
     @view = SF::View.new(SF.float_rect(0, 0, @window_width, @window_height))
     @render_window.view = @view
     @game_objects = [] of GameObject
@@ -23,7 +27,7 @@ class WindowController
 
   def open
     selected_game_obj = nil
-    renderables = Renderables.new("./assets/atlas")
+    renderables = Renderables.new(@atlas_filename)
 
     # render order
     # background
@@ -85,10 +89,25 @@ class WindowController
     @game_objects.concat(characters)
 
     # renderables.insert_game_obj(background, 0)
-    characters.each { |character| renderables.insert_game_obj(character, 0) }
-    renderables.insert_game_obj(background_frame, 0)
-    card_arts.each { |card| renderables.insert_game_obj(card, 0) }
-    card_frames.each { |card| renderables.insert_game_obj(card, 0) }
+    characters.each { |character| renderables.insert_game_obj(character, 0, @tileset) }
+    renderables.insert_game_obj(background_frame, 0, @tileset)
+    card_arts.each { |card| renderables.insert_game_obj(card, 0, @tileset) }
+    card_frames.each { |card| renderables.insert_game_obj(card, 0, @tileset) }
+
+
+    fireman_2 = GameObject.new(
+      SF.vector2i(100, 40),
+      Renderable.new("fireman", "Idle"),
+      0.0,
+      true
+    )
+    @game_objects << fireman_2
+    palette_shader = SF::Shader.new
+    palette_shader.load_from_file("./assets/palette_shader.frag", SF::Shader::Fragment)
+    palette_shader.set_parameter("Palette", @palette_shader_texture)
+    palette_shader.set_parameter("Texture", @tileset)
+
+    renderables.insert_game_obj(fireman_2, 1, @tileset, palette_shader)
 
     renderables.update
 
@@ -117,6 +136,7 @@ class WindowController
         when SF::Event::KeyReleased
           next unless selected_game_obj
           # TODO: nOT ThIs
+          # ^ command pattern
           case event.code
           when SF::Keyboard::Num0
             selected_game_obj.start_animation("Idle")

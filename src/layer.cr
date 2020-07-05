@@ -3,14 +3,15 @@ class Layer < SF::Transformable
 
   property render_order : Int32
   property renderable_game_objs : Array(GameObject)
+  property texture : SF::Texture
 
-  def initialize(tileset : SF::Texture, @render_order)
+  def initialize(@texture, @render_order)
     super()
     @verticies = SF::VertexArray.new(SF::Quads)
-    @tileset = tileset
     @renderable_game_objs = [] of GameObject
   end
 
+  # TODO: cite source
   # Minimize state changes, batch similar/identical things to draw together
   # Minimize draw calls
   # Minimize target changes
@@ -18,7 +19,7 @@ class Layer < SF::Transformable
   #   figure out how you can combine them and differentiate via uniforms
   def draw(target : SF::RenderTarget, states : SF::RenderStates)
     states.transform *= transform()
-    states.texture = @tileset
+    states.texture = @texture
     target.draw(@verticies, states)
   end
 
@@ -31,7 +32,6 @@ class Layer < SF::Transformable
     @renderable_game_objs.insert(index, game_object)
   end
 
-  # TODO: there is a possiblitity we don't want to render all of these
   def update
     # TODO: this is an underestimate, not the exact size
     @verticies.resize(4 * @renderable_game_objs.size)
