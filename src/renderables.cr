@@ -1,5 +1,4 @@
 require "./layer"
-require "./shaded_layer"
 
 class Renderables < SF::Transformable
   include SF::Drawable
@@ -31,7 +30,8 @@ class Renderables < SF::Transformable
                       layer_shader : SF::Shader | Nil = nil)
     layer = @layers.find do |l|
       l.render_order == layer_render_order &&
-      layer_texture == l.texture
+      l.texture == layer_texture &&
+      l.shader == layer_shader
     end
 
     layer ||= insert_layer(layer_render_order, layer_texture, layer_shader)
@@ -40,11 +40,7 @@ class Renderables < SF::Transformable
   end
 
   def insert_layer(layer_render_order, layer_texture, layer_shader)
-    layer = if layer_shader.nil?
-      Layer.new(layer_texture, layer_render_order)
-    else
-      ShadedLayer.new(layer_texture, layer_render_order, layer_shader)
-    end
+    layer = Layer.new(layer_texture, layer_render_order, layer_shader)
 
     # TODO: optimize? BST?
     index = @layers.index do |obj|

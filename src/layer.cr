@@ -4,8 +4,9 @@ class Layer < SF::Transformable
   property render_order : Int32
   property renderable_game_objs : Array(GameObject)
   property texture : SF::Texture
+  property shader : Nil | SF::Shader
 
-  def initialize(@texture, @render_order)
+  def initialize(@texture, @render_order, @shader = nil)
     super()
     @verticies = SF::VertexArray.new(SF::Quads)
     @renderable_game_objs = [] of GameObject
@@ -20,6 +21,10 @@ class Layer < SF::Transformable
   def draw(target : SF::RenderTarget, states : SF::RenderStates)
     states.transform *= transform()
     states.texture = @texture
+    unless @shader.nil?
+      # TODO: dumb, check again 0.35.1
+      states.shader = @shader.not_nil!
+    end
     target.draw(@verticies, states)
   end
 

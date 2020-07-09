@@ -2,6 +2,7 @@ require "./renderables"
 require "./renderable"
 require "./colored_renderable"
 require "./game_object"
+require "./palette"
 
 class WindowController
   def initialize(@window_width : Int32, @window_height : Int32, @view_multiplier : Int32)
@@ -14,7 +15,23 @@ class WindowController
 
     @atlas_filename = "./assets/atlas"
     @tileset = SF::Texture.from_file("#{@atlas_filename}.png")
-    @palette_shader_texture = SF::Texture.from_file("./assets/long_color.png")
+
+    palette = Palette.new
+    palette.insert_palette({
+      0_u8 => SF::Color.new(0,0,0),
+      64_u8 => SF::Color.new(255,79,21),
+      128_u8 => SF::Color.new(255,159,72),
+      192_u8 => SF::Color.new(255,85,85),
+      255_u8 => SF::Color.new(255,255,215)
+    })
+    palette.insert_palette({
+      0_u8 => SF::Color.new(0,0,0),
+      64_u8 => SF::Color.new(255,255,255),
+      128_u8 => SF::Color.new(0,0,255),
+      192_u8 => SF::Color.new(0,128,192),
+      255_u8 => SF::Color.new(153,217,234)
+    })
+    @palette_shader_texture = SF::Texture.from_image(palette.generate_image)
 
     @view = SF::View.new(SF.float_rect(0, 0, @window_width, @window_height))
     @render_window.view = @view
@@ -62,12 +79,18 @@ class WindowController
 
     characters = [
       GameObject.new(
+        SF.vector2i(50, 100),
+        Renderable.new("fireman", "Idle"),
+        2.0,
+        true
+      ),
+      GameObject.new(
         SF.vector2i(50, 30),
         ColoredRenderable.new(
           "fireman",
           "Idle",
           {
-            "Flames" => SF::Color.new(70,255,255),
+            "Flames" => SF::Color::Cyan,
             "Suit" => SF::Color.new(255,200,145)
           }
         ),
@@ -82,15 +105,16 @@ class WindowController
       )
     ]
 
-    @game_objects << background
+    # @game_objects << background
     @game_objects << background_frame
     @game_objects.concat(card_arts)
     @game_objects.concat(card_frames)
     @game_objects.concat(characters)
-
     # renderables.insert_game_obj(background, 0)
+
     characters.each { |character| renderables.insert_game_obj(character, 0, @tileset) }
     renderables.insert_game_obj(background_frame, 0, @tileset)
+
     card_arts.each { |card| renderables.insert_game_obj(card, 0, @tileset) }
     card_frames.each { |card| renderables.insert_game_obj(card, 0, @tileset) }
 
@@ -106,8 +130,27 @@ class WindowController
     palette_shader.load_from_file("./assets/palette_shader.frag", SF::Shader::Fragment)
     palette_shader.set_parameter("Palette", @palette_shader_texture)
     palette_shader.set_parameter("Texture", @tileset)
+    palette_shader.set_parameter("PaletteIndex", 1.0)
+    palette_shader.set_parameter("PaletteSize", 1.0)
 
     renderables.insert_game_obj(fireman_2, 1, @tileset, palette_shader)
+
+
+    fireman_3 = GameObject.new(
+      SF.vector2i(150, 30),
+      Renderable.new("fireman", "Idle"),
+      0.0,
+      true
+    )
+    @game_objects << fireman_3
+    palette_shader = SF::Shader.new
+    palette_shader.load_from_file("./assets/palette_shader.frag", SF::Shader::Fragment)
+    palette_shader.set_parameter("Palette", @palette_shader_texture)
+    palette_shader.set_parameter("Texture", @tileset)
+    palette_shader.set_parameter("PaletteIndex", 0.0)
+    palette_shader.set_parameter("PaletteSize", 1.0)
+
+    renderables.insert_game_obj(fireman_3, 2, @tileset, palette_shader)
 
     renderables.update
 
