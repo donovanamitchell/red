@@ -1,6 +1,5 @@
 require "./layer"
 
-# TODO: Rename to GraphicsSomething or Somesuch
 # The purpose of this object is to organize the renderable game objects in
 # groups (layers) that can be drawn at the same time.
 class ManualGraphicsOrganizer < SF::Transformable
