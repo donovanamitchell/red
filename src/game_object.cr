@@ -2,10 +2,10 @@ require "./renderable"
 
 class GameObject
   property position : SF::Vector2(Int32)
-  property render_order : Float64
+  property render_order : Int32
   property renderable : Renderable
 
-  def initialize(@position, @renderable, @render_order = 0.0, @selectable = false)
+  def initialize(@position, @renderable, @render_order = 0, @selectable = false)
 
   end
 

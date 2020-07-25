@@ -1,12 +1,13 @@
 class Layer < SF::Transformable
   include SF::Drawable
 
-  property render_order : Int32
+  getter render_range_end : Int32
+  getter render_range_begin : Int32
   property renderable_game_objs : Array(GameObject)
-  property texture : SF::Texture
   property shader : Nil | SF::Shader
+  property texture : SF::Texture
 
-  def initialize(@texture, @render_order, @shader = nil)
+  def initialize(@texture, @shader, @render_range_begin, @render_range_end)
     super()
     @verticies = SF::VertexArray.new(SF::Quads)
     @renderable_game_objs = [] of GameObject
@@ -29,12 +30,42 @@ class Layer < SF::Transformable
   end
 
   def insert_game_obj(game_object : GameObject)
+    # TODO: better errors
+    raise "#{game_object.render_order} outside range #{render_range_end}" unless @render_range_end >= game_object.render_order
+    raise "#{game_object.render_order} outside range #{render_range_begin}" unless @render_range_begin <= game_object.render_order
+
     # TODO: optimize? BST?
     index = @renderable_game_objs.index do |obj|
       obj.render_order > game_object.render_order
     end
     index ||= -1
     @renderable_game_objs.insert(index, game_object)
+  end
+
+  def set_render_range_begin(range_begin)
+    removed_game_objects = [] of GameObject
+    if range_begin > @render_range_begin
+      while @renderable_game_objs.first && range_begin > @renderable_game_objs.first.render_order
+        removed_game_objects << @renderable_game_objs.shift
+      end
+    end
+
+    @render_range_begin = range_begin
+
+    removed_game_objects
+  end
+
+  def set_render_range_end(range_end)
+    removed_game_objects = [] of GameObject
+    if range_end < @render_range_end
+      while @renderable_game_objs.last && range_end < @renderable_game_objs.last.render_order
+        removed_game_objects << @renderable_game_objs.pop
+      end
+    end
+
+    @render_range_end = range_end
+
+    removed_game_objects
   end
 
   def update

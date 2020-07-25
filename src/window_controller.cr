@@ -1,4 +1,4 @@
-require "./renderables"
+require "./manual_graphics_organizer"
 require "./renderable"
 require "./colored_renderable"
 require "./game_object"
@@ -13,8 +13,12 @@ class WindowController
       "Test Window"
     )
 
+    # TODO: not here
     @atlas_filename = "./assets/atlas"
     @tileset = SF::Texture.from_file("#{@atlas_filename}.png")
+    file = File.new("#{@atlas_filename}.json")
+    AnimationLibrary.load_assets(file)
+    file.close
 
     palette = Palette.new
     palette.insert_palette({
@@ -44,7 +48,7 @@ class WindowController
 
   def open
     selected_game_obj = nil
-    renderables = Renderables.new(@atlas_filename)
+    graphics_organizer = ManualGraphicsOrganizer.new()
 
     # render order
     # background
@@ -55,25 +59,25 @@ class WindowController
     background = GameObject.new(
       SF.vector2i(4, 4),
       Renderable.new("background", ""),
-      0.0
+      0
     )
     background_frame = GameObject.new(
       SF.vector2i(0, 0),
       Renderable.new("frame", ""),
-      3.0
+      3
     )
     card_arts = [
       GameObject.new(
         SF.vector2i(6, 170),
         Renderable.new("card_art", ""),
-        4.0
+        4
       )
     ]
     card_frames = [
       GameObject.new(
         SF.vector2i(4, 168),
         Renderable.new("card_frame", ""),
-        5.0
+        5
       )
     ]
 
@@ -81,7 +85,7 @@ class WindowController
       GameObject.new(
         SF.vector2i(50, 100),
         Renderable.new("fireman", "Idle"),
-        2.0,
+        2,
         true
       ),
       GameObject.new(
@@ -90,17 +94,17 @@ class WindowController
           "fireman",
           "Idle",
           {
-            "Flames" => SF::Color::Cyan,
-            "Suit" => SF::Color.new(255,200,145)
+            "Flames" => SF::Color.new(255,128,192),
+            "Suit" => SF::Color.new(128,255,255)
           }
         ),
-        2.0,
+        2,
         true
       ),
       GameObject.new(
         SF.vector2i(100, 100),
         ColoredRenderable.new("test_stripes", "", { "Layer" => SF::Color::Cyan }),
-        2.0,
+        2,
         true
       )
     ]
@@ -110,19 +114,22 @@ class WindowController
     @game_objects.concat(card_arts)
     @game_objects.concat(card_frames)
     @game_objects.concat(characters)
-    # renderables.insert_game_obj(background, 0)
+    # graphics_organizer.insert_game_obj(background, 0)
 
-    characters.each { |character| renderables.insert_game_obj(character, 0, @tileset) }
-    renderables.insert_game_obj(background_frame, 0, @tileset)
+    graphics_organizer.insert_layer(0, 2, @tileset, nil)
+    graphics_organizer.insert_layer(2, 5, @tileset, nil)
 
-    card_arts.each { |card| renderables.insert_game_obj(card, 0, @tileset) }
-    card_frames.each { |card| renderables.insert_game_obj(card, 0, @tileset) }
+    characters.each { |character| graphics_organizer.insert_game_obj(character, @tileset) }
+    graphics_organizer.insert_game_obj(background_frame, @tileset)
+
+    card_arts.each { |card| graphics_organizer.insert_game_obj(card, @tileset) }
+    card_frames.each { |card| graphics_organizer.insert_game_obj(card, @tileset) }
 
 
     fireman_2 = GameObject.new(
       SF.vector2i(100, 40),
       Renderable.new("fireman", "Idle"),
-      0.0,
+      2,
       true
     )
     @game_objects << fireman_2
@@ -130,16 +137,17 @@ class WindowController
     palette_shader.load_from_file("./assets/palette_shader.frag", SF::Shader::Fragment)
     palette_shader.set_parameter("Palette", @palette_shader_texture)
     palette_shader.set_parameter("Texture", @tileset)
-    palette_shader.set_parameter("PaletteIndex", 1.0)
-    palette_shader.set_parameter("PaletteSize", 1.0)
+    palette_shader.set_parameter("PaletteIndex", 1)
+    palette_shader.set_parameter("PaletteSize", 1)
 
-    renderables.insert_game_obj(fireman_2, 1, @tileset, palette_shader)
+    graphics_organizer.insert_layer(2, 2, @tileset, palette_shader)
+    graphics_organizer.insert_game_obj(fireman_2, @tileset, palette_shader)
 
 
     fireman_3 = GameObject.new(
       SF.vector2i(150, 30),
       Renderable.new("fireman", "Idle"),
-      0.0,
+      2,
       true
     )
     @game_objects << fireman_3
@@ -147,12 +155,13 @@ class WindowController
     palette_shader.load_from_file("./assets/palette_shader.frag", SF::Shader::Fragment)
     palette_shader.set_parameter("Palette", @palette_shader_texture)
     palette_shader.set_parameter("Texture", @tileset)
-    palette_shader.set_parameter("PaletteIndex", 0.0)
-    palette_shader.set_parameter("PaletteSize", 1.0)
+    palette_shader.set_parameter("PaletteIndex", 0)
+    palette_shader.set_parameter("PaletteSize", 1)
 
-    renderables.insert_game_obj(fireman_3, 2, @tileset, palette_shader)
+    graphics_organizer.insert_layer(2, 2, @tileset, palette_shader)
+    graphics_organizer.insert_game_obj(fireman_3, @tileset, palette_shader)
 
-    renderables.update
+    graphics_organizer.update
 
     # https://gameprogrammingpatterns.com/game-loop.html
     previous = Time.utc
@@ -205,14 +214,14 @@ class WindowController
       # probably way overkill, but hey, this is for fun
       while lag >= TIME_PER_UPDATE
         @game_objects.each { |game_object| game_object.update }
-        renderables.update
+        graphics_organizer.update
         lag -= TIME_PER_UPDATE
       end
 
       # render
       # @render_window.clear(SF::Color::Black)
       @render_window.clear(SF::Color.new(222,222,222))
-      @render_window.draw(renderables)
+      @render_window.draw(graphics_organizer)
       @render_window.display
     end
   end

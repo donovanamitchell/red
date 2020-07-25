@@ -21,7 +21,7 @@ module Red
   window_width = 248
   window_height = 220
 
-  view_multiplier = 2
+  view_multiplier = 4
 
   # TODO: Better error messages and not here
   raise "Shaders not supported" unless SF::Shader.available?
