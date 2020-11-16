@@ -3,6 +3,8 @@ require "./red/renderable"
 require "./red/colored_renderable"
 require "./red/game_object"
 require "./red/palette"
+require "./red/input_handler"
+require "./animation_command"
 
 class WindowController
   def initialize(@window_width : Int32, @window_height : Int32, @view_multiplier : Int32)
@@ -36,6 +38,33 @@ class WindowController
       255_u8 => SF::Color.new(153,217,234)
     })
     @palette_shader_texture = SF::Texture.from_image(palette.generate_image)
+
+    # TODO: also not here
+    @input_handler = Red::InputHandler.new()
+    @input_handler.register(
+      SF::Keyboard::Num0,
+      AnimationCommand.new("Idle")
+    )
+    @input_handler.register(
+      SF::Keyboard::Num1,
+      AnimationCommand.new("Death")
+    )
+    @input_handler.register(
+      SF::Keyboard::Num2,
+      AnimationCommand.new("Injured")
+    )
+    @input_handler.register(
+      SF::Keyboard::Num3,
+      AnimationCommand.new("Buff")
+    )
+    @input_handler.register(
+      SF::Keyboard::Num4,
+      AnimationCommand.new("Ranged")
+    )
+    @input_handler.register(
+      SF::Keyboard::Num5,
+      AnimationCommand.new("Melee")
+    )
 
     @view = SF::View.new(SF.float_rect(0, 0, @window_width, @window_height))
     @render_window.view = @view
@@ -174,6 +203,7 @@ class WindowController
 
       # process input
       while event = @render_window.poll_event
+        # TODO: should inputhandler also handle context switches?
         case event
         when SF::Event::Closed
           @render_window.close
@@ -187,25 +217,9 @@ class WindowController
           Log.debug { selected_game_obj.pretty_inspect }
         when SF::Event::KeyReleased
           next unless selected_game_obj
-          # TODO: nOT ThIs
-          # ^ command pattern
-          # I should make commands higher piority
-          case event.code
-          when SF::Keyboard::Num0
-            selected_game_obj.start_animation("Idle")
-          when SF::Keyboard::Num1
-            selected_game_obj.start_animation("Death")
-          when SF::Keyboard::Num2
-            selected_game_obj.start_animation("Injured")
-          when SF::Keyboard::Num3
-            selected_game_obj.start_animation("Buff")
-          when SF::Keyboard::Num4
-            selected_game_obj.start_animation("Ranged")
-          when SF::Keyboard::Num5
-            selected_game_obj.start_animation("Melee")
-          else
-            nil
-          end
+
+          command = @input_handler.handle(event)
+          command.execute(selected_game_obj)
         else
           nil
         end
