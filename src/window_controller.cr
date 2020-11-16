@@ -3,6 +3,7 @@ require "./renderable"
 require "./colored_renderable"
 require "./game_object"
 require "./palette"
+require "./sound/sound"
 
 class WindowController
   def initialize(@window_width : Int32, @window_height : Int32, @view_multiplier : Int32)
@@ -189,6 +190,7 @@ class WindowController
           next unless selected_game_obj
           # TODO: nOT ThIs
           # ^ command pattern
+          # I should make commands higher piority
           case event.code
           when SF::Keyboard::Num0
             selected_game_obj.start_animation("Idle")
