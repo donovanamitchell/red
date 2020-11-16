@@ -1,9 +1,8 @@
-require "./manual_graphics_organizer"
-require "./renderable"
-require "./colored_renderable"
-require "./game_object"
-require "./palette"
-require "./sound/sound"
+require "./red/manual_graphics_organizer"
+require "./red/renderable"
+require "./red/colored_renderable"
+require "./red/game_object"
+require "./red/palette"
 
 class WindowController
   def initialize(@window_width : Int32, @window_height : Int32, @view_multiplier : Int32)
@@ -18,10 +17,10 @@ class WindowController
     @atlas_filename = "./assets/atlas"
     @tileset = SF::Texture.from_file("#{@atlas_filename}.png")
     file = File.new("#{@atlas_filename}.json")
-    AnimationLibrary.load_assets(file)
+    Red::AnimationLibrary.load_assets(file)
     file.close
 
-    palette = Palette.new
+    palette = Red::Palette.new
     palette.insert_palette({
       0_u8 => SF::Color.new(0,0,0),
       64_u8 => SF::Color.new(255,79,21),
@@ -40,7 +39,7 @@ class WindowController
 
     @view = SF::View.new(SF.float_rect(0, 0, @window_width, @window_height))
     @render_window.view = @view
-    @game_objects = [] of GameObject
+    @game_objects = [] of Red::GameObject
   end
 
   def intersecting_game_objects(pos : SF::Vector2f)
@@ -49,7 +48,7 @@ class WindowController
 
   def open
     selected_game_obj = nil
-    graphics_organizer = ManualGraphicsOrganizer.new()
+    graphics_organizer = Red::ManualGraphicsOrganizer.new()
 
     # render order
     # background
@@ -57,41 +56,41 @@ class WindowController
     # frame
     # card art
     # card frame
-    background = GameObject.new(
+    background = Red::GameObject.new(
       SF.vector2i(4, 4),
-      Renderable.new("background", ""),
+      Red::Renderable.new("background", ""),
       0
     )
-    background_frame = GameObject.new(
+    background_frame = Red::GameObject.new(
       SF.vector2i(0, 0),
-      Renderable.new("frame", ""),
+      Red::Renderable.new("frame", ""),
       3
     )
     card_arts = [
-      GameObject.new(
+      Red::GameObject.new(
         SF.vector2i(6, 170),
-        Renderable.new("card_art", ""),
+        Red::Renderable.new("card_art", ""),
         4
       )
     ]
     card_frames = [
-      GameObject.new(
+      Red::GameObject.new(
         SF.vector2i(4, 168),
-        Renderable.new("card_frame", ""),
+        Red::Renderable.new("card_frame", ""),
         5
       )
     ]
 
     characters = [
-      GameObject.new(
+      Red::GameObject.new(
         SF.vector2i(50, 100),
-        Renderable.new("fireman", "Idle"),
+        Red::Renderable.new("fireman", "Idle"),
         2,
         true
       ),
-      GameObject.new(
+      Red::GameObject.new(
         SF.vector2i(50, 30),
-        ColoredRenderable.new(
+        Red::ColoredRenderable.new(
           "fireman",
           "Idle",
           {
@@ -102,9 +101,9 @@ class WindowController
         2,
         true
       ),
-      GameObject.new(
+      Red::GameObject.new(
         SF.vector2i(100, 100),
-        ColoredRenderable.new("test_stripes", "", { "Layer" => SF::Color::Cyan }),
+        Red::ColoredRenderable.new("test_stripes", "", { "Layer" => SF::Color::Cyan }),
         2,
         true
       )
@@ -127,9 +126,9 @@ class WindowController
     card_frames.each { |card| graphics_organizer.insert_game_obj(card, @tileset) }
 
 
-    fireman_2 = GameObject.new(
+    fireman_2 = Red::GameObject.new(
       SF.vector2i(100, 40),
-      Renderable.new("fireman", "Idle"),
+      Red::Renderable.new("fireman", "Idle"),
       2,
       true
     )
@@ -145,9 +144,9 @@ class WindowController
     graphics_organizer.insert_game_obj(fireman_2, @tileset, palette_shader)
 
 
-    fireman_3 = GameObject.new(
+    fireman_3 = Red::GameObject.new(
       SF.vector2i(150, 30),
-      Renderable.new("fireman", "Idle"),
+      Red::Renderable.new("fireman", "Idle"),
       2,
       true
     )
