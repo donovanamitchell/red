@@ -135,6 +135,12 @@ class WindowController
         Red::ColoredRenderable.new("test_stripes", "", { "Layer" => SF::Color::Cyan }),
         2,
         true
+      ),
+      Red::GameObject.new(
+        SF.vector2i(150, 60),
+        Red::Renderable.new("snoopy", "Idle"),
+        2,
+        true
       )
     ]
 

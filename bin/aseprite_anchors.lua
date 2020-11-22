@@ -25,12 +25,28 @@ function hex_to_rgb(hex)
 end
 
 local json = dofile(app.params["json_impl"])
-
-local path, filename_with_extension, extension = string.match(app.params["filename"], "(.-)([^/]-([^%.]+))$")
-local name_without_extension = filename_with_extension:match("(.+)%..+")
-local sprite = app.open(app.params["filename"])
 local layer_name = app.params["layer"]
-local layer = false
+local filenames = split(app.params["filenames"], " ")
+local layerhash = {}
+for i,filename in ipairs(filenames) do
+  path, filename_with_extension, extension = string.match(filename, "(.-)([^/]-([^%.]+))$")
+  name_without_extension = filename_with_extension:match("(.+)%..+")
+  sprite = app.open(filename)
+  layer = false
+
+  for i,l in ipairs(sprite.layers) do
+    if(l.name == layer_name) then
+      layer = l
+    end
+  end
+
+  if layer == false then
+    error(layer_name .. " layer not found in " .. name_without_extension)
+  end
+
+  layerhash[name_without_extension] = layer
+end
+
 local input = app.params["input"]
 local output = app.params["output"]
 local colormap = split(app.params["colormap"], ",")
@@ -44,23 +60,12 @@ end
 local atlas_json = json.parse(io.open(input, "r"):read("*a"))
 local background_color = app.pixelColor.rgba(0,0,0,0)
 
-for i,l in ipairs(sprite.layers) do
-  if(l.name == layer_name) then
-    layer = l
-  end
-end
-
-local count = 0
-
-if layer == false then
-  error(layer_name .. " layer not found in " .. name_without_extension)
-end
-
 for i,frame in ipairs(atlas_json["frames"]) do
-  -- file, tag, index
+  -- file, tag, index, layer
   filename_split = split(frame["filename"], "/")
   frame_order = tonumber(filename_split[3]) + 1
-  if(filename_split[1] == name_without_extension) then
+  layer = layerhash[filename_split[1]]
+  if(layer) then
     cel = layer:cel(frame_order)
     image = cel.image
 
@@ -75,7 +80,7 @@ for i,frame in ipairs(atlas_json["frames"]) do
             {
               ["x"]= x + cel.position.x,
               ["y"]= y + cel.position.y,
-              ["name"]= colorhash[pixel] or pixel
+              ["name"]= colorhash[app.pixelColor.rgba(pixel)] or tostring(pixel)
             }
           )
         end
