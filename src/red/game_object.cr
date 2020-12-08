@@ -1,36 +1,21 @@
-require "./renderable"
-
 module Red
-  class GameObject
+  abstract class GameObject
     property position : SF::Vector2(Int32)
     property render_order : Int32
-    property renderable : Renderable
 
-    def initialize(@position, @renderable, @render_order = 0, @selectable = false)
-
+    # Abstract classes shouldn't complain about initialization
+    # https://github.com/crystal-lang/crystal/issues/2827
+    private def initialize(@position, @render_order)
     end
 
-    def hitbox_contains?(point)
-      @renderable.hitbox_contains?(position, point)
-    end
+    abstract def hitbox_contains?(point)
 
-    # TODO: only get a new one when there's been a change
-    def quads
-      @renderable.new_verticies(position)
-    end
+    abstract def objects_at(point)
 
-    def selectable?
-      @selectable
-    end
+    abstract def quads
 
-    # TODO: Private, this should be triggered by updates to the state
-    # TODO: What do when the key is not found?
-    def start_animation(animation_key)
-      @renderable.start_animation(animation_key)
-    end
+    abstract def start_animation(animation_key)
 
-    def update
-      renderable.next_frame
-    end
+    abstract def update
   end
 end

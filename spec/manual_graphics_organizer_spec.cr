@@ -56,7 +56,7 @@ module Red
         shader = SF::Shader.new
         graphics_organizer = ManualGraphicsOrganizer.new
         layer = graphics_organizer.insert_layer(0, 9999, texture, shader)
-        game_object = GameObject.new(SF.vector2(0,0), NilRenderable.new, 0)
+        game_object = RenderableGameObject.new(SF.vector2(0,0), NilRenderable.new, 0)
 
         graphics_organizer.insert_game_obj(game_object, texture, shader)
 
@@ -68,7 +68,7 @@ module Red
         texture = SF::Texture.new
         graphics_organizer = ManualGraphicsOrganizer.new
         layer = graphics_organizer.insert_layer(0, 9999, texture, nil)
-        game_object = GameObject.new(SF.vector2(0,0), NilRenderable.new, 0)
+        game_object = RenderableGameObject.new(SF.vector2(0,0), NilRenderable.new, 0)
 
         graphics_organizer.insert_game_obj(game_object, texture)
 
@@ -80,7 +80,7 @@ module Red
         texture = SF::Texture.new
         graphics_organizer = ManualGraphicsOrganizer.new
         layer = graphics_organizer.insert_layer(0, 9999, texture, nil)
-        game_object = GameObject.new(SF.vector2(0,0), NilRenderable.new, 10000)
+        game_object = RenderableGameObject.new(SF.vector2(0,0), NilRenderable.new, 10000)
 
         expect_raises(Exception, "appropriate layer not found") do
           graphics_organizer.insert_game_obj(game_object, texture)
@@ -94,7 +94,7 @@ module Red
         graphics_organizer = ManualGraphicsOrganizer.new
         shader = SF::Shader.new
         layer = graphics_organizer.insert_layer(0, 9999, texture, shader)
-        game_object = GameObject.new(SF.vector2(0,0), NilRenderable.new, 222)
+        game_object = RenderableGameObject.new(SF.vector2(0,0), NilRenderable.new, 222)
 
         expect_raises(Exception, "appropriate layer not found") do
           graphics_organizer.insert_game_obj(game_object, SF::Texture.new, shader)
@@ -108,7 +108,7 @@ module Red
         graphics_organizer = ManualGraphicsOrganizer.new
         shader = SF::Shader.new
         layer = graphics_organizer.insert_layer(0, 9999, texture, shader)
-        game_object = GameObject.new(SF.vector2(0,0), NilRenderable.new, 322)
+        game_object = RenderableGameObject.new(SF.vector2(0,0), NilRenderable.new, 322)
 
         expect_raises(Exception, "appropriate layer not found") do
           graphics_organizer.insert_game_obj(game_object, texture, SF::Shader.new)

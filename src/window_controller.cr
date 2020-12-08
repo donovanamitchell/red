@@ -1,10 +1,15 @@
 require "./red/manual_graphics_organizer"
 require "./red/renderable"
+require "./red/renderable_game_object"
 require "./red/colored_renderable"
-require "./red/game_object"
 require "./red/palette"
-require "./red/input_handler"
+require "./red/input_context"
 require "./animation_command"
+require "./switch_context_command"
+require "./card"
+require "./draw_card_command"
+require "./deck"
+require "./hand"
 
 class WindowController
   def initialize(@window_width : Int32, @window_height : Int32, @view_multiplier : Int32)
@@ -40,44 +45,123 @@ class WindowController
     @palette_shader_texture = SF::Texture.from_image(palette.generate_image)
 
     # TODO: also not here
-    @input_handler = Red::InputHandler.new()
-    @input_handler.register(
+    @no_selection_input_context = Red::InputContext.new()
+    click_command = SwitchContextCommand.new(->update_input_context)
+    @no_selection_input_context.register(
+      SF::Event::MouseButtonReleased,
+      click_command
+    )
+
+    @input_context = @no_selection_input_context
+
+    @fireteam = [] of Red::RenderableGameObject
+    @fireteam_input_context = Red::InputContext.new()
+    @fireteam_input_context.register(
       SF::Keyboard::Num0,
       AnimationCommand.new("Idle")
     )
-    @input_handler.register(
+    @fireteam_input_context.register(
       SF::Keyboard::Num1,
       AnimationCommand.new("Death")
     )
-    @input_handler.register(
+    @fireteam_input_context.register(
       SF::Keyboard::Num2,
       AnimationCommand.new("Injured")
     )
-    @input_handler.register(
+    @fireteam_input_context.register(
       SF::Keyboard::Num3,
       AnimationCommand.new("Buff")
     )
-    @input_handler.register(
+    @fireteam_input_context.register(
       SF::Keyboard::Num4,
       AnimationCommand.new("Ranged")
     )
-    @input_handler.register(
+    @fireteam_input_context.register(
       SF::Keyboard::Num5,
       AnimationCommand.new("Melee")
+    )
+    @fireteam_input_context.register(
+      SF::Event::MouseButtonReleased,
+      click_command
+    )
+
+    cards = [
+      Card.new("Bang", "card_art", "card_frame"),
+      Card.new("Pew", "card_art", "card_frame"),
+      Card.new("Pow", "card_art", "card_frame"),
+      Card.new("Zap", "card_art", "card_frame"),
+      Card.new("Zotz", "card_art", "card_frame"),
+      Card.new("Bap", "card_art", "card_frame"),
+      Card.new("Bop", "card_art", "card_frame"),
+      Card.new("Boop", "card_art", "card_frame"),
+      Card.new("Bonk", "card_art", "card_frame"),
+      Card.new("Bink", "card_art", "card_frame")
+    ]
+    @deck = Deck.new(cards)
+    @deck.shuffle
+    @hand = Deck.new([] of Card)
+    @discard = Deck.new([] of Card)
+    @deck_game_object = Red::RenderableGameObject.new(
+      SF.vector2i(4, 220 - 48 - 4),
+      Red::Renderable.new("card_back", ""),
+      4
+    )
+    # TODO: something to do relative positioning
+    @hand_game_object = HandGameObject.new(
+      SF.vector2i(4 + 36 + 4, 220 - 48 - 4),
+      Red::Renderable.new("hand_area", ""),
+      @hand,
+      4
+    )
+
+    @hand_input_context = Red::InputContext.new()
+    @hand_input_context.register(
+      SF::Keyboard::Num0,
+      DrawCardCommand.new(@deck, @hand)
+    )
+    @hand_input_context.register(
+      SF::Event::MouseButtonReleased,
+      click_command
     )
 
     @view = SF::View.new(SF.float_rect(0, 0, @window_width, @window_height))
     @render_window.view = @view
     @game_objects = [] of Red::GameObject
+    @selected_game_objs = [] of Red::GameObject
   end
 
   def intersecting_game_objects(pos : SF::Vector2f)
-    @game_objects.select { |game_object| game_object.hitbox_contains?(pos) }
+    intersecting_game_objects = [] of Red::GameObject
+    @game_objects.each do |game_object|
+      intersecting_game_objects.concat(game_object.objects_at(pos))
+    end
+    intersecting_game_objects
+  end
+
+  def update_input_context
+    pixel_pos = SF::Mouse.get_position(@render_window)
+    world_pos = @render_window.map_pixel_to_coords(pixel_pos, @render_window.view)
+
+    # TODO: Object for input context switching?
+    @selected_game_objs = intersecting_game_objects(world_pos).select do |obj|
+      if(obj.in?(@fireteam))
+        @input_context = @fireteam_input_context
+        true
+      elsif(obj == @hand_game_object)
+        @input_context = @hand_input_context
+        true
+      else
+        false
+      end
+    end
+
+    Log.debug { @selected_game_objs.pretty_inspect }
   end
 
   def open
-    selected_game_obj = nil
     graphics_organizer = Red::ManualGraphicsOrganizer.new()
+    graphics_organizer.insert_layer(0, 2, @tileset, nil)
+    graphics_organizer.insert_layer(2, 5, @tileset, nil)
 
     # render order
     # background
@@ -85,39 +169,23 @@ class WindowController
     # frame
     # card art
     # card frame
-    background = Red::GameObject.new(
+    background = Red::RenderableGameObject.new(
       SF.vector2i(4, 4),
       Red::Renderable.new("background", ""),
       0
     )
-    background_frame = Red::GameObject.new(
+    background_frame = Red::RenderableGameObject.new(
       SF.vector2i(0, 0),
       Red::Renderable.new("frame", ""),
       3
     )
-    card_arts = [
-      Red::GameObject.new(
-        SF.vector2i(6, 170),
-        Red::Renderable.new("card_art", ""),
-        4
-      )
-    ]
-    card_frames = [
-      Red::GameObject.new(
-        SF.vector2i(4, 168),
-        Red::Renderable.new("card_frame", ""),
-        5
-      )
-    ]
-
-    characters = [
-      Red::GameObject.new(
+    @fireteam = [
+      Red::RenderableGameObject.new(
         SF.vector2i(50, 100),
         Red::Renderable.new("fireman", "Idle"),
-        2,
-        true
+        2
       ),
-      Red::GameObject.new(
+      Red::RenderableGameObject.new(
         SF.vector2i(50, 30),
         Red::ColoredRenderable.new(
           "fireman",
@@ -127,45 +195,38 @@ class WindowController
             "Suit" => SF::Color.new(128,255,255)
           }
         ),
-        2,
-        true
+        2
       ),
-      Red::GameObject.new(
+      Red::RenderableGameObject.new(
         SF.vector2i(100, 100),
         Red::ColoredRenderable.new("test_stripes", "", { "Layer" => SF::Color::Cyan }),
-        2,
-        true
+        2
       ),
-      Red::GameObject.new(
+      Red::RenderableGameObject.new(
         SF.vector2i(150, 60),
         Red::Renderable.new("snoopy", "Idle"),
-        2,
-        true
+        2
       )
     ]
 
     # @game_objects << background
     @game_objects << background_frame
-    @game_objects.concat(card_arts)
-    @game_objects.concat(card_frames)
-    @game_objects.concat(characters)
+    @game_objects << @deck_game_object
+    @game_objects << @hand_game_object
+    @game_objects.concat(@fireteam)
     # graphics_organizer.insert_game_obj(background, 0)
 
-    graphics_organizer.insert_layer(0, 2, @tileset, nil)
-    graphics_organizer.insert_layer(2, 5, @tileset, nil)
+    # TODO: bit of a pain to add to both @game_objects and graphics organizer
+    graphics_organizer.insert_game_obj(@deck_game_object, @tileset)
+    graphics_organizer.insert_game_obj(@hand_game_object, @tileset)
 
-    characters.each { |character| graphics_organizer.insert_game_obj(character, @tileset) }
+    @fireteam.each { |character| graphics_organizer.insert_game_obj(character, @tileset) }
     graphics_organizer.insert_game_obj(background_frame, @tileset)
 
-    card_arts.each { |card| graphics_organizer.insert_game_obj(card, @tileset) }
-    card_frames.each { |card| graphics_organizer.insert_game_obj(card, @tileset) }
-
-
-    fireman_2 = Red::GameObject.new(
+    fireman_2 = Red::RenderableGameObject.new(
       SF.vector2i(100, 40),
       Red::Renderable.new("fireman", "Idle"),
-      2,
-      true
+      2
     )
     @game_objects << fireman_2
     palette_shader = SF::Shader.new
@@ -178,12 +239,10 @@ class WindowController
     graphics_organizer.insert_layer(2, 2, @tileset, palette_shader)
     graphics_organizer.insert_game_obj(fireman_2, @tileset, palette_shader)
 
-
-    fireman_3 = Red::GameObject.new(
+    fireman_3 = Red::RenderableGameObject.new(
       SF.vector2i(150, 30),
       Red::Renderable.new("fireman", "Idle"),
-      2,
-      true
+      2
     )
     @game_objects << fireman_3
     palette_shader = SF::Shader.new
@@ -209,25 +268,12 @@ class WindowController
 
       # process input
       while event = @render_window.poll_event
-        # TODO: should inputhandler also handle context switches?
         case event
         when SF::Event::Closed
           @render_window.close
-        when SF::Event::MouseButtonReleased
-          pixel_pos = SF::Mouse.get_position(@render_window)
-          world_pos = @render_window.map_pixel_to_coords(pixel_pos, @render_window.view)
-          selected_game_objs = intersecting_game_objects(world_pos)
-          # Log.debug { world_pos.pretty_inspect }
-          # Log.debug { selected_game_objs.pretty_inspect }
-          selected_game_obj = selected_game_objs.find { |obj| obj.selectable? }
-          Log.debug { selected_game_obj.pretty_inspect }
-        when SF::Event::KeyReleased
-          next unless selected_game_obj
-
-          command = @input_handler.handle(event)
-          command.execute(selected_game_obj)
         else
-          nil
+          command = @input_context.handle(event)
+          command.execute(@selected_game_objs)
         end
       end
 

@@ -12,7 +12,7 @@ module Red
     property remaining_ms : Float64
 
     def initialize(@texture_name : String,
-                  @default_animation_key : String)
+                   @default_animation_key : String)
       @verticies = [] of SF::Vertex
       @animation_key = @default_animation_key
       @frame_index = 0
