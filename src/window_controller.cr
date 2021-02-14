@@ -1,6 +1,7 @@
 require "./red/manual_graphics_organizer"
 require "./red/renderable"
 require "./red/renderable_game_object"
+require "./red/nil_game_object"
 require "./red/colored_renderable"
 require "./red/palette"
 require "./red/input_context"
@@ -12,6 +13,8 @@ require "./deck"
 require "./hand"
 
 class WindowController
+  @selected_game_obj : Red::GameObject
+
   def initialize(@window_width : Int32, @window_height : Int32, @view_multiplier : Int32)
     @render_window = SF::RenderWindow.new(
       SF::VideoMode.new(
@@ -95,7 +98,8 @@ class WindowController
       Card.new("Bop", "card_art", "card_frame"),
       Card.new("Boop", "card_art", "card_frame"),
       Card.new("Bonk", "card_art", "card_frame"),
-      Card.new("Bink", "card_art", "card_frame")
+      Card.new("Bink", "card_art", "card_frame"),
+      Card.new("Some Really Really Long Text to Test With", "squiggles", "card_frame")
     ]
     @deck = Deck.new(cards)
     @deck.shuffle
@@ -127,7 +131,8 @@ class WindowController
     @view = SF::View.new(SF.float_rect(0, 0, @window_width, @window_height))
     @render_window.view = @view
     @game_objects = [] of Red::GameObject
-    @selected_game_objs = [] of Red::GameObject
+    @nil_game_object = Red::NilGameObject.new
+    @selected_game_obj = @nil_game_object
   end
 
   def intersecting_game_objects(pos : SF::Vector2f)
@@ -143,7 +148,7 @@ class WindowController
     world_pos = @render_window.map_pixel_to_coords(pixel_pos, @render_window.view)
 
     # TODO: Object for input context switching?
-    @selected_game_objs = intersecting_game_objects(world_pos).select do |obj|
+    @selected_game_obj = intersecting_game_objects(world_pos).find(@nil_game_object) do |obj|
       if(obj.in?(@fireteam))
         @input_context = @fireteam_input_context
         true
@@ -155,7 +160,7 @@ class WindowController
       end
     end
 
-    Log.debug { @selected_game_objs.pretty_inspect }
+    Log.debug { @selected_game_obj.pretty_inspect }
   end
 
   def open
@@ -273,7 +278,7 @@ class WindowController
           @render_window.close
         else
           command = @input_context.handle(event)
-          command.execute(@selected_game_objs)
+          command.execute(@selected_game_obj)
         end
       end
 

@@ -5,7 +5,7 @@ class SwitchContextCommand < Red::Command
   )
   end
 
-  def execute(_game_objects)
+  def execute(_game_object)
     @set_context.call
   end
 end
