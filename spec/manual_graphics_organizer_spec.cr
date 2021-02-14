@@ -60,8 +60,8 @@ module Red
 
         graphics_organizer.insert_game_obj(game_object, texture, shader)
 
-        layer.renderable_game_objs.size.should eq(1)
-        layer.renderable_game_objs.first.should be(game_object)
+        layer.objects.size.should eq(1)
+        layer.objects.first.should be(game_object)
       end
 
       it "should match a nil shader" do
@@ -72,8 +72,8 @@ module Red
 
         graphics_organizer.insert_game_obj(game_object, texture)
 
-        layer.renderable_game_objs.size.should eq(1)
-        layer.renderable_game_objs.first.should be(game_object)
+        layer.objects.size.should eq(1)
+        layer.objects.first.should be(game_object)
       end
 
       it "should raise an exception if a layer does not hold the render order" do
@@ -86,7 +86,7 @@ module Red
           graphics_organizer.insert_game_obj(game_object, texture)
         end
 
-        layer.renderable_game_objs.size.should eq(0)
+        layer.objects.size.should eq(0)
       end
 
       it "should raise an exception if a layer does not match the texture" do
@@ -100,7 +100,7 @@ module Red
           graphics_organizer.insert_game_obj(game_object, SF::Texture.new, shader)
         end
 
-        layer.renderable_game_objs.size.should eq(0)
+        layer.objects.size.should eq(0)
       end
 
       it "should raise an exception if a layer does not match the shader" do
@@ -114,7 +114,7 @@ module Red
           graphics_organizer.insert_game_obj(game_object, texture, SF::Shader.new)
         end
 
-        layer.renderable_game_objs.size.should eq(0)
+        layer.objects.size.should eq(0)
       end
     end
   end
