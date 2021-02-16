@@ -1,3 +1,4 @@
+# TODO: less garbage file structure
 require "./red/manual_graphics_organizer"
 require "./red/renderable"
 require "./red/renderable_game_object"
@@ -12,6 +13,9 @@ require "./draw_card_command"
 require "./deck"
 require "./hand"
 
+require "./red/graphics"
+
+# TODO less than half this garbage actually belongs in this file
 class WindowController
   @selected_game_obj : Red::GameObject
 
@@ -143,37 +147,11 @@ class WindowController
     intersecting_game_objects
   end
 
-  def update_input_context
-    pixel_pos = SF::Mouse.get_position(@render_window)
-    world_pos = @render_window.map_pixel_to_coords(pixel_pos, @render_window.view)
+  def setup_graphics_organizer
+    graphics_organizer = Red::Graphics::Organizer::Automatic.new()
+    # graphics_organizer.insert_layer(0, 2, @tileset, nil)
+    # graphics_organizer.insert_layer(2, 5, @tileset, nil)
 
-    # TODO: Object for input context switching?
-    @selected_game_obj = intersecting_game_objects(world_pos).find(@nil_game_object) do |obj|
-      if(obj.in?(@fireteam))
-        @input_context = @fireteam_input_context
-        true
-      elsif(obj == @hand_game_object)
-        @input_context = @hand_input_context
-        true
-      else
-        false
-      end
-    end
-
-    Log.debug { @selected_game_obj.pretty_inspect }
-  end
-
-  def open
-    graphics_organizer = Red::ManualGraphicsOrganizer.new()
-    graphics_organizer.insert_layer(0, 2, @tileset, nil)
-    graphics_organizer.insert_layer(2, 5, @tileset, nil)
-
-    # render order
-    # background
-    # characters
-    # frame
-    # card art
-    # card frame
     background = Red::RenderableGameObject.new(
       SF.vector2i(4, 4),
       Red::Renderable.new("background", ""),
@@ -214,12 +192,12 @@ class WindowController
       )
     ]
 
-    # @game_objects << background
+    @game_objects << background
     @game_objects << background_frame
     @game_objects << @deck_game_object
     @game_objects << @hand_game_object
     @game_objects.concat(@fireteam)
-    # graphics_organizer.insert_game_obj(background, 0)
+    graphics_organizer.insert_game_obj(background, @tileset)
 
     # TODO: bit of a pain to add to both @game_objects and graphics organizer
     graphics_organizer.insert_game_obj(@deck_game_object, @tileset)
@@ -241,7 +219,7 @@ class WindowController
     palette_shader.set_parameter("PaletteIndex", 1)
     palette_shader.set_parameter("PaletteSize", 1)
 
-    graphics_organizer.insert_layer(2, 2, @tileset, palette_shader)
+    # graphics_organizer.insert_layer(2, 2, @tileset, palette_shader)
     graphics_organizer.insert_game_obj(fireman_2, @tileset, palette_shader)
 
     fireman_3 = Red::RenderableGameObject.new(
@@ -257,9 +235,49 @@ class WindowController
     palette_shader.set_parameter("PaletteIndex", 0)
     palette_shader.set_parameter("PaletteSize", 1)
 
-    graphics_organizer.insert_layer(2, 2, @tileset, palette_shader)
+    # graphics_organizer.insert_layer(2, 2, @tileset, palette_shader)
     graphics_organizer.insert_game_obj(fireman_3, @tileset, palette_shader)
 
+    # render order
+    # background
+    # frame
+    graphics_organizer.arrange(background, background_frame)
+    # characters
+    @fireteam.each do |character|
+      graphics_organizer.arrange(background_frame, character)
+    end
+    graphics_organizer.arrange(background_frame, fireman_2)
+    graphics_organizer.arrange(background_frame, fireman_3)
+    # card art
+    # card frame
+    graphics_organizer.arrange(background_frame, @deck_game_object)
+    graphics_organizer.arrange(background_frame, @hand_game_object)
+
+    graphics_organizer
+  end
+
+  def update_input_context
+    pixel_pos = SF::Mouse.get_position(@render_window)
+    world_pos = @render_window.map_pixel_to_coords(pixel_pos, @render_window.view)
+
+    # TODO: Object for input context switching?
+    @selected_game_obj = intersecting_game_objects(world_pos).find(@nil_game_object) do |obj|
+      if(obj.in?(@fireteam))
+        @input_context = @fireteam_input_context
+        true
+      elsif(obj == @hand_game_object)
+        @input_context = @hand_input_context
+        true
+      else
+        false
+      end
+    end
+
+    Log.debug { @selected_game_obj.pretty_inspect }
+  end
+
+  def open
+    graphics_organizer = setup_graphics_organizer
     graphics_organizer.update
 
     # https://gameprogrammingpatterns.com/game-loop.html
@@ -291,8 +309,7 @@ class WindowController
       end
 
       # render
-      # @render_window.clear(SF::Color::Black)
-      @render_window.clear(SF::Color.new(222,222,222))
+      @render_window.clear(SF::Color::Black)
       @render_window.draw(graphics_organizer)
       @render_window.display
     end

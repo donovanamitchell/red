@@ -11,6 +11,13 @@ module Red
       @verticies = SF::VertexArray.new(SF::Quads)
     end
 
+    def insert?(object : GameObject, texture : SF::Texture, shader : Nil | SF::Shader)
+      object.render_order <= render_range_end &&
+      object.render_order >= render_range_begin &&
+      @texture == texture &&
+      @shader == shader
+    end
+
     # TODO: cite source
     # Minimize state changes, batch similar/identical things to draw together
     # Minimize draw calls
