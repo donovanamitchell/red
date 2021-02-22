@@ -26,7 +26,9 @@ module Red
       end
 
       def remove_vertex(vertex : Vertex(T))
-        # TODO: remove edges to vertex
+        vertex.parents.each do |parent|
+          parent.remove_edge(vertex)
+        end
         verticies.delete(vertex)
       end
 
@@ -34,19 +36,12 @@ module Red
       # TODO: memoize and recompute on vertex modification
       def topological_sort(&block : Set(Vertex(T)) -> Vertex(T))
         sorted_list = [] of T
-        exposed_verticies = verticies.dup
-
-        # TODO: keep track of predecessors on Vertex?
-        # this would also help with remove_vertex method
-        predecessor_hash = Hash(Vertex(T), Set(Vertex(T))).new do |hash, key|
-          hash[key] = Set(Vertex(T)).new
-        end
+        exposed_verticies = Set(Vertex(T)).new
+        predecessor_hash = Hash(Vertex(T), Set(Vertex(T))).new
 
         verticies.each do |vertex|
-          vertex.successors.each do |successor|
-            predecessor_hash[successor].add(vertex)
-            exposed_verticies.delete(successor)
-          end
+          exposed_verticies << vertex if vertex.parents.empty?
+          predecessor_hash[vertex] = vertex.parents.dup
         end
 
         while !exposed_verticies.empty?
