@@ -3,48 +3,48 @@ require "json"
 module Red
   # TODO: move all these to appropriate places
   class TextureAtlasSourceSize
-    JSON.mapping(
-      w: Int32,
-      h: Int32
-    )
+    include JSON::Serializable
+
+    property w : Int32
+    property h : Int32
   end
 
   class TextureAtlasAnchor
-    JSON.mapping(
-      name: String,
-      x: Int32,
-      y: Int32
-    )
+    include JSON::Serializable
+
+    property x : Int32
+    property y : Int32
+    property name : String
   end
 
   class TextureAtlasFrame
-    JSON.mapping(
-      x: Int32,
-      y: Int32,
-      w: Int32,
-      h: Int32
-    )
+    include JSON::Serializable
+
+    property x : Int32
+    property y : Int32
+    property w : Int32
+    property h : Int32
   end
 
   class TextureAtlasSprite
-    JSON.mapping(
-      anchors: { type: Array(TextureAtlasAnchor), nilable: true },
-      duration: Int32,
-      filename: String,
-      frame_order: Int32,
-      frame: TextureAtlasFrame,
-      layer: String,
-      rotated: Bool,
-      sourceSize: TextureAtlasSourceSize,
-      spriteSourceSize: TextureAtlasFrame,
-      tag: String,
-      trimmed: Bool
-    )
+    include JSON::Serializable
+
+    property anchors : Array(TextureAtlasAnchor) | Nil
+    property duration : Int32
+    property filename : String
+    property frame_order : Int32
+    property frame : TextureAtlasFrame
+    property layer : String
+    property rotated : Bool
+    property sourceSize : TextureAtlasSourceSize
+    property spriteSourceSize : TextureAtlasFrame
+    property tag : String
+    property trimmed : Bool
   end
 
   class TextureAtlas
-    JSON.mapping(
-      frames: Array(TextureAtlasSprite)
-    )
+    include JSON::Serializable
+
+    property frames : Array(TextureAtlasSprite)
   end
 end
