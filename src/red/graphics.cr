@@ -1,4 +1,5 @@
-require "./graphics/organizer"
+require "./graphics/organizers"
+require "./graphics/layers"
 
 module Red
   module Graphics

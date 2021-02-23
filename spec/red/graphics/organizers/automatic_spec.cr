@@ -2,7 +2,7 @@ require "../../../spec_helper"
 
 module Red
   module Graphics
-    module Organizer
+    module Organizers
       describe Automatic do
         describe "init" do
           it "should have no layers" do

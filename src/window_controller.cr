@@ -1,5 +1,4 @@
 # TODO: less garbage file structure
-require "./red/manual_graphics_organizer"
 require "./red/renderable"
 require "./red/renderable_game_object"
 require "./red/nil_game_object"
@@ -148,7 +147,7 @@ class WindowController
   end
 
   def setup_graphics_organizer
-    graphics_organizer = Red::Graphics::Organizer::Automatic.new()
+    graphics_organizer = Red::Graphics::Organizers::Automatic.new()
     # graphics_organizer.insert_layer(0, 2, @tileset, nil)
     # graphics_organizer.insert_layer(2, 5, @tileset, nil)
 

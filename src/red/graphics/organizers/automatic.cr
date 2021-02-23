@@ -1,8 +1,9 @@
 require "../../graph"
+require "../layers"
 
 module Red
   module Graphics
-    module Organizer
+    module Organizers
       # The purpose of this object is to organize the renderable game objects in
       # groups (layers) that can be drawn at the same time.
       # This organizer automaticaly creates and deletes the layers containing the
@@ -10,11 +11,11 @@ module Red
       class Automatic < SF::Transformable
         include SF::Drawable
 
-        property layers : Array(RenderableLayer)
+        property layers : Array(Layers::RenderableLayer)
 
         def initialize
           super()
-          @layers = [] of RenderableLayer
+          @layers = [] of Layers::RenderableLayer
           @verticies = Hash(
             GameObject,
             Graph::Vertex(Tuple(GameObject, SF::Texture, SF::Shader | Nil))
@@ -50,7 +51,7 @@ module Red
         end
 
         def recompute_layers
-          @layers = [] of RenderableLayer
+          @layers = [] of Layers::RenderableLayer
           return if @verticies.empty?
 
           # what a mess
@@ -74,7 +75,7 @@ module Red
           end
 
           _, first_texture, first_shader = sorted_list.first
-          layer = RenderableLayer.new(first_texture, first_shader, Int32::MIN, Int32::MAX)
+          layer = Layers::RenderableLayer.new(first_texture, first_shader, Int32::MIN, Int32::MAX)
           @layers << layer
 
           sorted_list.each do |game_object, texture, shader|
@@ -83,7 +84,7 @@ module Red
             else
               # TODO: make layers not require begin/end range
               # or perhaps not use the Layer at all
-              layer = RenderableLayer.new(texture, shader, Int32::MIN, Int32::MAX)
+              layer = Layers::RenderableLayer.new(texture, shader, Int32::MIN, Int32::MAX)
               layer.insert(game_object)
               @layers << layer
             end
