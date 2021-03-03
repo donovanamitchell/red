@@ -3,9 +3,9 @@ require "./red/inputs"
 require "./red/animations"
 require "./red/game_objects"
 require "./red/renderables"
+require "./red/palettes"
 
 # TODO: less garbage file structure
-require "./red/palette"
 require "./animation_command"
 require "./switch_context_command"
 require "./card"
@@ -32,7 +32,7 @@ class WindowController
     Red::Animations::Atlas.load_assets(file)
     file.close
 
-    palette = Red::Palette.new
+    palette = Red::Palettes::Palette.new
     palette.insert_palette({
       0_u8 => SF::Color.new(0,0,0),
       64_u8 => SF::Color.new(255,79,21),
