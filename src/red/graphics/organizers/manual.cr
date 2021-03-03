@@ -1,5 +1,5 @@
 require "../layers"
-require "../../game_object"
+require "../../game_objects"
 
 module Red
   module Graphics
@@ -22,7 +22,7 @@ module Red
           end
         end
 
-        def insert_game_obj(game_object : GameObject,
+        def insert_game_obj(game_object : GameObjects::GameObject,
                             texture : SF::Texture,
                             shader : SF::Shader | Nil = nil)
           layer = @layers.find do |l|

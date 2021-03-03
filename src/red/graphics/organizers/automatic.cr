@@ -17,16 +17,16 @@ module Red
           super()
           @layers = [] of Layers::RenderableLayer
           @verticies = Hash(
-            GameObject,
-            Graph::Vertex(Tuple(GameObject, SF::Texture, SF::Shader | Nil))
+            GameObjects::GameObject,
+            Graph::Vertex(Tuple(GameObjects::GameObject, SF::Texture, SF::Shader | Nil))
           ).new
           @clean = true
           @dag = Graph::DirectedAcyclic(
-            Tuple(GameObject, SF::Texture, SF::Shader | Nil)
+            Tuple(GameObjects::GameObject, SF::Texture, SF::Shader | Nil)
           ).new
         end
 
-        def arrange(below : GameObject, above : GameObject)
+        def arrange(below : GameObjects::GameObject, above : GameObjects::GameObject)
           @dag.add_edge(@verticies[below], @verticies[above])
           @clean = false
         end
@@ -39,7 +39,7 @@ module Red
           end
         end
 
-        def insert_game_obj(game_object : GameObject,
+        def insert_game_obj(game_object : GameObjects::GameObject,
             layer_texture : SF::Texture,
             layer_shader : Nil | SF::Shader = nil
           )

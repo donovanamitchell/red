@@ -1,11 +1,10 @@
 require "./red/graphics"
 require "./red/inputs"
 require "./red/animations"
+require "./red/game_objects"
 
 # TODO: less garbage file structure
 require "./red/renderable"
-require "./red/renderable_game_object"
-require "./red/nil_game_object"
 require "./red/colored_renderable"
 require "./red/palette"
 require "./animation_command"
@@ -17,7 +16,7 @@ require "./hand"
 
 # TODO less than half this garbage actually belongs in this file
 class WindowController
-  @selected_game_obj : Red::GameObject
+  @selected_game_obj : Red::GameObjects::GameObject
 
   def initialize(@window_width : Int32, @window_height : Int32, @view_multiplier : Int32)
     @render_window = SF::RenderWindow.new(
@@ -61,7 +60,7 @@ class WindowController
 
     @input_context = @no_selection_input_context
 
-    @fireteam = [] of Red::RenderableGameObject
+    @fireteam = [] of Red::GameObjects::RenderableGameObject
     @fireteam_input_context = Red::Inputs::InputContext.new()
     @fireteam_input_context.register(
       SF::Keyboard::Num0,
@@ -109,7 +108,7 @@ class WindowController
     @deck.shuffle
     @hand = Deck.new([] of Card)
     @discard = Deck.new([] of Card)
-    @deck_game_object = Red::RenderableGameObject.new(
+    @deck_game_object = Red::GameObjects::RenderableGameObject.new(
       SF.vector2i(4, 220 - 48 - 4),
       Red::Renderable.new("card_back", ""),
       4
@@ -134,13 +133,13 @@ class WindowController
 
     @view = SF::View.new(SF.float_rect(0, 0, @window_width, @window_height))
     @render_window.view = @view
-    @game_objects = [] of Red::GameObject
-    @nil_game_object = Red::NilGameObject.new
+    @game_objects = [] of Red::GameObjects::GameObject
+    @nil_game_object = Red::GameObjects::NilGameObject.new
     @selected_game_obj = @nil_game_object
   end
 
   def intersecting_game_objects(pos : SF::Vector2f)
-    intersecting_game_objects = [] of Red::GameObject
+    intersecting_game_objects = [] of Red::GameObjects::GameObject
     @game_objects.each do |game_object|
       intersecting_game_objects.concat(game_object.objects_at(pos))
     end
@@ -152,23 +151,23 @@ class WindowController
     # graphics_organizer.insert_layer(0, 2, @tileset, nil)
     # graphics_organizer.insert_layer(2, 5, @tileset, nil)
 
-    background = Red::RenderableGameObject.new(
+    background = Red::GameObjects::RenderableGameObject.new(
       SF.vector2i(4, 4),
       Red::Renderable.new("background", ""),
       0
     )
-    background_frame = Red::RenderableGameObject.new(
+    background_frame = Red::GameObjects::RenderableGameObject.new(
       SF.vector2i(0, 0),
       Red::Renderable.new("frame", ""),
       3
     )
     @fireteam = [
-      Red::RenderableGameObject.new(
+      Red::GameObjects::RenderableGameObject.new(
         SF.vector2i(50, 100),
         Red::Renderable.new("fireman", "Idle"),
         2
       ),
-      Red::RenderableGameObject.new(
+      Red::GameObjects::RenderableGameObject.new(
         SF.vector2i(50, 30),
         Red::ColoredRenderable.new(
           "fireman",
@@ -180,12 +179,12 @@ class WindowController
         ),
         2
       ),
-      Red::RenderableGameObject.new(
+      Red::GameObjects::RenderableGameObject.new(
         SF.vector2i(100, 100),
         Red::ColoredRenderable.new("test_stripes", "", { "Layer" => SF::Color::Cyan }),
         2
       ),
-      Red::RenderableGameObject.new(
+      Red::GameObjects::RenderableGameObject.new(
         SF.vector2i(150, 60),
         Red::Renderable.new("snoopy", "Idle"),
         2
@@ -206,7 +205,7 @@ class WindowController
     @fireteam.each { |character| graphics_organizer.insert_game_obj(character, @tileset) }
     graphics_organizer.insert_game_obj(background_frame, @tileset)
 
-    fireman_2 = Red::RenderableGameObject.new(
+    fireman_2 = Red::GameObjects::RenderableGameObject.new(
       SF.vector2i(100, 40),
       Red::Renderable.new("fireman", "Idle"),
       2
@@ -222,7 +221,7 @@ class WindowController
     # graphics_organizer.insert_layer(2, 2, @tileset, palette_shader)
     graphics_organizer.insert_game_obj(fireman_2, @tileset, palette_shader)
 
-    fireman_3 = Red::RenderableGameObject.new(
+    fireman_3 = Red::GameObjects::RenderableGameObject.new(
       SF.vector2i(150, 30),
       Red::Renderable.new("fireman", "Idle"),
       2

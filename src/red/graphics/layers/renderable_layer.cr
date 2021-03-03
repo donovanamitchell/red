@@ -1,10 +1,10 @@
 require "./layer"
-require "../../game_object"
+require "../../game_objects"
 
 module Red
   module Graphics
     module Layers
-      class RenderableLayer < Layer(GameObject)
+      class RenderableLayer < Layer(GameObjects::GameObject)
         property shader : Nil | SF::Shader
         property texture : SF::Texture
 
@@ -13,7 +13,7 @@ module Red
           @verticies = SF::VertexArray.new(SF::Quads)
         end
 
-        def insert?(object : GameObject, texture : SF::Texture, shader : Nil | SF::Shader)
+        def insert?(object : GameObjects::GameObject, texture : SF::Texture, shader : Nil | SF::Shader)
           object.render_order <= render_range_end &&
           object.render_order >= render_range_begin &&
           @texture == texture &&

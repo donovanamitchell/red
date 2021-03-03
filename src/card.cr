@@ -8,7 +8,7 @@ class Card
   end
 end
 
-class CardGameObject < Red::GameObject
+class CardGameObject < Red::GameObjects::GameObject
   OFFSET = SF.vector2i(2,2)
   property card : Card
   property art : Red::Renderable
@@ -24,7 +24,7 @@ class CardGameObject < Red::GameObject
   end
 
   def objects_at(point)
-    hitbox_contains?(point) ? [self] : [] of Red::GameObject
+    hitbox_contains?(point) ? [self] : [] of Red::GameObjects::GameObject
   end
 
   def quads

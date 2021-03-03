@@ -1,6 +1,6 @@
 require "./card"
 
-class HandGameObject < Red::GameObject
+class HandGameObject < Red::GameObjects::GameObject
   OFFSET = SF.vector2i(36 + 2,0)
   property deck : Deck
   property card_game_objects : Array(CardGameObject)
@@ -20,7 +20,7 @@ class HandGameObject < Red::GameObject
   end
 
   def objects_at(point)
-    intersecting_objects = [] of Red::GameObject
+    intersecting_objects = [] of Red::GameObjects::GameObject
     @card_game_objects.each do |card|
       intersecting_objects << card if card.hitbox_contains?(point)
     end
