@@ -1,4 +1,4 @@
-require "./texture_atlas_json_mapping"
+require "./serializers"
 
 module Red
   module Animations
@@ -25,7 +25,7 @@ module Red
         false
       end
 
-      def insert_layer(sprite : TextureAtlasSprite)
+      def insert_layer(sprite : Serializers::Sprite)
         @layers
       end
     end

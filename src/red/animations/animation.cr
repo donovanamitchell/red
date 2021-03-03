@@ -1,5 +1,5 @@
 require "./frame"
-require "./texture_atlas_json_mapping"
+require "./serializers"
 
 module Red
   module Animations
@@ -10,7 +10,7 @@ module Red
         @frames = [] of Frame
       end
 
-      def new_frame(order : Int32, sprite : TextureAtlasSprite)
+      def new_frame(order : Int32, sprite : Serializers::Sprite)
         frame = @frames.find { |f| f.order == order }
         if frame
           frame.insert_layer(sprite)

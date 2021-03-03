@@ -1,4 +1,4 @@
-require "./texture_atlas_json_mapping"
+require "./serializers"
 
 module Red
   module Animations
@@ -34,7 +34,7 @@ module Red
       property anchors : Array(Anchor)
       property layers : Array(Layer)
 
-      def initialize(@order : Int32, sprite : TextureAtlasSprite)
+      def initialize(@order : Int32, sprite : Serializers::Sprite)
         @layers = [
           Layer.new(
             sprite.layer,
@@ -76,7 +76,7 @@ module Red
         end
       end
 
-      def insert_layer(sprite : TextureAtlasSprite)
+      def insert_layer(sprite : Serializers::Sprite)
         @layers << Layer.new(
           sprite.layer,
           sprite.frame.x,

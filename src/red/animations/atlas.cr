@@ -1,6 +1,6 @@
 require "./animation"
 require "./frame"
-require "./texture_atlas_json_mapping"
+require "./serializers"
 
 # TODO rename to atlas?
 module Red
@@ -16,7 +16,7 @@ module Red
           @animations = Hash(String, Animation).new
         end
 
-        def new_frame(animation_name : String, order : Int32, sprite : TextureAtlasSprite)
+        def new_frame(animation_name : String, order : Int32, sprite : Serializers::Sprite)
           unless @animations.has_key?(animation_name)
             @animations[animation_name] = Animation.new
           end
@@ -30,7 +30,7 @@ module Red
       end
 
       def self.load_assets(atlas_file)
-        TextureAtlas.from_json(atlas_file).frames.each do |frame|
+        Serializers::Sprites.from_json(atlas_file).frames.each do |frame|
           name = frame.filename
           animation_name = frame.tag
           animation_frame = frame.frame_order
