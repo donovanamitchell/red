@@ -1,18 +1,18 @@
+require "./red/graphics"
+require "./red/inputs"
+
 # TODO: less garbage file structure
 require "./red/renderable"
 require "./red/renderable_game_object"
 require "./red/nil_game_object"
 require "./red/colored_renderable"
 require "./red/palette"
-require "./red/input_context"
 require "./animation_command"
 require "./switch_context_command"
 require "./card"
 require "./draw_card_command"
 require "./deck"
 require "./hand"
-
-require "./red/graphics"
 
 # TODO less than half this garbage actually belongs in this file
 class WindowController
@@ -51,7 +51,7 @@ class WindowController
     @palette_shader_texture = SF::Texture.from_image(palette.generate_image)
 
     # TODO: also not here
-    @no_selection_input_context = Red::InputContext.new()
+    @no_selection_input_context = Red::Inputs::InputContext.new()
     click_command = SwitchContextCommand.new(->update_input_context)
     @no_selection_input_context.register(
       SF::Event::MouseButtonReleased,
@@ -61,7 +61,7 @@ class WindowController
     @input_context = @no_selection_input_context
 
     @fireteam = [] of Red::RenderableGameObject
-    @fireteam_input_context = Red::InputContext.new()
+    @fireteam_input_context = Red::Inputs::InputContext.new()
     @fireteam_input_context.register(
       SF::Keyboard::Num0,
       AnimationCommand.new("Idle")
@@ -121,7 +121,7 @@ class WindowController
       4
     )
 
-    @hand_input_context = Red::InputContext.new()
+    @hand_input_context = Red::Inputs::InputContext.new()
     @hand_input_context.register(
       SF::Keyboard::Num0,
       DrawCardCommand.new(@deck, @hand)

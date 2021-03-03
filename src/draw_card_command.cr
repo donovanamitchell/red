@@ -1,4 +1,4 @@
-class DrawCardCommand < Red::Command
+class DrawCardCommand < Red::Inputs::Command
   def initialize(@deck : Deck, @hand : Deck)
   end
 

@@ -1,4 +1,4 @@
-class SwitchContextCommand < Red::Command
+class SwitchContextCommand < Red::Inputs::Command
   def initialize(
     # What have I done?
     @set_context : Proc(Nil)

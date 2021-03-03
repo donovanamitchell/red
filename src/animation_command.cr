@@ -1,4 +1,4 @@
-class AnimationCommand < Red::Command
+class AnimationCommand < Red::Inputs::Command
   def initialize(@animation_key : String)
   end
 
