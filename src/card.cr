@@ -11,12 +11,12 @@ end
 class CardGameObject < Red::GameObjects::GameObject
   OFFSET = SF.vector2i(2,2)
   property card : Card
-  property art : Red::Renderable
-  property frame : Red::Renderable
+  property art : Red::Renderables::Renderable
+  property frame : Red::Renderables::Renderable
 
   def initialize(@position, @card, @render_order = 0)
-    @art = Red::Renderable.new(@card.art_name, "")
-    @frame = Red::Renderable.new(@card.frame_name, "")
+    @art = Red::Renderables::Renderable.new(@card.art_name, "")
+    @frame = Red::Renderables::Renderable.new(@card.frame_name, "")
   end
 
   def hitbox_contains?(point)

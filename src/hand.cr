@@ -4,7 +4,7 @@ class HandGameObject < Red::GameObjects::GameObject
   OFFSET = SF.vector2i(36 + 2,0)
   property deck : Deck
   property card_game_objects : Array(CardGameObject)
-  property background : Red::Renderable
+  property background : Red::Renderables::Renderable
 
   def initialize(@position, @background, @deck, @render_order = 0)
     @card_game_objects = [] of CardGameObject

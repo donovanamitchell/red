@@ -1,10 +1,10 @@
-require "../renderable"
+require "../renderables"
 require "./game_object"
 
 module Red
   module GameObjects
     class RenderableGameObject < GameObject
-      property renderable : Renderable
+      property renderable : Renderables::Renderable
 
       def initialize(@position, @renderable, @render_order = 0)
 

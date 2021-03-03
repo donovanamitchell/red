@@ -21,7 +21,7 @@ module Red
             texture = SF::Texture.new
             shader = SF::Shader.new
             organizer = Automatic.new
-            game_object = GameObjects::RenderableGameObject.new(SF.vector2(0,0), NilRenderable.new)
+            game_object = GameObjects::RenderableGameObject.new(SF.vector2(0,0), Renderables::NilRenderable.new)
 
             organizer.insert_game_obj(game_object, texture, shader)
             organizer.recompute_layers
@@ -38,8 +38,8 @@ module Red
             texture = SF::Texture.new
             shader = SF::Shader.new
             organizer = Automatic.new
-            game_object_1 = GameObjects::RenderableGameObject.new(SF.vector2(0,0), NilRenderable.new)
-            game_object_2 = GameObjects::RenderableGameObject.new(SF.vector2(0,0), NilRenderable.new)
+            game_object_1 = GameObjects::RenderableGameObject.new(SF.vector2(0,0), Renderables::NilRenderable.new)
+            game_object_2 = GameObjects::RenderableGameObject.new(SF.vector2(0,0), Renderables::NilRenderable.new)
 
             organizer.insert_game_obj(game_object_1, texture, shader)
             organizer.insert_game_obj(game_object_2, texture, shader)
@@ -57,8 +57,8 @@ module Red
             texture_2 = SF::Texture.new
             shader = SF::Shader.new
             organizer = Automatic.new
-            game_object_1 = GameObjects::RenderableGameObject.new(SF.vector2(0,0), NilRenderable.new)
-            game_object_2 = GameObjects::RenderableGameObject.new(SF.vector2(0,0), NilRenderable.new)
+            game_object_1 = GameObjects::RenderableGameObject.new(SF.vector2(0,0), Renderables::NilRenderable.new)
+            game_object_2 = GameObjects::RenderableGameObject.new(SF.vector2(0,0), Renderables::NilRenderable.new)
 
             organizer.insert_game_obj(game_object_1, texture_1, shader)
             organizer.insert_game_obj(game_object_2, texture_2, shader)
@@ -84,8 +84,8 @@ module Red
             shader_2 = SF::Shader.new
             texture = SF::Texture.new
             organizer = Automatic.new
-            game_object_1 = GameObjects::RenderableGameObject.new(SF.vector2(0,0), NilRenderable.new)
-            game_object_2 = GameObjects::RenderableGameObject.new(SF.vector2(0,0), NilRenderable.new)
+            game_object_1 = GameObjects::RenderableGameObject.new(SF.vector2(0,0), Renderables::NilRenderable.new)
+            game_object_2 = GameObjects::RenderableGameObject.new(SF.vector2(0,0), Renderables::NilRenderable.new)
 
             organizer.insert_game_obj(game_object_1, texture, shader_1)
             organizer.insert_game_obj(game_object_2, texture, shader_2)
@@ -109,7 +109,7 @@ module Red
           it "can have a nil shader" do
             texture = SF::Texture.new
             organizer = Automatic.new
-            game_object = GameObjects::RenderableGameObject.new(SF.vector2(0,0), NilRenderable.new)
+            game_object = GameObjects::RenderableGameObject.new(SF.vector2(0,0), Renderables::NilRenderable.new)
             organizer.insert_game_obj(game_object, texture)
             organizer.recompute_layers
 
@@ -130,9 +130,9 @@ module Red
           it "should order the objects according to the graph" do
             texture = SF::Texture.new
             organizer = Automatic.new
-            a = GameObjects::RenderableGameObject.new(SF.vector2(0,0), NilRenderable.new)
-            b = GameObjects::RenderableGameObject.new(SF.vector2(0,0), NilRenderable.new)
-            c = GameObjects::RenderableGameObject.new(SF.vector2(0,0), NilRenderable.new)
+            a = GameObjects::RenderableGameObject.new(SF.vector2(0,0), Renderables::NilRenderable.new)
+            b = GameObjects::RenderableGameObject.new(SF.vector2(0,0), Renderables::NilRenderable.new)
+            c = GameObjects::RenderableGameObject.new(SF.vector2(0,0), Renderables::NilRenderable.new)
             organizer.insert_game_obj(a, texture)
             organizer.insert_game_obj(b, texture)
             organizer.insert_game_obj(c, texture)
@@ -162,9 +162,9 @@ module Red
             a = SF::Texture.new
             b = SF::Texture.new
             organizer = Automatic.new
-            object_1 = GameObjects::RenderableGameObject.new(SF.vector2(0,0), NilRenderable.new)
-            object_2 = GameObjects::RenderableGameObject.new(SF.vector2(0,0), NilRenderable.new)
-            object_3 = GameObjects::RenderableGameObject.new(SF.vector2(0,0), NilRenderable.new)
+            object_1 = GameObjects::RenderableGameObject.new(SF.vector2(0,0), Renderables::NilRenderable.new)
+            object_2 = GameObjects::RenderableGameObject.new(SF.vector2(0,0), Renderables::NilRenderable.new)
+            object_3 = GameObjects::RenderableGameObject.new(SF.vector2(0,0), Renderables::NilRenderable.new)
 
             organizer.insert_game_obj(object_1, b)
             organizer.insert_game_obj(object_2, a)
@@ -190,8 +190,8 @@ module Red
           it "should throw an error if there is a cycle" do
             texture = SF::Texture.new
             organizer = Automatic.new
-            object_1 = GameObjects::RenderableGameObject.new(SF.vector2(0,0), NilRenderable.new)
-            object_2 = GameObjects::RenderableGameObject.new(SF.vector2(0,0), NilRenderable.new)
+            object_1 = GameObjects::RenderableGameObject.new(SF.vector2(0,0), Renderables::NilRenderable.new)
+            object_2 = GameObjects::RenderableGameObject.new(SF.vector2(0,0), Renderables::NilRenderable.new)
             organizer.insert_game_obj(object_1, texture)
             organizer.insert_game_obj(object_2, texture)
 

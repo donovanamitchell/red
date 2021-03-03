@@ -2,10 +2,9 @@ require "./red/graphics"
 require "./red/inputs"
 require "./red/animations"
 require "./red/game_objects"
+require "./red/renderables"
 
 # TODO: less garbage file structure
-require "./red/renderable"
-require "./red/colored_renderable"
 require "./red/palette"
 require "./animation_command"
 require "./switch_context_command"
@@ -110,13 +109,13 @@ class WindowController
     @discard = Deck.new([] of Card)
     @deck_game_object = Red::GameObjects::RenderableGameObject.new(
       SF.vector2i(4, 220 - 48 - 4),
-      Red::Renderable.new("card_back", ""),
+      Red::Renderables::Renderable.new("card_back", ""),
       4
     )
     # TODO: something to do relative positioning
     @hand_game_object = HandGameObject.new(
       SF.vector2i(4 + 36 + 4, 220 - 48 - 4),
-      Red::Renderable.new("hand_area", ""),
+      Red::Renderables::Renderable.new("hand_area", ""),
       @hand,
       4
     )
@@ -153,23 +152,23 @@ class WindowController
 
     background = Red::GameObjects::RenderableGameObject.new(
       SF.vector2i(4, 4),
-      Red::Renderable.new("background", ""),
+      Red::Renderables::Renderable.new("background", ""),
       0
     )
     background_frame = Red::GameObjects::RenderableGameObject.new(
       SF.vector2i(0, 0),
-      Red::Renderable.new("frame", ""),
+      Red::Renderables::Renderable.new("frame", ""),
       3
     )
     @fireteam = [
       Red::GameObjects::RenderableGameObject.new(
         SF.vector2i(50, 100),
-        Red::Renderable.new("fireman", "Idle"),
+        Red::Renderables::Renderable.new("fireman", "Idle"),
         2
       ),
       Red::GameObjects::RenderableGameObject.new(
         SF.vector2i(50, 30),
-        Red::ColoredRenderable.new(
+        Red::Renderables::ColoredRenderable.new(
           "fireman",
           "Idle",
           {
@@ -181,12 +180,12 @@ class WindowController
       ),
       Red::GameObjects::RenderableGameObject.new(
         SF.vector2i(100, 100),
-        Red::ColoredRenderable.new("test_stripes", "", { "Layer" => SF::Color::Cyan }),
+        Red::Renderables::ColoredRenderable.new("test_stripes", "", { "Layer" => SF::Color::Cyan }),
         2
       ),
       Red::GameObjects::RenderableGameObject.new(
         SF.vector2i(150, 60),
-        Red::Renderable.new("snoopy", "Idle"),
+        Red::Renderables::Renderable.new("snoopy", "Idle"),
         2
       )
     ]
@@ -207,7 +206,7 @@ class WindowController
 
     fireman_2 = Red::GameObjects::RenderableGameObject.new(
       SF.vector2i(100, 40),
-      Red::Renderable.new("fireman", "Idle"),
+      Red::Renderables::Renderable.new("fireman", "Idle"),
       2
     )
     @game_objects << fireman_2
@@ -223,7 +222,7 @@ class WindowController
 
     fireman_3 = Red::GameObjects::RenderableGameObject.new(
       SF.vector2i(150, 30),
-      Red::Renderable.new("fireman", "Idle"),
+      Red::Renderables::Renderable.new("fireman", "Idle"),
       2
     )
     @game_objects << fireman_3
