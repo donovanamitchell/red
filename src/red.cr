@@ -1,7 +1,6 @@
 require "crsfml"
 require "json"
 require "log"
-require "./red/animation_library"
 require "./window_controller"
 
 # 1 second = 1_000_000_000 nanoseconds

@@ -3,7 +3,7 @@ require "crsfml"
 require "json"
 require "log"
 require "../src/red/graphics"
-require "../src/red/animation_library"
+require "../src/red/animations"
 require "../src/window_controller"
 require "../src/red/nil_renderable"
 

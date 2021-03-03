@@ -1,5 +1,5 @@
 require "crsfml"
-require "./animation_frame"
+require "./animations"
 
 # TODO: Add a subclass for unanimated things?
 # Also rename to Animations?
@@ -8,7 +8,7 @@ module Red
     MS_PER_UPDATE = 1000 / UPDATES_PER_SECOND
 
     property texture_name : String
-    property animation_frame : AnimationFrame
+    property animation_frame : Animations::Frame
     property remaining_ms : Float64
 
     def initialize(@texture_name : String,
@@ -16,7 +16,7 @@ module Red
       @verticies = [] of SF::Vertex
       @animation_key = @default_animation_key
       @frame_index = 0
-      @animation_frame = AnimationLibrary.assets[@texture_name].animations[@animation_key].frames.first
+      @animation_frame = Animations::Atlas.assets[@texture_name].animations[@animation_key].frames.first
       @remaining_ms = @animation_frame.duration_ms.to_f
     end
 
@@ -27,7 +27,7 @@ module Red
       # sometimes wait a cycle if updates per frame is an uneven number
       return unless @remaining_ms <= 0
 
-      animation = AnimationLibrary.assets[@texture_name].animations[@animation_key]
+      animation = Animations::Atlas.assets[@texture_name].animations[@animation_key]
       @frame_index = @frame_index + 1
 
       if animation.frames.size <= @frame_index
@@ -42,7 +42,7 @@ module Red
     def start_animation(animation_key : String)
       @frame_index = 0
       @animation_key = animation_key
-      @animation_frame = AnimationLibrary.assets[@texture_name].animations[@animation_key].frames.first
+      @animation_frame = Animations::Atlas.assets[@texture_name].animations[@animation_key].frames.first
       @remaining_ms += @animation_frame.duration_ms
     end
 

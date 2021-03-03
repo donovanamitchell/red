@@ -1,5 +1,6 @@
 require "./red/graphics"
 require "./red/inputs"
+require "./red/animations"
 
 # TODO: less garbage file structure
 require "./red/renderable"
@@ -30,7 +31,7 @@ class WindowController
     @atlas_filename = "./assets/atlas"
     @tileset = SF::Texture.from_file("#{@atlas_filename}.png")
     file = File.new("#{@atlas_filename}.json")
-    Red::AnimationLibrary.load_assets(file)
+    Red::Animations::Atlas.load_assets(file)
     file.close
 
     palette = Red::Palette.new

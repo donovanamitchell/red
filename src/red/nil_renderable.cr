@@ -1,15 +1,15 @@
-require "./nil_animation_frame"
+require "./animations"
 
 module Red
   class NilRenderable < Renderable
     property texture_name : String
-    property animation_frame : AnimationFrame
+    property animation_frame : Animations::Frame
     property remaining_ms : Float64
 
     def initialize
       @texture_name = ""
       @verticies = [] of SF::Vertex
-      @animation_frame = NilAnimationFrame.new
+      @animation_frame = Animations::NilFrame.new
       @remaining_ms = Float64::INFINITY
       @default_animation_key = ""
       @animation_key = ""

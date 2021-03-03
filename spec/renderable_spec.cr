@@ -3,7 +3,7 @@ require "./spec_helper"
 module Red
   describe Renderable do
     before_all do
-      AnimationLibrary.load_assets(
+      Animations::Atlas.load_assets(
         <<-JSON
         {
           "frames": [
@@ -279,8 +279,8 @@ module Red
     describe "#next_frame" do
       it "should not change frame until the required duration" do
         renderable = Renderable.new("jimothy", "Action")
-        first_frame = AnimationLibrary.assets["jimothy"].animations["Action"].frames[0]
-        second_frame = AnimationLibrary.assets["jimothy"].animations["Action"].frames[1]
+        first_frame = Animations::Atlas.assets["jimothy"].animations["Action"].frames[0]
+        second_frame = Animations::Atlas.assets["jimothy"].animations["Action"].frames[1]
 
         updates_per_frame = 1 + (first_frame.duration_ms / Renderable::MS_PER_UPDATE)
         updates_per_frame.ceil.to_i.times do
@@ -294,7 +294,7 @@ module Red
         renderable = Renderable.new("jimothy", "Trimmed")
         renderable.start_animation("Action")
         renderable.remaining_ms = 100
-        default_frame = AnimationLibrary.assets["jimothy"].animations["Trimmed"].frames.first
+        default_frame = Animations::Atlas.assets["jimothy"].animations["Trimmed"].frames.first
 
         updates_per_frame = 1 + (200 / Renderable::MS_PER_UPDATE)
         updates_per_frame.ceil.to_i.times do
@@ -313,7 +313,7 @@ module Red
       it "should set the frame to the first in the animation" do
         renderable = Renderable.new("jimothy", "Trimmed")
         renderable.start_animation("Action")
-        frame = AnimationLibrary.assets["jimothy"].animations["Action"].frames.first
+        frame = Animations::Atlas.assets["jimothy"].animations["Action"].frames.first
 
         renderable.animation_frame.should be(frame)
       end
