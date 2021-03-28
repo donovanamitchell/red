@@ -1,1 +1,1 @@
-DISPLAY=:0 crystal spec
+crystal spec

@@ -83,6 +83,15 @@ https://sourceforge.net/projects/xming/
 1. Install Xming
 2. Run xming
 3. Launch program with environment variable DISPLAY=:0 eg: `DISPLAY=:0 ./executable`
+With wsl2 this is now more difficult. See https://wiki.ubuntu.com/WSL#Running_Graphical_Applications https://x410.dev/cookbook/wsl/enabling-sound-in-wsl-ubuntu-let-it-sing/ https://x410.dev/cookbook/wsl/protecting-x410-public-access-for-wsl2-via-windows-defender-firewall/
+TODO: writeup
+
+Disable Native OpenGL in VcXsrc and `LIBGL_ALWAYS_INDIRECT=0`
+export PULSE_SERVER="${PULSE_SERVER:-tcp:$(ip route|awk '/^default/{print $3}')}"
+Make sure pulseaudio and xming or VcXsrv have the right windows defender firewall rules
+
+sudo apt install alsa-base pulseaudio pulseaudio-utils
+
 
 ### TODO list
 - Update to CRSFML v2.5.1

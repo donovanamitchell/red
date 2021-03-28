@@ -1,4 +1,6 @@
 require "crsfml"
+require "crsfml/audio"
+require "crsfml/system"
 require "json"
 require "log"
 require "./window_controller"

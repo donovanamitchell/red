@@ -1,1 +1,1 @@
-DISPLAY=:0 ./tmp/red
+./tmp/red

@@ -1,9 +1,10 @@
-require "./red/graphics"
-require "./red/inputs"
 require "./red/animations"
 require "./red/game_objects"
-require "./red/renderables"
+require "./red/graphics"
+require "./red/inputs"
 require "./red/palettes"
+require "./red/renderables"
+require "./red/sounds"
 
 # TODO: less garbage file structure
 require "./animation_command"
@@ -31,6 +32,8 @@ class WindowController
     file = File.new("#{@atlas_filename}.json")
     Red::Animations::Atlas.load_assets(file)
     file.close
+    # TODO: not here
+    Red::Sounds.register("beep", SF::SoundBuffer.from_file("./assets/beep.wav"))
 
     palette = Red::Palettes::Palette.new
     palette.insert_palette({
@@ -305,6 +308,9 @@ class WindowController
         graphics_organizer.update
         lag -= TIME_PER_UPDATE
       end
+
+      # Play sounds
+      Red::Sounds.update
 
       # render
       @render_window.clear(SF::Color::Black)
