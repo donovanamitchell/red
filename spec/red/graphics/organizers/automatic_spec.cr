@@ -28,6 +28,8 @@ module Red
 
             organizer.layers.size.should eq(1)
             layer = organizer.layers.first
+            layer.should be_a(Layers::RenderableLayer)
+            layer = layer.as(Layers::RenderableLayer)
             layer.texture.should be(texture)
             layer.shader.should be(shader)
             layer.objects.size.should eq(1)
@@ -65,10 +67,11 @@ module Red
             organizer.recompute_layers
 
             organizer.layers.size.should eq(2)
-            textures = organizer.layers.map(&.texture)
+            textures = organizer.layers.map { |layer| layer.as(Layers::RenderableLayer).texture }
             textures.should contain(texture_1)
             textures.should contain(texture_2)
             organizer.layers.each do |layer|
+              layer = layer.as(Layers::RenderableLayer)
               layer.objects.size.should eq(1)
               object = layer.objects.first
               if layer.texture == texture_1
@@ -92,10 +95,11 @@ module Red
             organizer.recompute_layers
 
             organizer.layers.size.should eq(2)
-            shaders = organizer.layers.map(&.shader)
+            shaders = organizer.layers.map { |layer| layer.as(Layers::RenderableLayer).shader }
             shaders.should contain(shader_1)
             shaders.should contain(shader_2)
             organizer.layers.each do |layer|
+              layer = layer.as(Layers::RenderableLayer)
               layer.objects.size.should eq(1)
               object = layer.objects.first
               if layer.shader == shader_1
@@ -115,6 +119,7 @@ module Red
 
             organizer.layers.size.should eq(1)
             layer = organizer.layers.first
+            layer = layer.as(Layers::RenderableLayer)
             layer.texture.should be(texture)
             layer.shader.should be(nil)
             layer.objects.size.should eq(1)
@@ -173,11 +178,11 @@ module Red
 
             organizer.layers.size.should eq(2)
             # two possible orderings, [[b, b], [a]]; [[a], [b, b]]
-            layer_b = organizer.layers[0]
-            layer_a = organizer.layers[1]
+            layer_b = organizer.layers[0].as(Layers::RenderableLayer)
+            layer_a = organizer.layers[1].as(Layers::RenderableLayer)
             if layer_a.texture.same?(b)
-              layer_a = organizer.layers[0]
-              layer_b = organizer.layers[1]
+              layer_a = organizer.layers[0].as(Layers::RenderableLayer)
+              layer_b = organizer.layers[1].as(Layers::RenderableLayer)
             end
 
             layer_a.texture.should be(a)

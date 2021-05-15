@@ -4,16 +4,26 @@ require "../../game_objects"
 module Red
   module Graphics
     module Layers
-      class RenderableLayer < Layer(GameObjects::GameObject)
+      class RenderableLayer < Layer
         property shader : Nil | SF::Shader
         property texture : SF::Texture
 
-        def initialize(@texture, @shader, @render_range_begin, @render_range_end)
-          super(@render_range_begin, @render_range_end)
+        def initialize(
+            texture = nil,
+            shader = nil,
+            render_range_begin = Int32::MIN,
+            render_range_end = Int32::MAX
+          )
+          @texture = texture || SF::Texture.new
+          @shader = shader
+          @render_range_begin = render_range_begin
+          @render_range_end = render_range_end
+          super(render_range_begin: render_range_begin, render_range_end: render_range_end)
           @verticies = SF::VertexArray.new(SF::Quads)
         end
 
-        def insert?(object : GameObjects::GameObject, texture : SF::Texture, shader : Nil | SF::Shader)
+        def insert?(object, texture : Nil | SF::Texture, shader : Nil | SF::Shader)
+          object.is_a?(GameObjects::RenderableGameObject) &&
           object.render_order <= render_range_end &&
           object.render_order >= render_range_begin &&
           @texture == texture &&

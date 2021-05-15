@@ -26,7 +26,7 @@ module Red
                             texture : SF::Texture,
                             shader : SF::Shader | Nil = nil)
           layer = @layers.find do |l|
-            l.insert?(game_object) &&
+            l.insert?(game_object, texture, shader) &&
             l.texture == texture &&
             l.shader == shader
           end

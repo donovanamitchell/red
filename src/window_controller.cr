@@ -13,6 +13,8 @@ require "./card"
 require "./draw_card_command"
 require "./deck"
 require "./hand"
+require "./text_game_object"
+require "./context_menu"
 
 # TODO less than half this garbage actually belongs in this file
 class WindowController
@@ -53,43 +55,58 @@ class WindowController
     @palette_shader_texture = SF::Texture.from_image(palette.generate_image)
 
     # TODO: also not here
+    @font = SF::Font.from_file("./assets/dondo.bdf")
+    options = [] of Tuple(String, Red::Inputs::Command)
+    options << { "Some Text", Red::Inputs::NilCommand.new }
+    options << { "Text 2", Red::Inputs::NilCommand.new }
+    @context_menu = ContextMenu.new(
+      SF.vector2i(50, 25),
+      Int32::MAX,
+      options,
+      @font,
+      @tileset
+    )
     @no_selection_input_context = Red::Inputs::InputContext.new()
     click_command = SwitchContextCommand.new(->update_input_context)
-    @no_selection_input_context.register(
-      SF::Event::MouseButtonReleased,
+    @no_selection_input_context.register_mouse(
+      SF::Mouse::Button::Left,
       click_command
+    )
+    @no_selection_input_context.register_mouse(
+      SF::Mouse::Button::Right,
+      SwitchContextCommand.new(->open_right_click_menu)
     )
 
     @input_context = @no_selection_input_context
 
     @fireteam = [] of Red::GameObjects::RenderableGameObject
     @fireteam_input_context = Red::Inputs::InputContext.new()
-    @fireteam_input_context.register(
+    @fireteam_input_context.register_key(
       SF::Keyboard::Num0,
       AnimationCommand.new("Idle")
     )
-    @fireteam_input_context.register(
+    @fireteam_input_context.register_key(
       SF::Keyboard::Num1,
       AnimationCommand.new("Death")
     )
-    @fireteam_input_context.register(
+    @fireteam_input_context.register_key(
       SF::Keyboard::Num2,
       AnimationCommand.new("Injured")
     )
-    @fireteam_input_context.register(
+    @fireteam_input_context.register_key(
       SF::Keyboard::Num3,
       AnimationCommand.new("Buff")
     )
-    @fireteam_input_context.register(
+    @fireteam_input_context.register_key(
       SF::Keyboard::Num4,
       AnimationCommand.new("Ranged")
     )
-    @fireteam_input_context.register(
+    @fireteam_input_context.register_key(
       SF::Keyboard::Num5,
       AnimationCommand.new("Melee")
     )
-    @fireteam_input_context.register(
-      SF::Event::MouseButtonReleased,
+    @fireteam_input_context.register_mouse(
+      SF::Mouse::Button::Left,
       click_command
     )
 
@@ -122,14 +139,19 @@ class WindowController
       @hand,
       4
     )
+    @background_frame = Red::GameObjects::RenderableGameObject.new(
+      SF.vector2i(0, 0),
+      Red::Renderables::Renderable.new("frame", ""),
+      3
+    )
 
     @hand_input_context = Red::Inputs::InputContext.new()
-    @hand_input_context.register(
+    @hand_input_context.register_key(
       SF::Keyboard::Num0,
       DrawCardCommand.new(@deck, @hand)
     )
-    @hand_input_context.register(
-      SF::Event::MouseButtonReleased,
+    @hand_input_context.register_mouse(
+      SF::Mouse::Button::Left,
       click_command
     )
 
@@ -149,7 +171,8 @@ class WindowController
   end
 
   def setup_graphics_organizer
-    graphics_organizer = Red::Graphics::Organizers::Automatic.new()
+    graphics_organizer = Red::Graphics::Organizers.organizer
+    # graphics_organizer.register(HandGameObject, Red::Graphics::Layers::RenderableLayer)
     # graphics_organizer.insert_layer(0, 2, @tileset, nil)
     # graphics_organizer.insert_layer(2, 5, @tileset, nil)
 
@@ -158,11 +181,11 @@ class WindowController
       Red::Renderables::Renderable.new("background", ""),
       0
     )
-    background_frame = Red::GameObjects::RenderableGameObject.new(
-      SF.vector2i(0, 0),
-      Red::Renderables::Renderable.new("frame", ""),
-      3
-    )
+    # @background_frame = Red::GameObjects::RenderableGameObject.new(
+    #   SF.vector2i(0, 0),
+    #   Red::Renderables::Renderable.new("frame", ""),
+    #   3
+    # )
     @fireteam = [
       Red::GameObjects::RenderableGameObject.new(
         SF.vector2i(50, 100),
@@ -194,7 +217,7 @@ class WindowController
     ]
 
     @game_objects << background
-    @game_objects << background_frame
+    @game_objects << @background_frame
     @game_objects << @deck_game_object
     @game_objects << @hand_game_object
     @game_objects.concat(@fireteam)
@@ -205,7 +228,7 @@ class WindowController
     graphics_organizer.insert_game_obj(@hand_game_object, @tileset)
 
     @fireteam.each { |character| graphics_organizer.insert_game_obj(character, @tileset) }
-    graphics_organizer.insert_game_obj(background_frame, @tileset)
+    graphics_organizer.insert_game_obj(@background_frame, @tileset)
 
     fireman_2 = Red::GameObjects::RenderableGameObject.new(
       SF.vector2i(100, 40),
@@ -239,20 +262,37 @@ class WindowController
     # graphics_organizer.insert_layer(2, 2, @tileset, palette_shader)
     graphics_organizer.insert_game_obj(fireman_3, @tileset, palette_shader)
 
+    # Create a text
+    text = SF::Text.new("Some Text Here", @font)
+    pp text.line_spacing
+    text.character_size = 7
+    text.color = SF::Color::White
+    some_text_object = TextGameObject.new(
+      SF.vector2i(10, 25), 1, text
+    )
+    graphics_organizer.insert_game_obj(some_text_object, nil, nil)
+
     # render order
     # background
     # frame
-    graphics_organizer.arrange(background, background_frame)
+    graphics_organizer.arrange(background, @background_frame)
     # characters
     @fireteam.each do |character|
-      graphics_organizer.arrange(background_frame, character)
+      graphics_organizer.arrange(background, character)
+      graphics_organizer.arrange(character, @background_frame)
     end
-    graphics_organizer.arrange(background_frame, fireman_2)
-    graphics_organizer.arrange(background_frame, fireman_3)
+    graphics_organizer.arrange(background, fireman_2)
+    graphics_organizer.arrange(fireman_2, @background_frame)
+    graphics_organizer.arrange(background, fireman_3)
+    graphics_organizer.arrange(fireman_3, @background_frame)
     # card art
     # card frame
-    graphics_organizer.arrange(background_frame, @deck_game_object)
-    graphics_organizer.arrange(background_frame, @hand_game_object)
+    graphics_organizer.arrange(background, @deck_game_object)
+    graphics_organizer.arrange(@deck_game_object, @background_frame)
+    graphics_organizer.arrange(background, @hand_game_object)
+    graphics_organizer.arrange(@hand_game_object, @background_frame)
+
+    graphics_organizer.arrange(@background_frame, some_text_object)
 
     graphics_organizer
   end
@@ -270,6 +310,7 @@ class WindowController
         @input_context = @hand_input_context
         true
       else
+        @input_context = @no_selection_input_context
         false
       end
     end
@@ -277,8 +318,30 @@ class WindowController
     Log.debug { @selected_game_obj.pretty_inspect }
   end
 
+  def open_right_click_menu
+    pixel_pos = SF::Mouse.get_position(@render_window)
+    world_pos = @render_window.map_pixel_to_coords(pixel_pos, @render_window.view)
+    top_object = intersecting_game_objects(world_pos).last
+
+    Log.debug { "Right click menu" }
+    Log.debug { intersecting_game_objects(world_pos).pretty_inspect }
+
+    @input_context = Red::Inputs::InputContext.new
+    @input_context.register_key(
+      SF::Keyboard::Key::Escape,
+      SwitchContextCommand.new(->close_right_click_menu)
+    )
+    @context_menu.show_for(SF.vector2i(world_pos.x.to_i, world_pos.y.to_i), @background_frame)
+  end
+
+  def close_right_click_menu
+    @context_menu.hide
+    @input_context = @no_selection_input_context
+  end
+
   def open
-    graphics_organizer = setup_graphics_organizer
+    setup_graphics_organizer
+    graphics_organizer = Red::Graphics::Organizers.organizer
     graphics_organizer.update
 
     # https://gameprogrammingpatterns.com/game-loop.html
@@ -296,8 +359,8 @@ class WindowController
         when SF::Event::Closed
           @render_window.close
         else
-          command = @input_context.handle(event)
-          command.execute(@selected_game_obj)
+          commands = @input_context.handle(event)
+          commands.each(&.execute(@selected_game_obj))
         end
       end
 
@@ -305,11 +368,12 @@ class WindowController
       # probably way overkill, but hey, this is for fun
       while lag >= TIME_PER_UPDATE
         @game_objects.each { |game_object| game_object.update }
-        graphics_organizer.update
+
         lag -= TIME_PER_UPDATE
       end
 
-      # Play sounds
+      # TODO: should these be called with the variable time step?
+      graphics_organizer.update
       Red::Sounds.update
 
       # render

@@ -4,23 +4,36 @@ module Red
   module Inputs
     class InputContext
       def initialize
-        nil_command = NilCommand.new
-        # There is something incredibly wrong with having a key type of Class.
-        # I've disgusted myself.
-        @input_registry = Hash(SF::Event.class | SF::Keyboard::Key, Command).new(nil_command)
+        @mouse_registry = Hash(
+          SF::Mouse::Button, Array(Command)
+        ).new do |hash, key|
+          hash[key] = [] of Command
+        end
+        @key_registry = Hash(
+          SF::Keyboard::Key, Array(Command)
+        ).new do |hash, key|
+          hash[key] = [] of Command
+        end
       end
 
       def handle(event)
         # TODO: Events registered to KeyReleased? Multiple commands from 1 event?
-        if event.is_a?(SF::Event::KeyReleased)
-          @input_registry[event.code]
+        case event
+        when SF::Event::KeyReleased
+          @key_registry[event.code]
+        when SF::Event::MouseButtonReleased
+          @mouse_registry[event.button]
         else
-          @input_registry[event.class]
+          [] of Command
         end
       end
 
-      def register(key : SF::Event.class | SF::Keyboard::Key, command : Command)
-        @input_registry[key] = command
+      def register_key(key : SF::Keyboard::Key, command : Command)
+        @key_registry[key] << command
+      end
+
+      def register_mouse(key : SF::Mouse::Button, command : Command)
+        @mouse_registry[key] << command
       end
     end
   end

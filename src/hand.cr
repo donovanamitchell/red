@@ -1,6 +1,6 @@
 require "./card"
 
-class HandGameObject < Red::GameObjects::GameObject
+class HandGameObject < Red::GameObjects::RenderableGameObject
   OFFSET = SF.vector2i(36 + 2,0)
   property deck : Deck
   property card_game_objects : Array(CardGameObject)
@@ -13,6 +13,7 @@ class HandGameObject < Red::GameObjects::GameObject
         @position + (OFFSET * index), card, @render_order
       )
     end
+    @renderable = background
   end
 
   def hitbox_contains?(point)

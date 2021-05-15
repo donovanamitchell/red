@@ -19,10 +19,6 @@ module Red
         [] of GameObject
       end
 
-      def quads
-        [] of SF::Vertex
-      end
-
       def start_animation(_animation_key) ; end
 
       def update ; end
